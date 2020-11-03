@@ -18,3 +18,7 @@ if(goToHomeButton.length > 0)
 var goToPicButton = document.getElementsByName("link-to-pic-screen");
 if(goToPicButton.length > 0)
 	goToPicButton[0].addEventListener("click", function(){open("choose_pic_source.html", "_self")});
+
+var goToPicButton = document.getElementsByName("link-to-NI");
+if(goToPicButton.length > 0)
+	goToPicButton[0].addEventListener("click", function(){window.location.href="http://www.neighborimpact.org", "_self"});
