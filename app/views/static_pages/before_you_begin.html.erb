@@ -1,0 +1,9 @@
+<%
+    file = File.open("./app/assets/text/before_you_begin.txt")
+    file_text = file.read.split("\n")
+%>
+
+<h1><%= file_text[0] %> </h1>
+<% file_text[1..-1].each do |line| %>
+        <p><%= line %></p>
+<% end %>

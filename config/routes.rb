@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  get "before_you_begin" => "static_pages#before_you_begin"
+
   # Users
   # Using Devise RegistrationsController for public user creation/registration.
   devise_for :users, controllers: { registrations: 'registrations' }
