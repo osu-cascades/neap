@@ -14,7 +14,6 @@
         %span.navbar-toggler-icon
       #navbar.collapse.navbar-collapse
         %ul.navbar-nav.ml-auto
-          %li.nav-item= link_to 'Start Application', 'before_you_begin', class: 'nav-link'
           - if current_user&.admin?
             %li.nav-item= link_to 'Users', users_path, class: 'nav-link'
           - if user_signed_in?
@@ -30,6 +29,4 @@
     %footer
       .container.text-muted
         %nav
-          %ul
-            %li= link_to 'Start Application', 'before_you_begin'
         %span © NeighborImpact. All rights reserved.
