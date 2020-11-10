@@ -12,17 +12,18 @@
         <h1>Online Application</h1>
         <p>Welcome to NeighborImpact's online application for the federal Low Income Home Energy Assistance Program ('LIHEAP'). Here we will walk you through your submitting your application.</p>
         <div class="form-group">
-            <button>Returning User</button>
+            <button id="ReturningUser" class="btn btn-primary">Returning User</button>
         </div>
         <div class="form-group">
-            <button>New User</button>
+            <button id="NewUser" class="btn btn-primary">New User</button>
         </div>
         <div class="form-group">
-		    <button name="BackButton">Back to Home</button>
+            <button id="BackHome" class="btn btn-primary">Back to Home</button>
         </div>
     </body>
 </html>
 <script>
-    var backButton = document.getElementsByName("BackButton");
-    backButton[0].addEventListener("click", function(){window.location.href="http://www.neighborimpact.org", "_self"});
+    document.getElementById("ReturningUser").addEventListener("click", function(){window.location.href="users/sign_in"});
+    document.getElementById("NewUser").addEventListener("click", function(){window.location.href="users/sign_up"});
+    document.getElementById("BackHome").addEventListener("click", function(){window.location.href="http://www.neighborimpact.org"});
 </script>
