@@ -15,4 +15,8 @@ class HouseholdMember
         @is_OHP = data_bundle[12]
         @other_medical_insurance = data_bundle[13]
     end
+
+    attr_accessor :full_name, :dob, :ssn, :gender, :is_hispanic, :race_code, :is_OR_tribe
+    attr_accessor :education_code, :is_disabled, :is_veteran, :is_homebound, :is_SNAP
+    attr_accessor :is_OHP, :other_medical_insurance
 end
