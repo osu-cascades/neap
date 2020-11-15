@@ -39,4 +39,8 @@ class ApplicationRecord < ActiveRecord::Base
     @has_covid_childcare_loss
     @covid_expenses
   end
+
+  def ApplicationRecord::get_records_by_user(user_key)
+    ApplicationRecord.where("user_primary_key < ?", user_key)
+  end
 end
