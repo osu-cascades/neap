@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get "before_you_begin" => "static_pages#before_you_begin"
   get "application_main_info" => "static_pages#application_main_info"
+  get "application_checklist" => "static_pages#application_checklist"
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.

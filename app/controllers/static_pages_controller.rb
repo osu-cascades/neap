@@ -4,4 +4,5 @@ class StaticPagesController < ApplicationController
   def application_main_info; end
   def home; end
   def before_you_begin; end
+  def application_checklist; end
 end
