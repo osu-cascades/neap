@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "application_main_info" => "static_pages#application_main_info"
   get "application_checklist" => "static_pages#application_checklist"
   get "audit" => "audits#index"
+  get "energy_applications" => "energy_applications#index"
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.
