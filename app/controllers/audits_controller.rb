@@ -1,4 +1,6 @@
 class AuditsController < ApplicationController
-    def index; end
+    def index
+        @test_variable
+    end
   end
   
