@@ -7,6 +7,10 @@ class EnergyApplication < ApplicationRecord
         enApp = EnergyApplication.create(clientID: current_user[:id])
     end
 
+    def retreiveApplication(eaID)
+        return EnergyApplication.find_by(id: eaID)
+    end
+
     def updateApplication(eaID, eaData)
         enApp = EnergyApplication.find_by(id: eaID)
         # update here
