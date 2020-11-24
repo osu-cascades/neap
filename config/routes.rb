@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "energy_applications/:id/edit" => "energy_applications#edit"
   get "energy_applications/:id/remove" => "energy_applications#remove"
   get "energy_applications/:id/update" => "energy_applications#update"
-  get "energy_applications/clientID" => "energy_applications#clientIDIndex"
+  get "energy_applications/clientIDIndex" => "energy_applications#clientIDIndex"
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.
