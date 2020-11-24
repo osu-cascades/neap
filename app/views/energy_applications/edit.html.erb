@@ -8,10 +8,17 @@
         <h1>Edit Energy Application</h1>
         <p> Energy Application <%= @enApp.id %> <p>
         <% clientName = "[NO CLIENT]" %>
+        <% clientID = "" %>
         <% if @client != nil then clientName = (@client.first_name + " " + @client.last_name) end %>
-        <p> Client - <%=  clientName %> </p>
+        <% if @client != nil then clientID = @client.id end %>
+        <p> Client - <%=  clientName %> - clientID <%= @enApp.clientID %></p>
         <div>
-            <button class="btn btn-primary" id="updateRecordButton">Update</button>
+            <% formStr = "/energy_applications/" + @enApp.id.to_s + "/update" %>
+            <form action=<%= formStr %> method="post">
+                <label for="fcid">Client ID:</label><br>
+                <input type="text" id="fcid" name="fcid" value=<%= clientID %>><br>
+                <button type="submit" class="btn btn-primary" id="updateRecordButton">Update</button>
+            </form>
         </div>
         <div>
             <% formStr = "/energy_applications/" + @enApp.id.to_s + "/remove" %>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "energy_applications/create" => "energy_applications#create"
   get "energy_applications/:id/edit" => "energy_applications#edit"
   get "energy_applications/:id/remove" => "energy_applications#remove"
+  post "energy_applications/:id/update" => "energy_applications#update"
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.

@@ -21,4 +21,11 @@ class EnergyApplicationsController < ApplicationController
         enApp = EnergyApplication.create(clientID: -1)
         redirect_to "/energy_applications"
     end
+
+    def update
+        enApp = EnergyApplication.find(params[:id])
+        enApp.clientID = params[:cid]
+        enApp.save
+        redirect_to "/energy_applications"
+    end
 end
