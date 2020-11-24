@@ -6,5 +6,12 @@
     </head>
     <body>
         <h1>Energy Applications</h1>
+        <ul>
+            <% @enAppList.each do |enApp| %>
+                <li>
+                <%= "Energy Application ID: " + enApp.id.to_s %>
+                </li>
+            <% end %>
+        </ul>
     </body>
 </html>
