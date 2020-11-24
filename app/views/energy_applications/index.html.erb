@@ -6,15 +6,30 @@
     </head>
     <body>
         <h1>Energy Applications</h1>
-        <ul>
-            <% @enAppList.each do |enApp| %>
-                <li>
-                <%= "Energy Application ID: " + enApp.id.to_s %>
-                <% userName = User.find_by(id: enApp.clientID) %>
-                <% if userName == nil then userName = "[No Name]" end%>
-                <%= ", User: " + userName %>
-                </li>
-            <% end %>
-        </ul>
+        <div class="row">
+            <div class="column">
+                <div class="row">
+                    <button class="btn btn-primary" id="createRecordButton">Create Record</button>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" id="updateRecordButton">Update Record</button>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" id="destroyRecordButton">Destroy Record</button>  
+                </div>  
+            </div> <!-- end first column -->
+            <div class="column">
+                <ul>
+                    <% @enAppList.each do |enApp| %>
+                        <li>
+                        <%= "Energy Application ID: " + enApp.id.to_s %>
+                        <% userName = User.find_by(id: enApp.clientID) %>
+                        <% if userName == nil then userName = "[No Name]" end%>
+                        <%= ", User: " + userName %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>  <!-- end second column -->
+        </div>
     </body>
 </html>
