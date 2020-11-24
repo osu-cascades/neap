@@ -10,21 +10,16 @@
             <div class="column">
                 <div class="row">
                     <button class="btn btn-primary" id="createRecordButton">Create Record</button>
-                </div>
-                <div class="row">
-                    <button class="btn btn-primary" id="updateRecordButton">Update Record</button>
-                </div>
-                <div class="row">
-                    <button class="btn btn-primary" id="destroyRecordButton">Destroy Record</button>  
-                </div>  
+                </div> 
             </div> <!-- end first column -->
             <div class="column">
                 <ul>
                     <% @enAppList.each do |enApp| %>
                         <li>
                         <%= "Energy Application ID: " + enApp.id.to_s %>
-                        <% userName = User.find_by(id: enApp.clientID) %>
-                        <% if userName == nil then userName = "[No Name]" end%>
+                        <% userName = " " %>
+                        <% user = User.find_by(id: enApp.clientID) %>
+                        <% if user != nil then userName = user.first_name + " " + user.last_name end%>
                         <%= ", User: " + userName %>
                         </li>
                     <% end %>
