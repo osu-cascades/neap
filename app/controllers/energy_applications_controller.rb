@@ -28,4 +28,8 @@ class EnergyApplicationsController < ApplicationController
         @enApp.save
         redirect_to "/energy_applications"
     end
+
+    def clientIDIndex
+        @users = User.all
+    end
 end
