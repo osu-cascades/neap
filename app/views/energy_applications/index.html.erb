@@ -7,34 +7,34 @@
     <body>
         <h1>Energy Applications</h1>
         <div class="row">
-            <div class="column" style="width: 25%"> 
+            <div class="col-md-6" style="width: 25%">
                 <form action="energy_applications/create" method="get">
-                    <button type="submit" class="btn btn-primary" id="createRecordButton" style="margin-top:.5em">Create New Record</button>
-                </form> 
+                    <button type="submit" class="btn btn-primary" id="createRecordButton" style="margin-top:.5em">Create New Application</button>
+                </form>
                 <form action="energy_applications/clientIDIndex" method="get">
-                    <button type="submit" class="btn btn-primary" id="viewClientIDButton" style="margin-top:.5em">View Client IDs</button>
-                </form> 
+                    <button type="submit" class="btn btn-primary" id="viewClientIDButton" style="margin-top:.5em">View Clients</button>
+                </form>
                 <form action="home" method="get">
                     <button type="submit" class="btn btn-primary" id="homeButton" style="margin-top:.5em">Home</button>
-                </form> 
+                </form>
             </div> <!-- end first column -->
-            <div class="column">
-                    <% @enAppList.each do |enApp| %>
-                        <% buttonStr = "Energy Application ID: " + enApp.id.to_s %>
-                        <% buttonID = "energyApp" + enApp.id.to_s %>
-                        <% userName = "[UNKNOWN CLIENT]" %>
-                        <% user = User.find_by(id: enApp.clientID) %>
-                        <% if user != nil then userName = user.first_name + " " + user.last_name end%>
-                        <% buttonStr += ", Client: " + userName %>
-                        <% formStr = "energy_applications/" + enApp.id.to_s + "/edit" %>
-                        <div>
-                            <form action=<%= formStr %> method="get">
-                                <button type="submit" class="btn btn-secondary" style="margin-top:.5em" <% buttonID %> >
-                                    <%= buttonStr %>
-                                </button>
-                            </form>
-                        </div>
-                    <% end %>
+            <div class="col-md-6">
+                <% @enAppList.each do |enApp| %>
+                    <% buttonStr = "Energy Application ID: " + enApp.id.to_s %>
+                    <% buttonID = "energyApp" + enApp.id.to_s %>
+                    <% userName = "[NO CLIENT]" %>
+                    <% user = User.find_by(id: enApp.clientID) %>
+                    <% if user != nil then userName = user.first_name + " " + user.last_name end%>
+                    <% buttonStr += ", Client: " + userName %>
+                    <% formStr = "energy_applications/" + enApp.id.to_s + "/edit" %>
+                    <div>
+                        <form action=<%= formStr %> method="get">
+                            <button type="submit" class="btn btn-secondary" style="margin-top:.5em" <% buttonID %> >
+                                <%= buttonStr %>
+                            </button>
+                        </form>
+                    </div>
+                <% end %>
             </div>  <!-- end second column -->
         </div>
     </body>

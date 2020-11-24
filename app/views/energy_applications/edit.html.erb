@@ -11,24 +11,24 @@
         <% clientID = "" %>
         <% if @client != nil then clientName = (@client.first_name + " " + @client.last_name) end %>
         <% if @client != nil then clientID = @client.id end %>
-        <p> Client - <%=  clientName %> - clientID <%= @enApp.clientID %></p>
+        <p>Client: <%= clientName %></p>
         <div>
             <% formStr = "/energy_applications/" + @enApp.id.to_s + "/update" %>
             <form action=<%= formStr %> method="get">
-                <label for="fcid">Client ID:</label><br>
-                <input type="text" id="fcid" name="fcid" value=<%= clientID %>><br>
+                <label for="fcid">Client's ID Number:</label><br>
+                <input type="text" id="fcid" name="fcid" class="form-control" value=<%= clientID %>><br>
                 <button type="submit" class="btn btn-primary" id="updateRecordButton" style="margin-top:.5em">Update</button>
             </form>
         </div>
         <div>
             <% formStr = "/energy_applications/" + @enApp.id.to_s + "/remove" %>
             <form action=<%= formStr %> method="get">
-                <button type="submit" class="btn btn-primary" id="deleteRecordButton" style="margin-top:.5em">Delete</button>
+                <button type="submit" class="btn btn-danger" id="deleteRecordButton" style="margin-top:.5em">Delete</button>
             </form>
         </div>
         <div>
             <form action="/energy_applications" method="get">
-                <button type="submit" class="btn btn-primary" id="backRecordButton" style="margin-top:.5em">Back</button>
+                <button type="submit" class="btn btn-secondary" id="backRecordButton" style="margin-top:.5em">Back</button>
             </form>
         </div>
     </body>
