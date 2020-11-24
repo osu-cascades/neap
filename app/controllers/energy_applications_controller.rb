@@ -11,6 +11,12 @@ class EnergyApplicationsController < ApplicationController
         if @clientID != -1 then @client = User.find_by(id: @enApp.clientID) end
     end
 
+    def remove
+        @enApp = EnergyApplication.find(params[:id])
+        @enApp.delete
+        redirect_to "/energy_applications"
+    end
+
     def create
         enApp = EnergyApplication.create(clientID: -1)
         redirect_to "/energy_applications"
