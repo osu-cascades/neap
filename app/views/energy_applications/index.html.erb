@@ -9,7 +9,7 @@
         <div class="row">
             <div class="column" style="width: 25%"> 
             <form action="energy_applications/create" method="get">
-                <button type="submit" class="btn btn-primary" id="createRecordButton">Create New Record</button>
+                <button type="submit" class="btn btn-primary" id="createRecordButton" style="margin-top:.5em">Create New Record</button>
             </form> 
             </div> <!-- end first column -->
             <div class="column">
@@ -23,7 +23,7 @@
                         <% formStr = "energy_applications/" + enApp.id.to_s + "/edit" %>
                         <div>
                             <form action=<%= formStr %> method="get">
-                                <button type="submit" class="btn btn-primary" <% buttonID %> >
+                                <button type="submit" class="btn btn-primary" style="margin-top:.5em" <% buttonID %> >
                                     <%= buttonStr %>
                                 </button>
                             </form>
