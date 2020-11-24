@@ -7,23 +7,23 @@
     <body>
         <h1>Energy Applications</h1>
         <div class="row">
-            <div class="column">
-                <div class="row">
-                    <button class="btn btn-primary" id="createRecordButton">Create Record</button>
-                </div> 
+            <div class="column" style="width: 25%">
+                <button class="btn btn-primary" id="createRecordButton">Create New Record</button>
             </div> <!-- end first column -->
             <div class="column">
-                <ul>
                     <% @enAppList.each do |enApp| %>
-                        <li>
-                        <%= "Energy Application ID: " + enApp.id.to_s %>
-                        <% userName = " " %>
+                        <% buttonStr = "Energy Application ID: " + enApp.id.to_s %>
+                        <% buttonID = "energyApp" + enApp.id.to_s %>
+                        <% userName = "[UNKNOWN CLIENT]" %>
                         <% user = User.find_by(id: enApp.clientID) %>
                         <% if user != nil then userName = user.first_name + " " + user.last_name end%>
-                        <%= ", User: " + userName %>
-                        </li>
+                        <% buttonStr += ", Client: " + userName %>
+                        <div>
+                            <button class="btn btn-primary" <% buttonID %> >
+                                <%= buttonStr %>
+                            </button>
+                        </div>
                     <% end %>
-                </ul>
             </div>  <!-- end second column -->
         </div>
     </body>
