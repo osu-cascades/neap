@@ -30,6 +30,6 @@ class EnergyApplicationsController < ApplicationController
     end
 
     def clientIDIndex
-        @users = User.all
+        @clientList = User.all
     end
 end

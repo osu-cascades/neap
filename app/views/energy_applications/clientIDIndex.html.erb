@@ -13,17 +13,14 @@
                 </form> 
             </div> <!-- end first column -->
             <div class="column">
-                    <% @enAppList.each do |enApp| %>
-                        <% buttonStr = "Energy Application ID: " + enApp.id.to_s %>
-                        <% buttonID = "energyApp" + enApp.id.to_s %>
+                    <% @clientList.each do |client| %>
+                        <% buttonStr = "ClientID: " + client.id.to_s %>
                         <% userName = "[UNKNOWN CLIENT]" %>
-                        <% user = User.find_by(id: enApp.clientID) %>
-                        <% if user != nil then userName = user.first_name + " " + user.last_name end%>
-                        <% buttonStr += ", Client: " + userName %>
-                        <% formStr = "energy_applications/" + enApp.id.to_s + "/edit" %>
+                        <% if client.first_name != nil then userName = client.first_name + " " + client.last_name end%>
+                        <% formStr = "" %> <!-- fill in later if need to manage applicants -->
                         <div>
                             <form action=<%= formStr %> method="get">
-                                <button type="submit" class="btn btn-primary" style="margin-top:.5em" <% buttonID %> >
+                                <button type="submit" class="btn btn-primary" style="margin-top:.5em" >
                                     <%= buttonStr %>
                                 </button>
                             </form>
