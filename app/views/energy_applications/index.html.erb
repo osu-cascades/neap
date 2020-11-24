@@ -7,8 +7,10 @@
     <body>
         <h1>Energy Applications</h1>
         <div class="row">
-            <div class="column" style="width: 25%">
-                <button class="btn btn-primary" id="createRecordButton">Create New Record</button>
+            <div class="column" style="width: 25%"> 
+            <form action="energy_applications/create" method="get">
+                <button type="submit" class="btn btn-primary" id="createRecordButton">Create New Record</button>
+            </form> 
             </div> <!-- end first column -->
             <div class="column">
                     <% @enAppList.each do |enApp| %>
@@ -18,10 +20,13 @@
                         <% user = User.find_by(id: enApp.clientID) %>
                         <% if user != nil then userName = user.first_name + " " + user.last_name end%>
                         <% buttonStr += ", Client: " + userName %>
+                        <% formStr = "energy_applications/" + enApp.id.to_s + "/edit" %>
                         <div>
-                            <button class="btn btn-primary" <% buttonID %> >
-                                <%= buttonStr %>
-                            </button>
+                            <form action=<%= formStr %> method="get">
+                                <button type="submit" class="btn btn-primary" <% buttonID %> >
+                                    <%= buttonStr %>
+                                </button>
+                            </form>
                         </div>
                     <% end %>
             </div>  <!-- end second column -->

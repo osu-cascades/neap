@@ -10,4 +10,9 @@ class EnergyApplicationsController < ApplicationController
         @client = nil
         if @clientID != -1 then @client = User.find_by(id: @enApp.clientID) end
     end
+
+    def create
+        enApp = EnergyApplication.create(clientID: -1)
+        redirect_to "/energy_applications"
+    end
 end
