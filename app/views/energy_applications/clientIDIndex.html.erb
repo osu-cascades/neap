@@ -19,7 +19,7 @@
                         <% if client.first_name != nil then userName = client.first_name + " " + client.last_name end%>
                         <% formStr = "" %> <!-- fill in later if need to manage applicants -->
                         <div>
-                            <form action=<%= formStr %> method="get">
+                            <form action=<%= formStr %>>
                                 <button type="submit" class="btn btn-primary" style="margin-top:.5em" >
                                     <%= buttonStr + ", " + userName %>
                                 </button>
