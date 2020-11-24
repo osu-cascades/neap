@@ -22,9 +22,9 @@ class EnergyApplicationsController < ApplicationController
         redirect_to "/energy_applications"
     end
 
-    def update_record
+    def update
         @enApp = EnergyApplication.find(params[:id])
-        @enApp.clientID = params[:cid]
+        @enApp.clientID = params[:cid].to_i
         @enApp.save
         redirect_to "/energy_applications"
     end

@@ -14,7 +14,7 @@
         <p> Client - <%=  clientName %> - clientID <%= @enApp.clientID %></p>
         <div>
             <% formStr = "/energy_applications/" + @enApp.id.to_s + "/update" %>
-            <form action=<%= formStr %> method="post">
+            <form action=<%= formStr %> method="get">
                 <label for="fcid">Client ID:</label><br>
                 <input type="text" id="fcid" name="fcid" value=<%= clientID %>><br>
                 <button type="submit" class="btn btn-primary" id="updateRecordButton">Update</button>
