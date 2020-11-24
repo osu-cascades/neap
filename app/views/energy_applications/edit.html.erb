@@ -17,13 +17,13 @@
             <form action=<%= formStr %> method="get">
                 <label for="fcid">Client ID:</label><br>
                 <input type="text" id="fcid" name="fcid" value=<%= clientID %>><br>
-                <button type="submit" class="btn btn-primary" id="updateRecordButton">Update</button>
+                <button type="submit" class="btn btn-primary" id="updateRecordButton" style="margin-top:.5em">Update</button>
             </form>
         </div>
         <div>
             <% formStr = "/energy_applications/" + @enApp.id.to_s + "/remove" %>
             <form action=<%= formStr %> method="get">
-                <button type="submit" class="btn btn-primary" id="deleteRecordButton">Delete</button>
+                <button type="submit" class="btn btn-primary" id="deleteRecordButton" style="margin-top:.5em">Delete</button>
             </form>
         </div>
     </body>
