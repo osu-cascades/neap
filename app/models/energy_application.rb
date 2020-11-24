@@ -24,5 +24,9 @@ class EnergyApplication < ApplicationRecord
         end
     end
 
+    def getApplicationsForUser(userID)
+        return EnergyApplication.find_by(clientID: userID)
+    end
+
 
 end
