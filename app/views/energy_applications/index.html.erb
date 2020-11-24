@@ -10,6 +10,9 @@
             <% @enAppList.each do |enApp| %>
                 <li>
                 <%= "Energy Application ID: " + enApp.id.to_s %>
+                <% userName = User.find_by(id: enApp.clientID) %>
+                <% if userName == nil then userName = "[No Name]" end%>
+                <%= ", User: " + userName %>
                 </li>
             <% end %>
         </ul>
