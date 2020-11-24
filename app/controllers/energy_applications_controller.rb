@@ -24,7 +24,7 @@ class EnergyApplicationsController < ApplicationController
 
     def update
         @enApp = EnergyApplication.find(params[:id])
-        @enApp.clientID = params[:cid].to_i
+        @enApp.clientID = params[:fcid].to_i
         @enApp.save
         redirect_to "/energy_applications"
     end
