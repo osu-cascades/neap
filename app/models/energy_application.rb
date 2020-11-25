@@ -1,4 +1,7 @@
 class EnergyApplication < ApplicationRecord
+
+    belongs_to :user
+
     def getAllApplications
         return EnergyApplication.all
     end

@@ -2,6 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable, :recoverable,
          :rememberable, :validatable
 
+  has_many :energy_applications
+
   enum role: [:guest, :admin]
   attribute :role, :integer, default: :guest
 
