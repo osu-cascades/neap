@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
-  get "home" => "static_pages#home"
-  get "before_you_begin" => "static_pages#before_you_begin"
-  get "application_main_info" => "static_pages#application_main_info"
-  get "application_checklist" => "static_pages#application_checklist"
-  get "audit" => "audits#index"
-  get "energy_applications" => "energy_applications#index"
-  get "energy_applications/create" => "energy_applications#create"
-  get "energy_applications/:id/edit" => "energy_applications#edit"
-  get "energy_applications/:id/remove" => "energy_applications#remove"
-  get "energy_applications/:id/update" => "energy_applications#update"
-  get "energy_applications/clientIDIndex" => "energy_applications#clientIDIndex"
+  get "/before_you_begin" => "static_pages#before_you_begin"
+  get "/application_main_info" => "static_pages#application_main_info"
+  get "/application_checklist" => "static_pages#application_checklist"
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.
@@ -22,5 +14,9 @@ Rails.application.routes.draw do
   scope 'admin' do
     resources :users, only: [:index, :new, :create, :destroy]
   end
+
+  get "audit" => "audits#index"
+
+  resources :energy_applications
 
 end

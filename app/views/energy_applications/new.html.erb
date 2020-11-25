@@ -1,0 +1,11 @@
+<h1>New Energy Application</h1>
+
+<%= form_with model: @energy_application do |f| %>
+
+<%= f.label :phone_number %><br>
+<%= f.text_field :phone_number %>
+<%= f.submit value: 'Save Application', class: 'btn btn-success' %>
+
+
+
+<% end %>

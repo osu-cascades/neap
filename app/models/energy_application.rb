@@ -31,5 +31,8 @@ class EnergyApplication < ApplicationRecord
         return EnergyApplication.find_by(clientID: userID)
     end
 
+    def to_s
+      "Application #{id}"
+    end
 
 end
