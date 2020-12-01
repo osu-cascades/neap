@@ -1,75 +1,62 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>NIEAP - Do I Qualify?</title>
-    </head>
-    <body>
-        <h1>NeighborImpact Energy Assistance Program</h1>
-        <h1>Online Application</h1>
-        <p>NeighborImpact is proud to serve the needs of Central Oregon. The following areas are inside our service area:</p>
-        <ul>
-            <li>Crook County</li>
-            <li>Deschutes County</li>
-            <li>Jefferson County</li>
-            <li>Native American reservations in Wasco County</li>
-        </ul>
-        <p>Don't live in one of these areas? Click here for help:</p>
-        <p>*** help button for out-of-area people here ***</p>
-        <p>Please use the following table to see if your household qualifies for assistance through this program:</p>
-        <div style="text-align:center">
-            <table style="margin-left:auto; margin-right:auto; border:1px solid black">
-            <tr>
-                <th>Household Size</th>
-                <th>Max Monthly Gross Income*</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>$2,317.15</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>$3,030.10</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>$3,743.05</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>$4,456.00</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>$5,169.00</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>$5,882.00</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>$6,015.67</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>$6,149.30</td>
-            </tr>
-            <tr>
-                <td>Add $133.65 for each husehold member beyond 8.</td>
-                <td>*Gross income means all household income before any deductions</td>
-            </tr>
-            </table>
-        </div>
-        <div>
-            <div class="btn-group" style="padding-top: 5px;">
-                <button class="btn btn-secondary" id="BackButton">Back</button>
-                <button class="btn btn-primary" id="ContinueButton">Continue</button>
-            </div>
-        </div>
-        <script>
-            document.getElementById("BackButton").addEventListener("click", function () { window.location.href="home" });
-            document.getElementById("ContinueButton").addEventListener("click", function () { window.location.href="before_you_begin" });
-        </script>
-    </body>
-</html>
+<h1>NeighborImpact Energy Assistance Program</h1>
+<h2>Online Application</h2>
+<p>NeighborImpact is proud to serve the needs of Central Oregon. The following areas are inside our service area:</p>
+<ul>
+  <li>Crook County</li>
+  <li>Deschutes County</li>
+  <li>Jefferson County</li>
+  <li>Native American reservations in Wasco County</li>
+</ul>
+<p>Don't live in one of these areas? Click here for help:</p>
+<a href="#" class="btn btn-secondary">*** help button for out-of-area people here ***</a>
+<p>Please use the following table to see if your household qualifies for assistance through this program:</p>
+<div style="text-align:center">
+  <table style="margin-left:auto; margin-right:auto; border:1px solid black">
+  <tr>
+    <th>Household Size</th>
+    <th>Max Monthly Gross Income*</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>$2,317.15</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>$3,030.10</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>$3,743.05</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>$4,456.00</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>$5,169.00</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>$5,882.00</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>$6,015.67</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>$6,149.30</td>
+  </tr>
+  <tr>
+    <td>Add $133.65 for each husehold member beyond 8.</td>
+    <td>*Gross income means all household income before any deductions</td>
+  </tr>
+  </table>
+</div>
+<div>
+  <div class="btn-group" style="padding-top: 5px;">
+    <a href="application_checklist" class="btn btn-secondary">Back</a>
+    <%= link_to "View Energy Applications", energy_applications_path, class: "btn btn-primary" %>
+  </div>
+</div>

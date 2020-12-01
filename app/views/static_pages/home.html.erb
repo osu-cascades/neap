@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>NIEAP - Welcome</title>
-    </head>
-    <body>
-        <h1>NeighborImpact Energy Assistance Program</h1>
-        <h1>Online Application</h1>
-        <p>Welcome to NeighborImpact's online application for the federal Low Income Home Energy Assistance Program ('LIHEAP'). Here we will walk you through your submitting your application.</p>
-        <div class="form-group">
-            <button id="ReturningUser" class="btn btn-primary">Returning User</button>
-        </div>
-        <div class="form-group">
-            <button id="NewUser" class="btn btn-primary">New User</button>
-        </div>
-        <div class="form-group">
-            <button id="BackHome" class="btn btn-primary">Back to Home</button>
-        </div>
-        <script>
-            document.getElementById("ReturningUser").addEventListener("click", function(){window.location.href="users/sign_in"});
-            document.getElementById("NewUser").addEventListener("click", function(){window.location.href="users/sign_up"});
-            document.getElementById("BackHome").addEventListener("click", function(){window.location.href="http://www.neighborimpact.org"});
-        </script>
-    </body>
-</html>
+<h1>NeighborImpact Energy Assistance Program</h1>
+<h2>Online Application</h2>
+
+<p>Welcome to NeighborImpact's online application for the federal Low Income Home Energy Assistance Program ('LIHEAP'). Here we will walk you through your submitting your application.</p>
+
+<div class="btn-group">
+  <a href="users/sign_in" class="btn btn-outline-primary">Returning User</a>
+  <a href="users/sign_up" class="btn btn-outline-primary">New User</a>
+  <a href="http://www.neighborimpact.org" target="_blank" class="btn btn-outline-primary">Back to Main Site</a>
+</div>

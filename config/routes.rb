@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/before_you_begin" => "static_pages#before_you_begin"
   get "/application_main_info" => "static_pages#application_main_info"
   get "/application_checklist" => "static_pages#application_checklist"
+  get "/screening_questions" => "static_pages#screening_questions"
 
   root "energy_applications#index"
   resources :energy_applications

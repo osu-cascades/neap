@@ -1,9 +1,10 @@
 <h1>Energy Applications</h1>
 
-<%= link_to "Create New Application", new_energy_application_path, class: "btn btn-primary" %>
+<% @energy_applications.each do |energy_application| %>
+  <p><%= link_to energy_application, energy_application_path(energy_application), class: "btn btn-outline-primary" %></p>
+<% end %>
 
-<ul>
-  <% @energy_applications.each do |energy_application| %>
-    <li><%= link_to energy_application, energy_application_path(energy_application) %></li>
-  <% end %>
-</ul>
+<div class="btn-group">
+  <a href="screening_questions" class="btn btn-secondary">Back</a>
+  <%= link_to "Create New Application", new_energy_application_path, class: "btn btn-primary" %>
+</div>
