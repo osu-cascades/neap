@@ -8,6 +8,10 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.find(params[:id])
   end
 
+  def edit
+    @energy_application = EnergyApplication.find(params[:id])
+  end
+
   def update
     @energy_application = EnergyApplication.find(params[:id])
     @energy_application.update(energy_application_params)
