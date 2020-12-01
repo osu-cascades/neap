@@ -20,6 +20,4 @@ Rails.application.routes.draw do
 
   get "audit" => "audits#index"
 
-  resources :energy_applications
-
 end
