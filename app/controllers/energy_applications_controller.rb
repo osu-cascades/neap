@@ -8,37 +8,33 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.find(params[:id])
   end
 
+  def update
+    @energy_application = EnergyApplication.find(params[:id])
+    @energy_application.update(energy_application_params)
+    redirect_to energy_application_path
+  end
+
   def new
     @energy_application = EnergyApplication.new
   end
 
-  def edit
-    @enApp = EnergyApplication.find(params[:id])
-    @clientID = -1
-    if @enApp != nil then @clientID = @enApp.clientID end
-    @client = nil
-    if @clientID != -1 then @client = User.find_by(id: @enApp.clientID) end
-  end
-
-  def remove
-    @enApp = EnergyApplication.find(params[:id])
-    @enApp.delete
-    redirect_to "/energy_applications"
-  end
-
   def create
-    enApp = EnergyApplication.create(clientID: -1)
-    redirect_to "/energy_applications"
+    @energy_application = EnergyApplication.new(energy_application_params)
+    @energy_application.user_id = current_user[:id]
+    @energy_application.save
+    redirect_to energy_applications_path
   end
 
-  def update
-    @enApp = EnergyApplication.find(params[:id])
-    @enApp.clientID = params[:fcid].to_i
-    @enApp.save
-    redirect_to "/energy_applications"
+  def destroy
+    @energy_application = EnergyApplication.find(params[:id])
+    @energy_application.destroy
+    redirect_to energy_applications_url
   end
 
-  def clientIDIndex
-    @clientList = User.all
+private
+
+  def energy_application_params
+    params.require(:energy_application).permit(:phone_number, :address, :address2, :city, :county, :zip)
   end
+
 end

@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>NIEAP - Energy Applications</title>
-    </head>
-    <body>
-        <h1>Edit Energy Application</h1>
-        <p> Energy Application <%= @enApp.id %> <p>
-        <% clientName = "[NO CLIENT]" %>
-        <% clientID = "" %>
-        <% if @client != nil then clientName = (@client.first_name + " " + @client.last_name) end %>
-        <% if @client != nil then clientID = @client.id end %>
-        <p>Client: <%= clientName %></p>
-        <div>
-            <% formStr = "/energy_applications/" + @enApp.id.to_s + "/update" %>
-            <form action=<%= formStr %> method="get">
-                <label for="fcid">Client's ID Number:</label><br>
-                <input type="text" id="fcid" name="fcid" class="form-control" value=<%= clientID %>><br>
-                <button type="submit" class="btn btn-primary" id="updateRecordButton" style="margin-top:.5em">Update</button>
-            </form>
-        </div>
-        <div>
-            <% formStr = "/energy_applications/" + @enApp.id.to_s + "/remove" %>
-            <form action=<%= formStr %> method="get">
-                <button type="submit" class="btn btn-danger" id="deleteRecordButton" style="margin-top:.5em">Delete</button>
-            </form>
-        </div>
-        <div>
-            <form action="/energy_applications" method="get">
-                <button type="submit" class="btn btn-secondary" id="backRecordButton" style="margin-top:.5em">Back</button>
-            </form>
-        </div>
-    </body>
-</html>
+<h1>Edit Energy Application</h1>
+
+<%# <% render "form", energy_application: @energy_application %>
+
+<%= form_with(model: @energy_application, local: true) do |f| %>
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, class: "form-control" %>
+
+  <%= f.label "Address Line 2" %>
+  <%= f.text_field :address2, class: "form-control" %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :county %>
+      <%= f.text_field :county, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :zip %>
+      <%= f.text_field :zip, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <%= link_to "Cancel", energy_applications_path, class: "btn btn-secondary" %>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+
+<% end %>

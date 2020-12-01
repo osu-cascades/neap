@@ -1,5 +1,15 @@
-Find me in app/view/energy_applications/show.html.haml
-
 <h1><%= @energy_application %></h1>
 
 <p>Phone: <%= @energy_application.phone_number %></p>
+<p>Address: <%= @energy_application.address %></p>
+<p>Address Line 2: <%= @energy_application.address2 %></p>
+<p>City: <%= @energy_application.city %></p>
+<p>County: <%= @energy_application.county %></p>
+<p>Zip: <%= @energy_application.zip %></p>
+
+<div class="btn-group">
+  <%= link_to "Back", energy_applications_path, class: "btn btn-secondary" %>
+  <%= link_to "Edit", edit_energy_application_path(@energy_application), class: "btn btn-primary" %>
+  <%= link_to "Delete", @energy_application, class: "btn btn-danger", method: :delete,
+    data: { confirm: "Are you sure you want to delete this enitre application?" } %>
+</div>

@@ -1,19 +1,9 @@
 <h1>Energy Applications</h1>
-<div class="row">
-    <div class="col-md-6" style="width: 25%">
-        <p><%= link_to 'Create New Application', new_energy_application_path, class: 'btn btn-primary' %></p>
-        <form action="energy_applications/clientIDIndex" method="get">
-            <button type="submit" class="btn btn-primary" id="viewClientIDButton" style="margin-top:.5em">View Clients</button>
-        </form>
-        <form action="home" method="get">
-            <button type="submit" class="btn btn-primary" id="homeButton" style="margin-top:.5em">Home</button>
-        </form>
-    </div> <!-- end first column -->
-    <div class="col-md-6">
-        <ul>
-        <% @energy_applications.each do |energy_application| %>
-            <li><%= link_to energy_application, energy_application_path(energy_application) %></li>
-        <% end %>
-        </ul>
-    </div>  <!-- end second column -->
-</div>
+
+<%= link_to "Create New Application", new_energy_application_path, class: "btn btn-primary" %>
+
+<ul>
+  <% @energy_applications.each do |energy_application| %>
+    <li><%= link_to energy_application, energy_application_path(energy_application) %></li>
+  <% end %>
+</ul>
