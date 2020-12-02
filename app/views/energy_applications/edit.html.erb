@@ -31,7 +31,8 @@
 
   <div class="btn-group">
     <%= link_to "Cancel", energy_applications_path, class: "btn btn-secondary" %>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= button_to "Save Progress", root_path %>
+    <%= f.submit "Save and Continue", class: "btn btn-primary" %>
   </div>
 
 <% end %>
