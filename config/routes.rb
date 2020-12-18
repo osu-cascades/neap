@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get "/application_checklist" => "static_pages#application_checklist"
   get "/screening_questions" => "static_pages#screening_questions"
 
-  root "energy_applications#index"
   resources :energy_applications
 
   # Users
