@@ -1,0 +1,16 @@
+%h1 Administration
+%h2 Energy Assistance Applications
+%table.table.table-hover
+  %thead
+    %tr
+      %th{scope: 'col'} id
+      %th{scope: 'col'} Applicant
+      %th{scope: 'col'} Phone Number
+      %th Last Updated
+  %tbody
+    - @energy_applications.each do |application|
+      %tr
+        %th{scope: 'row'}= application.id
+        %td= link_to application.user, admin_energy_application_path(application)
+        %td= link_to application.phone_number, admin_energy_application_path(application)
+        %td= application.updated_at.to_s(:long)

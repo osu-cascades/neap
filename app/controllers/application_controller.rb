@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
       redirect_to(root_url, alert: 'Access denied.') unless current_user.admin?
     end
 
-    def after_sign_in_path_for(resource)
-      before_you_begin_url
+    def after_sign_in_path_for(user)
+      user.admin? ? admin_energy_applications_url : before_you_begin_url
     end
 
-    def after_sign_out_path_for(resource)
-      root_path
+    def after_sign_out_path_for(user)
+      root_url
     end
 
 end

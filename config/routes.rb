@@ -20,4 +20,8 @@ Rails.application.routes.draw do
 
   get "audit" => "audits#index"
 
+  namespace :admin do
+    resources :energy_applications, except: [:new, :create, :edit]
+  end
+
 end
