@@ -16,7 +16,6 @@ class CreateHouseholdMemberTable < ActiveRecord::Migration[5.2]
       t.boolean :snap
       t.boolean :ohp
       t.string :other_insurance
-
     end
   end
 end
