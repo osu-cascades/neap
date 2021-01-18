@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_074034) do
+ActiveRecord::Schema.define(version: 2021_01_18_031349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 2020_12_18_074034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_energy_applications_on_user_id"
+  end
+
+  create_table "household_members_table", force: :cascade do |t|
+    t.integer "parent_application_id", null: false
+    t.string "name"
+    t.date "dob"
+    t.string "ssn"
+    t.string "gender"
+    t.boolean "hispanic"
+    t.string "race"
+    t.boolean "tribal_member"
+    t.string "education"
+    t.boolean "disabled"
+    t.boolean "veteran"
+    t.boolean "homebound"
+    t.boolean "snap"
+    t.boolean "ohp"
+    t.string "other_insurance"
   end
 
   create_table "users", force: :cascade do |t|
