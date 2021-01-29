@@ -1,6 +1,9 @@
-<%= form_with(model: [@user, @user_application], local: true) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %>
-  
-    <%= f.submit "Post Review" %>
+<%= form_with do |f| %>
+    <% for i in 0..5 %>
+        <br>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
+        </br>
+    <% end %>
+    <%= f.submit "Next" %>
 <% end %>
