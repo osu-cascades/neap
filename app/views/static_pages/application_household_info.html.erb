@@ -1,9 +1,48 @@
 <%= form_with do |f| %>
-    <% for i in 0..5 %>
+    <% for i in 1..7 %>
         <br>
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true %>
+            <%= f.label "Household Member %d" % [i] %>
+        </br><br>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </br><br>
+            <%= f.label "Date of Birth" %>
+            <%= f.date_field :dob %>
+        </br><br>
+            <%= f.label "SSN/SSID" %>
+            <%= f.text_field :ssn %>
+        </br><br>
+            <%= f.label "Gender" %>
+            <%= f.text_field :gender %>
+        </br><br>
+            <%= f.check_box :hispanic %>
+            <%= f.label "Hispanic" %>
+        </br><br>
+            <%= f.label "Race" %>
+            <%= f.text_field :race %>
+        </br><br>
+            <%= f.check_box :tribe %>
+            <%= f.label "Oregon Tribe" %>
+        </br><br>
+            <%= f.label "Education" %>
+            <%= f.text_field :education %>
+        </br><br>
+            <%= f.check_box :disabled %>
+            <%= f.label "Disabled" %>
+        </br><br>
+            <%= f.check_box :veteran %>
+            <%= f.label "Veteran" %>
+        </br><br>
+            <%= f.check_box :homebound %>
+            <%= f.label "Homebound" %>
+        </br><br>
+            <%= f.check_box :snap %>
+            <%= f.label "SNAP" %>
+        </br><br>
+            <%= f.label "Other Med. Insurance" %>
+            <%= f.text_field :other_insurance %>
         </br>
+        <br></br>
     <% end %>
     <%= f.submit "Next" %>
 <% end %>
