@@ -22,9 +22,43 @@
                 <td><%= f.text_field :ssn %></td>
                 <td><%= f.text_field :gender %></td>
                 <td><%= f.check_box :hispanic %></td>
-                <td><%= f.text_field :race %></td>
+                <td>
+                    <select name="Race" id="race">
+                        <option value="X">Select Race</option>
+                        <option value="AA">African American</option>
+                        <option value="AS">Asian</option>
+                        <option value="NA/AN">Native American/Alaskan Native</option>
+                        <option value="PH/PI">Native Hawaiian/Pacific Islander</option>
+                        <option value="WH">White</option>
+                    </select>
+                </td>
                 <td><%= f.check_box :tribe %></td>
-                <td><%= f.text_field :education %></td>
+                <td>
+                    <select name="Education" id="education">
+                        <option value="X">Select Education</option>
+                        <option value="NA">Not School-Aged</option>
+                        <option value="K">Kindergarten</option>
+                        <option value="1">1st Grade</option>
+                        <option value="2">2nd Grade</option>
+                        <option value="3">3rd Grade</option>
+                        <option value="4">4th Grade</option>
+                        <option value="5">5th Grade</option>
+                        <option value="6">6th Grade</option>
+                        <option value="7">7th Grade</option>
+                        <option value="8">8th Grade</option>
+                        <option value="9">9th Grade (High School Freshman)</option>
+                        <option value="10">10th Grade (High School Sophmore)</option>
+                        <option value="11">11th Grade (High School Junior)</option>
+                        <option value="12">12th Grade (High School Senior)</option>
+                        <option value="GED">GED</option>
+                        <option value="HSD">High School Diploma</option>
+                        <option value="SC">Some College</option>
+                        <option value="AA">Associates Degree</option>
+                        <option value="BA">Bachelors Degree</option>
+                        <option value="MA">Masters Degree</option>
+                        <option value="PHD">Doctorate</option>
+                    </select>
+                </td>
                 <td><%= f.check_box :disabled %></td>
                 <td><%= f.check_box :veteran %></td>
                 <td><%= f.check_box :homebound %></td>
