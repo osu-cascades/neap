@@ -139,5 +139,55 @@
             <option value="r">Other</option>
         </select>
     </div>
+    <div>
+        <%= f.label :residence_status %>
+        <select name="dwelling_type" id="dwelling_type">
+            <option value="r">Rent (heat not included)</option>
+            <option value="e">Rent (heat included)</option>
+            <option value="s">HUD or Section 8 (heat not included)</option>
+            <option value="o">Own</option>
+        </select>
+    </div>
+    <div style="border:1px solid black;">
+        <label>Type of Heat (Check All that Apply)</label><br></br>
+        <%= f.check_box :electric %>
+        <label>Electric</label><br></br>
+        <%= f.check_box :natural_gas %>
+        <label>Natural Gas</label><br></br>
+        <%= f.check_box :propane %>
+        <label>Propane</label><br></br>
+        <%= f.check_box :oil %>
+        <label>Oil</label><br></br>
+        <%= f.check_box :solar %>
+        <label>Solar</label><br></br>
+        <%= f.check_box :pellets %>
+        <label>Pellets</label><br></br>
+        <%= f.check_box :wood %>
+        <label>Wood</label><br></br>
+        <label>Which is the primary heat source?</label>
+        <select name="primary_heat" id="primary_heat">
+            <option value="electric">Electric</option>
+            <option value="natural gas">Natural Gas</option>
+            <option value="propane">Propane</option>
+            <option value="oil">Oil</option>
+            <option value="solar">Solar</option>
+            <option value="pellets">Pellets</option>
+            <option value="wood">Wood</option>
+        </select><br></br>
+        <label>Which is the secondary heat source?</label>
+        <select name="primary_heat" id="primary_heat">
+            <option value="none">-</option>
+            <option value="electric">Electric</option>
+            <option value="natural gas">Natural Gas</option>
+            <option value="propane">Propane</option>
+            <option value="oil">Oil</option>
+            <option value="solar">Solar</option>
+            <option value="pellets">Pellets</option>
+            <option value="wood">Wood</option>
+        </select><br></br>
+        <label>Name of the utility company you would like your benefit to go to:</label><br></br>
+        <%= f.text_field :utility_company %>
+        </div>
+        
     <%= f.submit "Next" %>
 <% end %>
