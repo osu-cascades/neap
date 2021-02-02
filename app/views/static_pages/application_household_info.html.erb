@@ -87,6 +87,18 @@
         <%= f.label :email_address %>
         <%= f.text_field :email_address %>
     </div>
+    <div>
+        <%= f.label :household_type %>
+        <select name="household_type" id="household_type">
+            <option value="single">Single Person</option>
+            <option value="single_parent_male">Single Parent (Male)</option>
+            <option value="single_parent_female">Single Parent (Female)</option>
+            <option value="non_related_adults_with_children">Non-Related Adults with Children</option>
+            <option value="two_parent_family">Two-Parent Family</option>
+            <option value="multigenerational">Multigenerational</option>
+            <option value="two_adults_no_children">Two Adults, No Children</option>
+        </select>
+    </div>
 
     
     <%= f.submit "Next" %>
