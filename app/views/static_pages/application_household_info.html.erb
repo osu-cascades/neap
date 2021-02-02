@@ -127,6 +127,17 @@
             </tr>
         </table>
     </div>
-    
+    <div>
+        <%= f.label :dwelling_type %>
+        <select name="dwelling_type" id="dwelling_type">
+            <option value="h">Single Family House</option>
+            <option value="m">Multi-Unit (2-4)</option>
+            <option value="u">Multi-Unit (5+)</option>
+            <option value="a">Manufactured/Mobile Home</option>
+            <option value="e">Hotel/Motel</option>
+            <option value="t">Travel Trailer</option>
+            <option value="r">Other</option>
+        </select>
+    </div>
     <%= f.submit "Next" %>
 <% end %>
