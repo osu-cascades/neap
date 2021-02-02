@@ -99,7 +99,34 @@
             <option value="two_adults_no_children">Two Adults, No Children</option>
         </select>
     </div>
-
+    <div>
+        <table>
+            <tr>
+                <th></th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZIP</th>
+                <th>County</th>
+            </tr>
+            <tr>
+                <td>Physical Address</td>
+                <td><%= f.text_field :physical_street %></td>
+                <td><%= f.text_field :physical_city %></td>
+                <td><%= f.text_field :physical_state %></td>
+                <td><%= f.text_field :physical_zip %></td>
+                <td><%= f.text_field :physical_county %></td>
+            </tr>
+            <tr>
+                <td>Mailing Address (If Different)</td>
+                <td><%= f.text_field :mailing_street %></td>
+                <td><%= f.text_field :mailing_city %></td>
+                <td><%= f.text_field :mailing_state %></td>
+                <td><%= f.text_field :mailing_zip %></td>
+                <td><%= f.text_field :mailing_county %></td>
+            </tr>
+        </table>
+    </div>
     
     <%= f.submit "Next" %>
 <% end %>
