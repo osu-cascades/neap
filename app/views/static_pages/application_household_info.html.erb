@@ -84,10 +84,12 @@
             <option value="message">Message</option>
         </select>
     </div>
+
     <div>
         <%= f.label :email_address %>
         <%= f.text_field :email_address %>
     </div>
+
     <div>
         <%= f.label :household_type %>
         <select name="household_type" id="household_type">
@@ -100,6 +102,7 @@
             <option value="two_adults_no_children">Two Adults, No Children</option>
         </select>
     </div>
+
     <div>
         <table>
             <tr>
@@ -128,6 +131,7 @@
             </tr>
         </table>
     </div>
+
     <div>
         <%= f.label :dwelling_type %>
         <select name="dwelling_type" id="dwelling_type">
@@ -140,6 +144,7 @@
             <option value="r">Other</option>
         </select>
     </div>
+
     <div>
         <%= f.label :residence_status %>
         <select name="dwelling_type" id="dwelling_type">
@@ -149,6 +154,7 @@
             <option value="o">Own</option>
         </select>
     </div>
+
     <div class="border_div">
         <label>Type of Heat (Check All that Apply)</label><br></br>
         <%= f.check_box :electric %>
@@ -189,6 +195,7 @@
         <label>Name of the utility company you would like your benefit to go to:</label><br></br>
         <%= f.text_field :utility_company %>
         </div>
+
         <div class="border_div">
             <p>This section is required by NeighborImpact to verify your eligibility for this program.<p>
             <table>
@@ -217,6 +224,47 @@
                     </tr>
                 <% end %>
             </table>
+        </div>
+        
+        <div class="border_div">
+            <h2>Delcaration of Household Income</h2>
+            <p>PLEASE FILL OUT THIS SECTION FOR ALL HOUSEHOLD MEMBERS OVER THE AGE OF 18 WHO EITHER HAVE:<p>
+            <p>1. No income OR</p>
+            <p>2. Informal income (paid cash for work or have other non-wage sources of income</p>
+            <label>Applicant Name:</label>
+            <%= f.text_field :dhi_applicant_name %><br></br>
+            <label>Previous Month*:</label>
+            <%= select_month(1) %><br></br>
+            <p>*For example, if you are filling this out in October, please select September and enter the information below for September.</p>
+            <label>Possible Informal Income Sources</label>
+            <ul>
+                <li>Informal child support</li>
+                <li>Selling scrap metal</li>
+                <li>Can deposits</li>
+                <li>Support from non-wage sources</li>
+                <li>Help from relative, church, etc (for 3 or more months)</li>
+                <li>Occasional work for cash</li>
+                <li>Informal spousal support</li>
+                <li>Income from a rental property</li>
+            </ul>
+            <table>
+                <tr>
+                    <th>Name of all household members over 18 who recieved no income or informal income</th>
+                    <th>Total amount of informal income received in the previous month</th>
+                    <th>Source of informal income</th>
+                    <th>Currently in high school?</th>
+                </tr>
+                <% for i in 1..7 %>
+                    <tr>
+                        <td><%= f.text_field :dhi_informal_income_name %></td>
+                        <td><label>$</label><%= f.number_field :dhi_informal_income_amt %></td>
+                        <td><%= f.text_field :dhi_informal_income_source %></td>
+                        <td><%= f.check_box :dhi_informal_income_high_schooler %></td>
+                    </tr>
+                <% end %>
+            </table>
+            <label>How do you currently pay for your necessities such as rent, food, and phone?</label><br></br>
+            <%= f.text_area :dhi_current_necessities_method %>
         </div>
     <%= f.submit "Next" %>
 <% end %>
