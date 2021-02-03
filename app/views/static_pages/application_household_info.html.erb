@@ -24,53 +24,29 @@
         </tr>
         <% for i in 1..7 %>
             <tr>
-                <td><%= f.text_field :name %></td>
-                <td><%= f.date_field :dob %></td>
-                <td><%= f.text_field :ssn %></td>
-                <td><%= f.text_field :gender %></td>
-                <td><%= f.check_box :hispanic %></td>
+                <td><%= f.text_field :houlsehold_member_name, multiple: true %></td>
+                <td><%= f.date_field :houlsehold_member_dob, multiple: true %></td>
+                <td><%= f.text_field :houlsehold_member_ssn, multiple: true %></td>
+                <td><%= f.text_field :houlsehold_member_gender, multiple: true %></td>
+                <td><%= f.check_box :houlsehold_member_hispanic, multiple: true %></td>
                 <td>
-                    <select name="Race" id="race">
-                        <option value="X">-</option>
-                        <option value="AA">African American</option>
-                        <option value="AS">Asian</option>
-                        <option value="NA/AN">Native American/Alaskan Native</option>
-                        <option value="PH/PI">Native Hawaiian/Pacific Islander</option>
-                        <option value="WH">White</option>
-                    </select>
+                    <%= f.select :houlsehold_member_race, ['African American', 'Asian', 'Native American/Alaskan Native', 
+                        'Native Hawaiian/Pacific Islander', 'White'], multiple: true%>
+                    
                 </td>
-                <td><%= f.check_box :tribe %></td>
+                <td><%= f.check_box :houlsehold_member_tribe, multiple: true %></td>
                 <td>
-                    <select name="Education" id="education">
-                        <option value="X">-</option>
-                        <option value="NA">Not School-Aged</option>
-                        <option value="K">Kindergarten</option>
-                        <option value="1">1st Grade</option>
-                        <option value="2">2nd Grade</option>
-                        <option value="3">3rd Grade</option>
-                        <option value="4">4th Grade</option>
-                        <option value="5">5th Grade</option>
-                        <option value="6">6th Grade</option>
-                        <option value="7">7th Grade</option>
-                        <option value="8">8th Grade</option>
-                        <option value="9">9th Grade (High School Freshman)</option>
-                        <option value="10">10th Grade (High School Sophmore)</option>
-                        <option value="11">11th Grade (High School Junior)</option>
-                        <option value="12">12th Grade (High School Senior)</option>
-                        <option value="GED">GED</option>
-                        <option value="HSD">High School Diploma</option>
-                        <option value="SC">Some College</option>
-                        <option value="AA">Associates Degree</option>
-                        <option value="BA">Bachelors Degree</option>
-                        <option value="MA">Masters Degree</option>
-                        <option value="PHD">Doctorate</option>
-                    </select>
+                    <%= f.select :houlsehold_member_education, ["Not School-Aged", "Kindergarten", "1st Grade", "2nd Grade",
+                        "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade (High School Freshman)",
+                        "10th Grade (High School Sophmore)", "11th Grade (High School Junior)", "12th Grade (High School Senior)",
+                        "GED", "High School Diploma", "Some College", "Associates Degree", "Bachelors Degree", "Masters Degree",
+                        "Doctorate"], multiple: true%>
                 </td>
-                <td><%= f.check_box :disabled %></td>
-                <td><%= f.check_box :veteran %></td>
-                <td><%= f.check_box :homebound %></td>
-                <td><%= f.check_box :snap %></td>
-                <td><%= f.text_field :other_insurance %></td>
+                <td><%= f.check_box :houlsehold_member_disabled, multiple: true %></td>
+                <td><%= f.check_box :houlsehold_member_veteran, multiple: true %></td>
+                <td><%= f.check_box :houlsehold_member_homebound, multiple: true %></td>
+                <td><%= f.check_box :houlsehold_member_snap, multiple: true %></td>
+                <td><%= f.text_field :houlsehold_member_other_insurance, multiple: true %></td>
             </tr>
         <% end %>
     </table>
@@ -78,11 +54,7 @@
     <div>
         <%= f.label :phone_number %>
         <%= f.text_field :phone_number %>
-        <select name="phone_number_type" id="phone_number_type">
-            <option value="cell">Cell</option>
-            <option value="home">Home</option>
-            <option value="message">Message</option>
-        </select>
+        <%= f.select :phone_number_type, ["Cell", "Home", "Message"]%>
     </div>
 
     <div>
@@ -92,15 +64,8 @@
 
     <div>
         <%= f.label :household_type %>
-        <select name="household_type" id="household_type">
-            <option value="single">Single Person</option>
-            <option value="single_parent_male">Single Parent (Male)</option>
-            <option value="single_parent_female">Single Parent (Female)</option>
-            <option value="non_related_adults_with_children">Non-Related Adults with Children</option>
-            <option value="two_parent_family">Two-Parent Family</option>
-            <option value="multigenerational">Multigenerational</option>
-            <option value="two_adults_no_children">Two Adults, No Children</option>
-        </select>
+        <%= f.select :houlsehold_type, ["Single Person", "Single Parent (Male)", "Single Parent (Female)", 
+            "Non-Related Adults with Children", "Two-Parent Family", "Multigenerational", "Two Adults, No Children"] %>
     </div>
 
     <div>
@@ -205,8 +170,8 @@
                 </tr>
                 <% for i in 1..6 %>
                     <tr>
-                        <td><%= f.text_field :household_income_name %></td>
-                        <td><%= f.text_field :household_income_type %></td>
+                        <td><%= f.text_field :household_income_name, multiple: true %></td>
+                        <td><%= f.text_field :household_income_type, multiple: true %></td>
                     </tr>
                 <% end %>
             </table>
@@ -218,9 +183,9 @@
                 </tr>
                 <% for i in 1..3 %>
                     <tr>
-                        <td><%= f.text_field :utility_name %></td>
-                        <td><%= f.text_field :utility_account_num %></td>
-                        <td><%= f.text_field :utility_account_holder %></td>
+                        <td><%= f.text_field :utility_name, multiple: true %></td>
+                        <td><%= f.text_field :utility_account_num, multiple: true %></td>
+                        <td><%= f.text_field :utility_account_holder, multiple: true %></td>
                     </tr>
                 <% end %>
             </table>
@@ -256,10 +221,10 @@
                 </tr>
                 <% for i in 1..7 %>
                     <tr>
-                        <td><%= f.text_field :dhi_informal_income_name %></td>
-                        <td><label>$</label><%= f.number_field :dhi_informal_income_amt %></td>
-                        <td><%= f.text_field :dhi_informal_income_source %></td>
-                        <td><%= f.check_box :dhi_informal_income_high_schooler %></td>
+                        <td><%= f.text_field :dhi_informal_income_name, multiple: true %></td>
+                        <td><label>$</label><%= f.number_field :dhi_informal_income_amt, multiple: true %></td>
+                        <td><%= f.text_field :dhi_informal_income_source, multiple: true %></td>
+                        <td><%= f.check_box :dhi_informal_income_high_schooler, multiple: true %></td>
                     </tr>
                 <% end %>
             </table>
