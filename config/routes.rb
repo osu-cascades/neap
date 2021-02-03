@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/application_checklist" => "static_pages#application_checklist"
   get "/screening_questions" => "static_pages#screening_questions"
   get "/household_questions" => "static_pages#application_household_info"
+  get "/covid_questions" => "static_pages#application_covid_questions"
 
   resources :energy_applications
 
