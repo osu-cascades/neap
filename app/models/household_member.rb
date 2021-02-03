@@ -1,0 +1,2 @@
+class HouseholdMember < ApplicationRecord
+end
