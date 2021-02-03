@@ -24,29 +24,29 @@
         </tr>
         <% for i in 1..7 %>
             <tr>
-                <td><%= f.text_field :houlsehold_member_name, multiple: true %></td>
-                <td><%= f.date_field :houlsehold_member_dob, multiple: true %></td>
-                <td><%= f.text_field :houlsehold_member_ssn, multiple: true %></td>
-                <td><%= f.text_field :houlsehold_member_gender, multiple: true %></td>
-                <td><%= f.check_box :houlsehold_member_hispanic, multiple: true %></td>
+                <td><%= f.text_field :household_member_name, multiple: true %></td>
+                <td><%= f.date_field :household_member_dob, multiple: true %></td>
+                <td><%= f.text_field :household_member_ssn, multiple: true %></td>
+                <td><%= f.text_field :household_member_gender, multiple: true %></td>
+                <td><%= f.check_box :household_member_hispanic, multiple: true %></td>
                 <td>
-                    <%= f.select :houlsehold_member_race, ['African American', 'Asian', 'Native American/Alaskan Native', 
+                    <%= f.select :household_member_race, ['African American', 'Asian', 'Native American/Alaskan Native', 
                         'Native Hawaiian/Pacific Islander', 'White'], multiple: true%>
                     
                 </td>
-                <td><%= f.check_box :houlsehold_member_tribe, multiple: true %></td>
+                <td><%= f.check_box :household_member_tribe, multiple: true %></td>
                 <td>
-                    <%= f.select :houlsehold_member_education, ["Not School-Aged", "Kindergarten", "1st Grade", "2nd Grade",
+                    <%= f.select :household_member_education, ["Not School-Aged", "Kindergarten", "1st Grade", "2nd Grade",
                         "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade (High School Freshman)",
                         "10th Grade (High School Sophmore)", "11th Grade (High School Junior)", "12th Grade (High School Senior)",
                         "GED", "High School Diploma", "Some College", "Associates Degree", "Bachelors Degree", "Masters Degree",
                         "Doctorate"], multiple: true%>
                 </td>
-                <td><%= f.check_box :houlsehold_member_disabled, multiple: true %></td>
-                <td><%= f.check_box :houlsehold_member_veteran, multiple: true %></td>
-                <td><%= f.check_box :houlsehold_member_homebound, multiple: true %></td>
-                <td><%= f.check_box :houlsehold_member_snap, multiple: true %></td>
-                <td><%= f.text_field :houlsehold_member_other_insurance, multiple: true %></td>
+                <td><%= f.check_box :household_member_disabled, multiple: true %></td>
+                <td><%= f.check_box :household_member_veteran, multiple: true %></td>
+                <td><%= f.check_box :household_member_homebound, multiple: true %></td>
+                <td><%= f.check_box :household_member_snap, multiple: true %></td>
+                <td><%= f.text_field :household_member_other_insurance, multiple: true %></td>
             </tr>
         <% end %>
     </table>
@@ -64,7 +64,7 @@
 
     <div>
         <%= f.label :household_type %>
-        <%= f.select :houlsehold_type, ["Single Person", "Single Parent (Male)", "Single Parent (Female)", 
+        <%= f.select :household_type, ["Single Person", "Single Parent (Male)", "Single Parent (Female)", 
             "Non-Related Adults with Children", "Two-Parent Family", "Multigenerational", "Two Adults, No Children"] %>
     </div>
 
