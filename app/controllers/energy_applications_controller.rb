@@ -27,22 +27,30 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     @energy_application.save
 
+    # extract booleans from check box arrays
+    hispanic_array = extract_check_boxes(params[:energy_application][:household_member_hispanic])
+    tribal_member_array = extract_check_boxes(params[:energy_application][:household_member_tribe])
+    disabled_array = extract_check_boxes(params[:energy_application][:household_member_disabled])
+    veteran_array = extract_check_boxes(params[:energy_application][:household_member_veteran])
+    homebound_array = extract_check_boxes(params[:energy_application][:household_member_homebound])
+    snap_array = extract_check_boxes(params[:energy_application][:household_member_snap])
+    ohp_array = extract_check_boxes(params[:energy_application][:household_member_other_insurance])
     for i in 1..8
       if params[:energy_application][:household_member_name][0] != nil
         @household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
         @household_member.name = params[:energy_application][:household_member_name][i]
-        @household_member.dob = params[:energy_application][:household_member_name][i]
-        @household_member.ssn = params[:energy_application][:household_member_name][i]
-        @household_member.gender = params[:energy_application][:household_member_name][i]
-        @household_member.hispanic = params[:energy_application][:household_member_name][i]
+        @household_member.dob = params[:energy_application][:household_member_dob][i]
+        @household_member.ssn = params[:energy_application][:household_member_ssn][i]
+        @household_member.gender = params[:energy_application][:household_member_gender][i]
+        @household_member.hispanic = hispanic_array[i]
         @household_member.race = params[:energy_application][:household_member_name][i]
-        @household_member.tribal_member = params[:energy_application][:household_member_name][i]
+        @household_member.tribal_member = tribal_member_array[i]
         @household_member.education = params[:energy_application][:household_member_name][i]
-        @household_member.disabled = params[:energy_application][:household_member_name][i]
-        @household_member.veteran = params[:energy_application][:household_member_name][i]
-        @household_member.homebound = params[:energy_application][:household_member_name][i]
-        @household_member.snap = params[:energy_application][:household_member_name][i]
-        @household_member.ohp = params[:energy_application][:household_member_name][i]
+        @household_member.disabled = disabled_array[i]
+        @household_member.veteran = veteran_array[i]
+        @household_member.homebound = homebound_array[i]
+        @household_member.snap = snap_array[i]
+        @household_member.ohp = ohp_array[i]
         @household_member.other_insurance = params[:energy_application][:household_member_name][i]
         @household_member.save
       end
