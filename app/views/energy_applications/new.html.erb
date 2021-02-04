@@ -34,7 +34,8 @@
               <td><%= f.text_field :household_member_gender, multiple: true %></td>
               <td><%= f.check_box :household_member_hispanic, multiple: true %></td>
               <td>
-                  <%= f.select ":household_member_race[]",
+                <% dropdown_name = "household_member_race_%d" % [i] %>
+                  <%= f.select name = dropdown_name,
                     [['African American', 'AA'], 
                     ['Asian', 'AS'], 
                     ['Native American/Alaskan Native', 'NA/AN'],
@@ -48,7 +49,7 @@
                       "3rd Grade", "4th Grade", "5th Grade", "6th Grade", "7th Grade", "8th Grade", "9th Grade (High School Freshman)",
                       "10th Grade (High School Sophmore)", "11th Grade (High School Junior)", "12th Grade (High School Senior)",
                       "GED", "High School Diploma", "Some College", "Associates Degree", "Bachelors Degree", "Masters Degree",
-                      "Doctorate"], multiple: true%>
+                      "Doctorate"], multiple: true, include_hidden: false %>
               </td>
               <td><%= f.check_box :household_member_disabled, multiple: true %></td>
               <td><%= f.check_box :household_member_veteran, multiple: true %></td>
