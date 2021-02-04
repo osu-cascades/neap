@@ -26,7 +26,7 @@
           <th>SNAP</th>
           <th>Other Med. Insurance</th>
       </tr>
-      <% for i in 1..7 %>
+      <% for i in 1..8 %>
           <tr>
               <td><%= f.text_field :household_member_name, multiple: true %></td>
               <td><%= f.date_field :household_member_dob, multiple: true %></td>
@@ -172,7 +172,7 @@
                   <th>Name of Household Member</th>
                   <th>Type of Income</th>
               </tr>
-              <% for i in 1..6 %>
+              <% for i in 1..8 %>
                   <tr>
                       <td><%= f.text_field :household_income_name, multiple: true %></td>
                       <td><%= f.text_field :household_income_type, multiple: true %></td>
