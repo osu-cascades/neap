@@ -29,9 +29,22 @@ class EnergyApplicationsController < ApplicationController
 
     for i in 1..8
       if params[:energy_application][:household_member_name][0] != nil
-        @test_household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
-        @test_household_member.name = params[:energy_application][:household_member_name][i]
-        @test_household_member.save
+        @household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
+        @household_member.name = params[:energy_application][:household_member_name][i]
+        @household_member.dob = params[:energy_application][:household_member_name][i]
+        @household_member.ssn = params[:energy_application][:household_member_name][i]
+        @household_member.gender = params[:energy_application][:household_member_name][i]
+        @household_member.hispanic = params[:energy_application][:household_member_name][i]
+        @household_member.race = params[:energy_application][:household_member_name][i]
+        @household_member.tribal_member = params[:energy_application][:household_member_name][i]
+        @household_member.education = params[:energy_application][:household_member_name][i]
+        @household_member.disabled = params[:energy_application][:household_member_name][i]
+        @household_member.veteran = params[:energy_application][:household_member_name][i]
+        @household_member.homebound = params[:energy_application][:household_member_name][i]
+        @household_member.snap = params[:energy_application][:household_member_name][i]
+        @household_member.ohp = params[:energy_application][:household_member_name][i]
+        @household_member.other_insurance = params[:energy_application][:household_member_name][i]
+        @household_member.save
       end
     end
     redirect_to energy_applications_path
