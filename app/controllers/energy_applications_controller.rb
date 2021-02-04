@@ -27,8 +27,10 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     @energy_application.save
 
-    @test_household_member = HouseholdMember.new(id = @energy_application.id)
-    @test_household_member.name = :params[:household_member_name[0]]
+    @test_household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
+    @test_household_member.name = params[:energy_application][:household_member_name][0]
+    puts "Name: "
+    puts @test_household_member.name
     @test_household_member.save
     redirect_to energy_applications_path
   end

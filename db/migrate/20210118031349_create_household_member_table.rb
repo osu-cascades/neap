@@ -1,6 +1,6 @@
 class CreateHouseholdMemberTable < ActiveRecord::Migration[5.2]
   def change
-    create_table :household_members_table do |t|
+    create_table :household_members do |t|
       t.integer :parent_application_id, null: false
       t.string :name
       t.date :dob

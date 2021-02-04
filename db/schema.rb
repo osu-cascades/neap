@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 2021_01_18_040459) do
     t.index ["user_id"], name: "index_energy_applications_on_user_id"
   end
 
-  create_table "household_member_income_table", force: :cascade do |t|
+  create_table "household_member_incomes", force: :cascade do |t|
     t.integer "parent_application_id", null: false
     t.string "name"
     t.string "income_type"
   end
 
-  create_table "household_members_table", force: :cascade do |t|
+  create_table "household_members", force: :cascade do |t|
     t.integer "parent_application_id", null: false
     t.string "name"
     t.date "dob"
