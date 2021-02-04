@@ -34,8 +34,12 @@
               <td><%= f.text_field :household_member_gender, multiple: true %></td>
               <td><%= f.check_box :household_member_hispanic, multiple: true %></td>
               <td>
-                  <%= f.select :household_member_race, ['African American', 'Asian', 'Native American/Alaskan Native', 
-                      'Native Hawaiian/Pacific Islander', 'White'], multiple: true%>
+                  <%= f.select :household_member_race, 
+                    [['African American', 'AA'], 
+                    ['Asian', 'AS'], 
+                    ['Native American/Alaskan Native', 'NA/AN'],
+                    ['Native Hawaiian/Pacific Islander', 'PH/PI'], 
+                    ['White', 'WH']], multiple: true %>
                   
               </td>
               <td><%= f.check_box :household_member_tribe, multiple: true %></td>
