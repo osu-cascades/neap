@@ -32,7 +32,6 @@ class EnergyApplicationsController < ApplicationController
         @test_household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
         @test_household_member.name = params[:energy_application][:household_member_name][i]
         @test_household_member.save
-        Error
       end
     end
     redirect_to energy_applications_path
