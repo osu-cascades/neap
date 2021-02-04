@@ -49,4 +49,23 @@ private
     params.require(:energy_application).permit(:phone_number, :address, :address2, :city, :county, :zip)
   end
 
+  # unchecked check boxes don't return anything, so Rails adds a subsequent hidden that always returns 0,
+  # with the same name. If you're not reusing names, you only get the first one.
+  # Unfortunately, if you're using an array like we are, that means for unchecked you get [0], and for
+  # checked you get [0, 1]. This function takes the array, and returns the actual results.
+  def extract_check_boxes(check_box_array)
+    return_array = []
+    i = check_box_array.length() - 1
+    while i >= 0
+      if check_box_array[i] == "1"
+        return_array.push(true)
+        i -= 2
+      else
+        return_array.push(false)
+        i -= 1
+      end
+    end
+    return return_array.reverse
+  end
+
 end
