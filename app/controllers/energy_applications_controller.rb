@@ -35,8 +35,8 @@ class EnergyApplicationsController < ApplicationController
     homebound_array = extract_check_boxes(params[:energy_application][:household_member_homebound])
     snap_array = extract_check_boxes(params[:energy_application][:household_member_snap])
     ohp_array = extract_check_boxes(params[:energy_application][:household_member_other_insurance])
-    for i in 1..8
-      if params[:energy_application][:household_member_name][0] != nil
+    for i in 0..7
+      if params[:energy_application][:household_member_name][i] != ""
         @household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
         @household_member.name = params[:energy_application][:household_member_name][i]
         @household_member.dob = params[:energy_application][:household_member_dob][i]
@@ -55,6 +55,7 @@ class EnergyApplicationsController < ApplicationController
         @household_member.save
       end
     end
+    Error
     redirect_to energy_applications_path
   end
 
