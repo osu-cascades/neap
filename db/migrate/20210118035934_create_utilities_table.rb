@@ -1,6 +1,6 @@
 class CreateUtilitiesTable < ActiveRecord::Migration[5.2]
   def change
-    create_table :utilities_tables do |t|
+    create_table :utility_record do |t|
       t.integer :parent_application_id, null: false
       t.string :utility_name
       t.string :account_number
