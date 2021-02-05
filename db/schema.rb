@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_040459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "declaration_of_household_income", force: :cascade do |t|
+  create_table "declaration_of_household_incomes", force: :cascade do |t|
     t.integer "parent_application_id", null: false
     t.string "member_name"
     t.money "informal_income_amount", scale: 2
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_040459) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "utility_record", force: :cascade do |t|
+  create_table "utility_records", force: :cascade do |t|
     t.integer "parent_application_id", null: false
     t.string "utility_name"
     t.string "account_number"

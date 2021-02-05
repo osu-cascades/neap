@@ -1,0 +1,2 @@
+class DeclarationOfHouseholdIncome < ApplicationRecord
+end
