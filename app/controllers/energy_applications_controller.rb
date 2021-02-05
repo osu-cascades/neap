@@ -83,7 +83,7 @@ class EnergyApplicationsController < ApplicationController
         @dhi.is_highschooler = high_schooler_array[i]
       end
     end
-    Error
+    
     redirect_to energy_applications_path
   end
 
