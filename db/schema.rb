@@ -85,6 +85,9 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
     t.boolean "covid_loss_of_childcare"
     t.text "covid_other_situation"
     t.text "covid_expenses"
+    t.text "phone_type"
+    t.text "household_type"
+    t.text "email_address"
     t.index ["user_id"], name: "index_energy_applications_on_user_id"
   end
 

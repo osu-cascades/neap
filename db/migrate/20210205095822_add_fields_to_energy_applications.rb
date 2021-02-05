@@ -52,5 +52,8 @@ class AddFieldsToEnergyApplications < ActiveRecord::Migration[5.2]
     add_column :energy_applications, :covid_loss_of_childcare, :boolean
     add_column :energy_applications, :covid_other_situation, :text
     add_column :energy_applications, :covid_expenses, :text
+    add_column :energy_applications, :phone_type, :text
+    add_column :energy_applications, :household_type, :text
+    add_column :energy_applications, :email_address, :text
   end
 end
