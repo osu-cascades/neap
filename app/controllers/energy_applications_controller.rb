@@ -40,6 +40,7 @@ class EnergyApplicationsController < ApplicationController
     homebound_array = extract_check_boxes(params[:energy_application][:household_member_homebound])
     snap_array = extract_check_boxes(params[:energy_application][:household_member_snap])
     ohp_array = extract_check_boxes(params[:energy_application][:household_member_other_insurance])
+    high_schooler_array = extract_check_boxes(params[:energy_application][:dhi_informal_income_high_schooler])
 
     # household members
     for i in 0..7
@@ -69,6 +70,17 @@ class EnergyApplicationsController < ApplicationController
         @household_income = HouseholdMemberIncome.new(parent_application_id: @energy_application.id)
         @household_income.name = params[:energy_application][:household_income_name][i]
         @household_income.income_type = params[:energy_application][:household_income_type][i]
+      end
+    end
+
+    # DHI
+    for i in 0..7
+      if params[:energy_application][:dhi_informal_income_name][i] != ""
+        @dhi = DeclarationOfHouseholdIncome.new(parent_application_id: @energy_application.id)
+        @dhi.member_name = params[:energy_application][:dhi_informal_income_name][i]
+        @dhi.informal_income_amount = params[:energy_application][:dhi_informal_income_amt][i]
+        @dhi.informal_income_source = params[:energy_application][:dhi_informal_income_source][i]
+        @dhi.is_highschooler = high_schooler_array[i]
       end
     end
     Error
