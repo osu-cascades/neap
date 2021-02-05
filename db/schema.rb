@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_040459) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "utilities_tables", force: :cascade do |t|
+  create_table "utility_record", force: :cascade do |t|
     t.integer "parent_application_id", null: false
     t.string "utility_name"
     t.string "account_number"

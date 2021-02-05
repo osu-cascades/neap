@@ -35,6 +35,8 @@ class EnergyApplicationsController < ApplicationController
     homebound_array = extract_check_boxes(params[:energy_application][:household_member_homebound])
     snap_array = extract_check_boxes(params[:energy_application][:household_member_snap])
     ohp_array = extract_check_boxes(params[:energy_application][:household_member_other_insurance])
+
+    # household members
     for i in 0..7
       if params[:energy_application][:household_member_name][i] != ""
         @household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
@@ -53,6 +55,15 @@ class EnergyApplicationsController < ApplicationController
         @household_member.ohp = ohp_array[i]
         @household_member.other_insurance = params[:energy_application][:household_member_name][i]
         @household_member.save
+      end
+    end
+
+    # household member income
+    for i in 0..7
+      if params[:energy_application][:household_income_name][i] != ""
+        @household_income = HouseholdMemberIncome.new(parent_application_id: @energy_application.id)
+        @household_income.name = params[:energy_application][:household_income_name][i]
+        @household_income.save
       end
     end
     Error
