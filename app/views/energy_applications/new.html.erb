@@ -116,8 +116,9 @@
         </div>
 
         <div class="form-group col-md-2">
+          <% element_name = "household_member_gender_%d" % [i] %>
           <%= f.label :household_member_gender, "Gender" %>
-          <%= f.select(:household_member_gender, [["Male", "M"], ["Female", "F"], ["Other", "Other"]], {}, { :class => "form-control form-select" }) %>
+          <%= f.select(element_name, [["Male", "M"], ["Female", "F"], ["Other", "Other"]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-2">
