@@ -25,11 +25,30 @@ class EnergyApplicationsController < ApplicationController
   def create
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
-    test_val = retreive_dropdown_info(params[:energy_application], "household_member_gender", 8)
-    puts "Test Value:"
-    puts test_val
-    Error
+    @energy_application.household_member_genders = retreive_dropdown_info(params[:energy_application], "household_member_gender", 8)
+    @energy_application.household_members_who_are_hispanic = retreive_dropdown_info(params[:energy_application], "household_member_hispanic", 8)
+    @energy_application.household_member_races = retreive_dropdown_info(params[:energy_application], "household_member_race", 8)
+    @energy_application.household_members_in_or_tribe = retreive_dropdown_info(params[:energy_application], "household_member_tribal", 8)
+    @energy_application.household_member_educations = retreive_dropdown_info(params[:energy_application], "household_member_education", 8)
+    @energy_application.household_members_with_disabilities = retreive_dropdown_info(params[:energy_application], "household_member_disabled", 8)
+    @energy_application.household_member_veterans = retreive_dropdown_info(params[:energy_application], "household_member_veteran", 8)
+    @energy_application.household_members_who_are_homebound = retreive_dropdown_info(params[:energy_application], "household_member_homebound", 8)
+    @energy_application.household_member_snaps = retreive_dropdown_info(params[:energy_application], "household_member_snap", 8)
+    @energy_application.household_member_ohps = retreive_dropdown_info(params[:energy_application], "household_member_ohp", 8)
+    
+    # verifying output
     @energy_application.save
+    puts @energy_application.household_member_genders
+    puts @energy_application.household_members_who_are_hispanic
+    puts @energy_application.household_member_races
+    puts @energy_application.household_members_in_or_tribe
+    puts @energy_application.household_member_educations
+    puts @energy_application.household_members_with_disabilities
+    puts @energy_application.household_member_veterans
+    puts @energy_application.household_members_who_are_homebound
+    puts @energy_application.household_member_snaps
+    puts @energy_application.household_member_ohps
+    Error
     redirect_to energy_applications_path
   end
 
