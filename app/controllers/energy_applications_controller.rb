@@ -45,15 +45,15 @@ class EnergyApplicationsController < ApplicationController
         @household_member.ssn = params[:energy_application][:household_member_ssn][i]
         @household_member.gender = params[:energy_application][:household_member_gender][i]
         @household_member.hispanic = hispanic_array[i]
-        @household_member.race = params[:energy_application][:household_member_name][i]
+        @household_member.race = params[:energy_application][:household_member_race][i]
         @household_member.tribal_member = tribal_member_array[i]
-        @household_member.education = params[:energy_application][:household_member_name][i]
+        @household_member.education = params[:energy_application][:household_member_education_][i]
         @household_member.disabled = disabled_array[i]
         @household_member.veteran = veteran_array[i]
         @household_member.homebound = homebound_array[i]
         @household_member.snap = snap_array[i]
         @household_member.ohp = ohp_array[i]
-        @household_member.other_insurance = params[:energy_application][:household_member_name][i]
+        @household_member.other_insurance = params[:energy_application][:household_member_other_insurance][i]
         @household_member.save
       end
     end
