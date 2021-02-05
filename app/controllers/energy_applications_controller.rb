@@ -25,6 +25,11 @@ class EnergyApplicationsController < ApplicationController
   def create
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
+    @energy_application.phone_number = params[:energy_application][:phone_number]
+    @energy_application.address = params[:energy_application][:physical_street]
+    @energy_application.city = params[:energy_application][:physical_city]
+    @energy_application.zip = params[:energy_application][:physical_zip]
+    @energy_application.county = params[:energy_application][:physical_county]
     @energy_application.save
 
     # extract booleans from check box arrays
