@@ -33,6 +33,9 @@
   <%= f.label :email_address, "Email Address" %>
   <%= f.text_field :email_address, class: "form-control" %>
 
+  <%= f.label :how_necessities_are_paid, "How do you currently pay for your basic necessities such as rent, food, and phone?" %>
+  <%= f.text_field :how_necessities_are_paid, class: "form-control" %>
+
   <h2>Physical Address</h2>
 
   <%= f.label :address, "Street" %>
@@ -86,13 +89,10 @@
     </div>
   </div>
 
-  <%= f.label :how_necessities_are_paid, "How do you currently pay for your basic necessities such as rent, food, and phone?" %>
-  <%= f.text_field :how_necessities_are_paid, class: "form-control" %>
-
   <h2>Household Information</h2>
 
   <%= f.label :household_type, "Household Type" %>
-  <%= f.select(:household_type, ["Single Person", "Single Parent Female", "Single Parent Male", "Non-Related Adults With Children", "2 Parent Family", "Multigenerational", "2 Adults, No Children"], {}, { :class => "form-control form-select" }) %>
+  <%= f.select(:household_type, ["Single Person", "Single Parent Female", "Single Parent Male", "Non-Related Adults With Children", "2 Parent Family", "Multigenerational", "2 Adults, No Children"], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
 
 
   <h3>Enter the information of each household member.</h3>

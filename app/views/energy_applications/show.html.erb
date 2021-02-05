@@ -1,13 +1,52 @@
 <h1><%= @energy_application %></h1>
 
+<h2>Basic Information</h2>
 <p>First Name: <%= @energy_application.first_name %></p>
 <p>Last Name: <%= @energy_application.last_name %></p>
-<p>Phone: <%= @energy_application.phone_number %></p>
-<p>Address: <%= @energy_application.address %></p>
-<p>Address Line 2: <%= @energy_application.address2 %></p>
+<p>Phone Number: <%= @energy_application.phone_number %></p>
+<p>Phone Type: <%= @energy_application.phone_type %></p>
+<p>Email Address: <%= @energy_application.email_address %></p>
+<p>How Necessities Are Paid <%= @energy_application.how_necessities_are_paid %></p>
+
+<h2>Physical Address</h2>
+<p>Street: <%= @energy_application.address %></p>
+<p>Street Line 2: <%= @energy_application.address2 %></p>
 <p>City: <%= @energy_application.city %></p>
 <p>County: <%= @energy_application.county %></p>
 <p>Zip: <%= @energy_application.zip %></p>
+
+<h2>Mailing Address</h2>
+<p>Street: <%= @energy_application.mailing_address_street %></p>
+<p>City: <%= @energy_application.mailing_address_city %></p>
+<p>County: <%= @energy_application.mailing_address_county %></p>
+<p>State: <%= @energy_application.mailing_address_state %></p>
+<p>Zip: <%= @energy_application.mailing_address_zip %></p>
+
+<h2>Household Information</h2>
+<p>Household Type: <%= @energy_application.household_type %></p>
+
+<h2>Dwelling</h2>
+<p>Type of Dwelling: <%= @energy_application.type_of_dwelling %></p>
+<p>Residence Status: <%= @energy_application.residence_status %></p>
+<p>Types of Heat: <%= @energy_application.types_of_heat %></p>
+<p>Primary Heat Source: <%= @energy_application.primary_heat_source %></p>
+<p>Secondary Heat Source: <%= @energy_application.secondary_heat_source %></p>
+<p>Utility Company Benefit Goes To: <%= @energy_application.utility_company %></p>
+
+<h2>Utility</h2>
+<p>Account Status: <%= @energy_application.utility_account_status %></p>
+<p>Direct Amount: <%= @energy_application.utility_direct_amount %></p>
+<p>Total Auth Amount: <%= @energy_application.utility_total_auth_amount %></p>
+<p>Matrix Energy Type: <%= @energy_application.utility_matrix_energy_type %></p>
+
+<h2>COVID-19 Impact</h2>
+<p>Household Impacted By COVID-19: <%= @energy_application.household_impacted_by_covid %></p>
+<p>Loss of Employment: <%= @energy_application.covid_loss_of_employment %></p>
+<p>Vulnerable Population: <%= @energy_application.covid_vulnerable_population %></p>
+<p>Reduction of Hours/Unpaid Leave: <%= @energy_application.covid_reduction_of_hours %></p>
+<p>Loss of Childcare/Children Home From School: <%= @energy_application.covid_loss_of_childcare %></p>
+<p>Other Situation: <%= @energy_application.covid_other_situation %></p>
+<p>COVID-19 Related Expenses: <%= @energy_application.covid_expenses %></p>
 
 <div class="btn-group">
   <%= link_to "Back", energy_applications_path, class: "btn btn-secondary" %>
