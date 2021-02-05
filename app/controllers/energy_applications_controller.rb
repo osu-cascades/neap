@@ -25,67 +25,7 @@ class EnergyApplicationsController < ApplicationController
   def create
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
-    @energy_application.phone_number = params[:energy_application][:phone_number]
-    @energy_application.address = params[:energy_application][:physical_street]
-    @energy_application.city = params[:energy_application][:physical_city]
-    @energy_application.zip = params[:energy_application][:physical_zip]
-    @energy_application.county = params[:energy_application][:physical_county]
     @energy_application.save
-
-    # extract booleans from check box arrays
-    hispanic_array = extract_check_boxes(params[:energy_application][:household_member_hispanic])
-    tribal_member_array = extract_check_boxes(params[:energy_application][:household_member_tribe])
-    disabled_array = extract_check_boxes(params[:energy_application][:household_member_disabled])
-    veteran_array = extract_check_boxes(params[:energy_application][:household_member_veteran])
-    homebound_array = extract_check_boxes(params[:energy_application][:household_member_homebound])
-    snap_array = extract_check_boxes(params[:energy_application][:household_member_snap])
-    ohp_array = extract_check_boxes(params[:energy_application][:household_member_other_insurance])
-    high_schooler_array = extract_check_boxes(params[:energy_application][:dhi_informal_income_high_schooler])
-
-    # household members
-    for i in 0..7
-      if params[:energy_application][:household_member_name][i] != ""
-        @household_member = HouseholdMember.new(parent_application_id: @energy_application.id)
-        @household_member.name = params[:energy_application][:household_member_name][i]
-        @household_member.dob = params[:energy_application][:household_member_dob][i]
-        @household_member.ssn = params[:energy_application][:household_member_ssn][i]
-        @household_member.gender = params[:energy_application][:household_member_gender][i]
-        @household_member.hispanic = hispanic_array[i]
-        @dropdown_name = "household_member_race_%d" % [i]
-        @household_member.race = params[:energy_application][@dropdown_name]
-        @household_member.tribal_member = tribal_member_array[i]
-        @dropdown_name = "household_member_education_%d" % [i]
-        @household_member.education = params[:energy_application][@dropdown_name]
-        @household_member.disabled = disabled_array[i]
-        @household_member.veteran = veteran_array[i]
-        @household_member.homebound = homebound_array[i]
-        @household_member.snap = snap_array[i]
-        @household_member.ohp = ohp_array[i]
-        @household_member.other_insurance = params[:energy_application][:household_member_other_insurance][i]
-        @household_member.save
-      end
-    end
-
-    # household member income
-    for i in 0..7
-      if params[:energy_application][:household_income_name][i] != ""
-        @household_income = HouseholdMemberIncome.new(parent_application_id: @energy_application.id)
-        @household_income.name = params[:energy_application][:household_income_name][i]
-        @household_income.income_type = params[:energy_application][:household_income_type][i]
-      end
-    end
-
-    # DHI
-    for i in 0..7
-      if params[:energy_application][:dhi_informal_income_name][i] != ""
-        @dhi = DeclarationOfHouseholdIncome.new(parent_application_id: @energy_application.id)
-        @dhi.member_name = params[:energy_application][:dhi_informal_income_name][i]
-        @dhi.informal_income_amount = params[:energy_application][:dhi_informal_income_amt][i]
-        @dhi.informal_income_source = params[:energy_application][:dhi_informal_income_source][i]
-        @dhi.is_highschooler = high_schooler_array[i]
-      end
-    end
-    
     redirect_to energy_applications_path
   end
 
@@ -98,26 +38,7 @@ class EnergyApplicationsController < ApplicationController
 private
 
   def energy_application_params
-    params.require(:energy_application).permit(:phone_number, :address, :address2, :city, :county, :zip)
-  end
-
-  # unchecked check boxes don't return anything, so Rails adds a subsequent hidden that always returns 0,
-  # with the same name. If you're not reusing names, you only get the first one.
-  # Unfortunately, if you're using an array like we are, that means for unchecked you get [0], and for
-  # checked you get [0, 1]. This function takes the array, and returns the actual results.
-  def extract_check_boxes(check_box_array)
-    return_array = []
-    i = check_box_array.length() - 1
-    while i >= 0
-      if check_box_array[i] == "1"
-        return_array.push(true)
-        i -= 2
-      else
-        return_array.push(false)
-        i -= 1
-      end
-    end
-    return return_array.reverse
+    params.require(:energy_application).permit(:first_name, :last_name, :phone_number, :phone_type, :address, :address2, :city, :county, :zip, :mailing_address_street, :mailing_address_city, :mailing_address_county, :mailing_address_state, :mailing_address_zip, :how_necessities_are_paid, :household_type, :household_member_names, :household_member_birthdates, :household_member_ssids, :household_member_genders, :household_members_who_are_hispanic, :household_member_races, :household_members_in_or_tribe, :household_member_educations, :household_members_with_disabilities, :household_member_veterans, :household_members_who_are_homebound, :household_member_snaps, :household_member_ohps, :household_member_other_medical_insurances, :household_member_types_of_income, :household_member_proofs_of_income, :household_member_income_frequencies, :household_member_income_amounts, :household_member_annual_incomes, :household_members_over_18_without_income, :household_member_informal_incomes_last_month, :household_member_informal_income_sources, :household_members_in_high_school, :type_of_dwelling, :residence_status, :types_of_heat, :primary_heat_source, :secondary_heat_source, :utility_name, :utility_account_status, :utility_names, :utility_account_numbers, :utility_account_names, :utility_vendor_amounts, :utility_direct_amount, :utility_total_auth_amount, :utility_matrix_energy_type, :household_impacted_by_covid, :covid_loss_of_employment, :covid_vulnerable_population, :covid_reduction_of_hours, :covid_loss_of_childcare, :covid_other_situation, :covid_expenses)
   end
 
 end

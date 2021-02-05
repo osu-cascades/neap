@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_040459) do
+ActiveRecord::Schema.define(version: 2021_02_05_095822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,61 @@ ActiveRecord::Schema.define(version: 2021_01_18_040459) do
     t.string "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "first_name"
+    t.text "last_name"
+    t.text "household_member_names", default: [], array: true
+    t.date "household_member_birthdates", default: [], array: true
+    t.text "household_member_ssids", default: [], array: true
+    t.text "household_member_genders", default: [], array: true
+    t.boolean "household_members_who_are_hispanic", default: [], array: true
+    t.text "household_member_races", default: [], array: true
+    t.boolean "household_members_in_or_tribe", default: [], array: true
+    t.text "household_member_educations", default: [], array: true
+    t.boolean "household_members_with_disabilities", default: [], array: true
+    t.boolean "household_member_veterans", default: [], array: true
+    t.boolean "household_members_who_are_homebound", default: [], array: true
+    t.boolean "household_member_snaps", default: [], array: true
+    t.boolean "household_member_ohps", default: [], array: true
+    t.text "household_member_other_medical_insurances", default: [], array: true
+    t.text "mailing_address_street"
+    t.text "mailing_address_city"
+    t.text "mailing_address_state"
+    t.text "mailing_address_zip"
+    t.text "mailing_address_county"
+    t.text "type_of_dwelling"
+    t.text "residence_status"
+    t.text "types_of_heat", default: [], array: true
+    t.text "primary_heat_source"
+    t.text "secondary_heat_source"
+    t.text "utility_company"
+    t.text "household_member_types_of_income", default: [], array: true
+    t.text "household_member_proofs_of_income", default: [], array: true
+    t.text "household_member_income_frequencies", default: [], array: true
+    t.text "household_member_income_amounts", default: [], array: true
+    t.text "household_member_annual_incomes", default: [], array: true
+    t.text "utility_account_status"
+    t.text "utility_names", default: [], array: true
+    t.text "utility_account_numbers", default: [], array: true
+    t.text "utility_account_names", default: [], array: true
+    t.text "utility_vendor_amounts", default: [], array: true
+    t.text "utility_direct_amount", default: [], array: true
+    t.text "utility_total_auth_amount", default: [], array: true
+    t.text "utility_matrix_energy_type", default: [], array: true
+    t.boolean "household_members_over_18_without_income", default: [], array: true
+    t.text "household_member_informal_incomes_last_month", default: [], array: true
+    t.text "household_member_informal_income_sources", default: [], array: true
+    t.boolean "household_members_in_high_school", default: [], array: true
+    t.text "how_necessities_are_paid"
+    t.boolean "household_impacted_by_covid"
+    t.boolean "covid_loss_of_employment"
+    t.boolean "covid_reduction_of_hours"
+    t.boolean "covid_vulnerable_population"
+    t.boolean "covid_loss_of_childcare"
+    t.text "covid_other_situation"
+    t.text "covid_expenses"
+    t.text "phone_type"
+    t.text "household_type"
+    t.text "email_address"
     t.index ["user_id"], name: "index_energy_applications_on_user_id"
   end
 

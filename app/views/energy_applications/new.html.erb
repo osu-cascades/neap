@@ -1,250 +1,354 @@
-<style>
-  table {width:100%; text-align:center;}
-  th {border:1px solid black;}
-  td {border:1px solid black;}
-  div.border_div {border:1px solid black;}
-</style>
-
 <h1>New Energy Application</h1>
 
 <%# <% render "form", energy_application: @energy_application %>
 
 <%= form_with(model: @energy_application, local: true) do |f| %>
-  <table>
-      <tr>
-          <th>Name</th>
-          <th>DoB</th>
-          <th>SSN/SSID</th>
-          <th>Gender</th>
-          <th>Hispanic</th>
-          <th>Race</th>
-          <th>OR Tribe</th>
-          <th>Education (See Instructions Below)</th>
-          <th>Disabled</th>
-          <th>Veteran</th>
-          <th>Homebound</th>
-          <th>SNAP</th>
-          <th>Other Med. Insurance</th>
-      </tr>
-      <% for i in 0..7 %>
-          <tr>
-              <td><%= f.text_field :household_member_name, multiple: true %></td>
-              <td><%= f.date_field :household_member_dob, multiple: true %></td>
-              <td><%= f.text_field :household_member_ssn, multiple: true %></td>
-              <td><%= f.text_field :household_member_gender, multiple: true %></td>
-              <td><%= f.check_box :household_member_hispanic, multiple: true %></td>
-              <td>
-                <!-- workaround as form.select cannot use multiple: true -->
-                <% dropdown_name = "household_member_race_%d" % [i] %>
-                <%= f.select name = dropdown_name,
-                  [['African American', 'AA'], 
-                  ['Asian', 'AS'], 
-                  ['Native American/Alaskan Native', 'NA/AN'],
-                  ['Native Hawaiian/Pacific Islander', 'PH/PI'], 
-                  ['White', 'WH']] %>
-              </td>
-              <td><%= f.check_box :household_member_tribe, multiple: true %></td>
-              <td>
-                <!-- workaround as form.select cannot use multiple: true -->
-                <% dropdown_name = "household_member_education_%d" % [i] %>
-                  <%= f.select name = dropdown_name, 
-                    [["Not School-Aged", "NA"], ["Kindergarten", "K"], ["1st Grade", "1"], ["2nd Grade", "2"],
-                      ["3rd Grade", "3"], ["4th Grade", "4"], ["5th Grade", "5"], ["6th Grade", "6"], 
-                      ["7th Grade", "7"], ["8th Grade", "8"], ["9th Grade (High School Freshman)", "9"],
-                      ["10th Grade (High School Sophmore)", "10"], ["11th Grade (High School Junior)", "11"], 
-                      ["12th Grade (High School Senior)", "12"], ["GED", "GED"], ["High School Diploma", "HSD"],
-                      ["Some College", "SC"], ["Associates Degree", "AA"], ["Bachelors Degree", "BA"], 
-                      ["Masters Degree", "MA"], ["Doctorate", "PHD"]] %>
-              </td>
-              <td><%= f.check_box :household_member_disabled, multiple: true %></td>
-              <td><%= f.check_box :household_member_veteran, multiple: true %></td>
-              <td><%= f.check_box :household_member_homebound, multiple: true %></td>
-              <td><%= f.check_box :household_member_snap, multiple: true %></td>
-              <td><%= f.text_field :household_member_other_insurance, multiple: true %></td>
-          </tr>
-      <% end %>
-  </table>
-  <p>*For Education, if currently enrolled in K-12 school, select current year. Otherwise, select highest completed education.</p>
-  <div>
-      <%= f.label :phone_number %>
-      <%= f.text_field :phone_number %>
-      <%= f.select :phone_number_type, ["Cell", "Home", "Message"]%>
+
+  <h2>Basic Information</h2>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name, autofocus:true, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-      <%= f.label :email_address %>
-      <%= f.text_field :email_address %>
+  <div class="form-row">
+    <div class="form-group col-md-9">
+      <%= f.label :phone_number, "Phone Number" %>
+      <%= f.text_field :phone_number, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :phone_type, "Phone Type" %>
+      <%= f.select(:phone_type, ["Cell", "Home", "Message"], {}, { :class => "form-control form-select" }) %>
+    </div>
   </div>
 
-  <div>
-      <%= f.label :household_type %>
-      <%= f.select :household_type, ["Single Person", "Single Parent (Male)", "Single Parent (Female)", 
-          "Non-Related Adults with Children", "Two-Parent Family", "Multigenerational", "Two Adults, No Children"] %>
+  <%= f.label :email_address, "Email Address" %>
+  <%= f.text_field :email_address, class: "form-control" %>
+
+  <%= f.label :how_necessities_are_paid, "How do you currently pay for your basic necessities such as rent, food, and phone?" %>
+  <%= f.text_field :how_necessities_are_paid, class: "form-control" %>
+
+  <h2>Physical Address</h2>
+
+  <%= f.label :address, "Street" %>
+  <%= f.text_field :address, class: "form-control" %>
+
+  <%= f.label :address2, "Address Line 2" %>
+  <%= f.text_field :address2, class: "form-control" %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :county %>
+      <%= f.text_field :county, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :zip %>
+      <%= f.text_field :zip, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-      <table>
-          <tr>
-              <th></th>
-              <th>Street</th>
-              <th>City</th>
-              <th>State</th>
-              <th>ZIP</th>
-              <th>County</th>
-          </tr>
-          <tr>
-              <td>Physical Address</td>
-              <td><%= f.text_field :physical_street %></td>
-              <td><%= f.text_field :physical_city %></td>
-              <td><%= f.text_field :physical_state %></td>
-              <td><%= f.text_field :physical_zip %></td>
-              <td><%= f.text_field :physical_county %></td>
-          </tr>
-          <tr>
-              <td>Mailing Address (If Different)</td>
-              <td><%= f.text_field :mailing_street %></td>
-              <td><%= f.text_field :mailing_city %></td>
-              <td><%= f.text_field :mailing_state %></td>
-              <td><%= f.text_field :mailing_zip %></td>
-              <td><%= f.text_field :mailing_county %></td>
-          </tr>
-      </table>
+  <h2>Mailing Address</h2>
+  <p>Only include your mailing address if it is different than your physical address.</p>
+
+  <%= f.label :mailing_address_street, "Street" %>
+  <%= f.text_field :mailing_address_street, class: "form-control" %>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= f.label :mailing_address_city, "City" %>
+      <%= f.text_field :mailing_address_city, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :mailing_address_county, "County" %>
+      <%= f.text_field :mailing_address_county, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :mailing_address_state, "State" %>
+      <%= f.text_field :mailing_address_state, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :mailing_address_zip, "Zip" %>
+      <%= f.text_field :mailing_address_zip, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-      <%= f.label :dwelling_type %>
-      <select name="dwelling_type" id="dwelling_type">
-          <option value="h">Single Family House</option>
-          <option value="m">Multi-Unit (2-4)</option>
-          <option value="u">Multi-Unit (5+)</option>
-          <option value="a">Manufactured/Mobile Home</option>
-          <option value="e">Hotel/Motel</option>
-          <option value="t">Travel Trailer</option>
-          <option value="r">Other</option>
-      </select>
-  </div>
+  <h2>Household Information</h2>
 
-  <div>
-      <%= f.label :residence_status %>
-      <select name="dwelling_type" id="dwelling_type">
-          <option value="r">Rent (heat not included)</option>
-          <option value="e">Rent (heat included)</option>
-          <option value="s">HUD or Section 8 (heat not included)</option>
-          <option value="o">Own</option>
-      </select>
-  </div>
+  <%= f.label :household_type, "Household Type" %>
+  <%= f.select(:household_type, ["Single Person", "Single Parent Female", "Single Parent Male", "Non-Related Adults With Children", "2 Parent Family", "Multigenerational", "2 Adults, No Children"], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
 
-  <div class="border_div">
-      <label>Type of Heat (Check All that Apply)</label><br></br>
-      <%= f.check_box :electric %>
-      <label>Electric</label><br></br>
-      <%= f.check_box :natural_gas %>
-      <label>Natural Gas</label><br></br>
-      <%= f.check_box :propane %>
-      <label>Propane</label><br></br>
-      <%= f.check_box :oil %>
-      <label>Oil</label><br></br>
-      <%= f.check_box :solar %>
-      <label>Solar</label><br></br>
-      <%= f.check_box :pellets %>
-      <label>Pellets</label><br></br>
-      <%= f.check_box :wood %>
-      <label>Wood</label><br></br>
-      <label>Which is the primary heat source?</label>
-      <select name="primary_heat" id="primary_heat">
-          <option value="electric">Electric</option>
-          <option value="natural gas">Natural Gas</option>
-          <option value="propane">Propane</option>
-          <option value="oil">Oil</option>
-          <option value="solar">Solar</option>
-          <option value="pellets">Pellets</option>
-          <option value="wood">Wood</option>
-      </select><br></br>
-      <label>Which is the secondary heat source?</label>
-      <select name="primary_heat" id="primary_heat">
-          <option value="none">-</option>
-          <option value="electric">Electric</option>
-          <option value="natural gas">Natural Gas</option>
-          <option value="propane">Propane</option>
-          <option value="oil">Oil</option>
-          <option value="solar">Solar</option>
-          <option value="pellets">Pellets</option>
-          <option value="wood">Wood</option>
-      </select><br></br>
-      <label>Name of the utility company you would like your benefit to go to:</label><br></br>
-      <%= f.text_field :utility_company %>
+
+  <h3>Enter the information of each household member.</h3>
+  <% for i in 0..5 %>
+    <h4 class="accordion">Household Member <% i + 1 %></h4>
+    <div class="panel">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <%= f.label :household_member_names[i], "Full Legal Name" %>
+          <%= f.text_field :household_member_names[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_birthdates[i], "Birthdate" %>
+          <%= f.date_field :household_member_birthdates[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_ssids[i], "SSN/SSID" %>
+          <%= f.text_field :household_member_ssids[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_genders[i], "Gender" %>
+          <%= f.select(:household_member_genders[i], [["Male", "M"], ["Female", "F"], ["Other", "Other"]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_members_who_are_hispanic[i], "Hispanic" %>
+          <%= f.select(:household_members_who_are_hispanic[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+        </div>
       </div>
 
-      <div class="border_div">
-          <p>This section is required by NeighborImpact to verify your eligibility for this program.<p>
-          <table>
-              <tr>
-                  <th>Name of Household Member</th>
-                  <th>Type of Income</th>
-              </tr>
-              <% for i in 0..7 %>
-                  <tr>
-                      <td><%= f.text_field :household_income_name, multiple: true %></td>
-                      <td><%= f.text_field :household_income_type, multiple: true %></td>
-                  </tr>
-              <% end %>
-          </table>
-          <table>
-              <tr>
-                  <th>Name of Utility</th>
-                  <th>Account #</th>
-                  <th>Name on Account</th>
-              </tr>
-              <% for i in 1..3 %>
-                  <tr>
-                      <td><%= f.text_field :utility_name, multiple: true %></td>
-                      <td><%= f.text_field :utility_account_num, multiple: true %></td>
-                      <td><%= f.text_field :utility_account_holder, multiple: true %></td>
-                  </tr>
-              <% end %>
-          </table>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <%= f.label :household_member_races[i], "Race" %>
+          <%= f.select(:household_member_races[i], [["African American", "AA"], ["Asian", "AS"], ["Native American", "NA"], ["Alaskan Native", "AN"], ["Native Hawaiian", "NH"], ["Pacific Islander", "PI"], ["White", "WH"]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_members_in_or_tribe[i], "OR Tribe" %>
+          <%= f.select(:household_members_in_or_tribe[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-4">
+          <%= f.label :household_member_educations[i], "Education" %>
+          <%= f.select(:household_member_educations[i], [["Not School-Aged", "Not Applicable"], ["Kindergarten", "K"], ["1st Grade", "1"], ["2nd Grade", "2"], ["3rd Grade", "3"], ["4th Grade", "4"], ["5th Grade", "5"], ["6th Grade", "6"], ["7th Grade", "7"], ["8th Grade", "8"], ["9th Grade", "9"], ["10th Grade", "10"], ["11th Grade", "11"], ["12th Grade", "12"], ["GED", "GED"], ["High School Diploma", "HSD"], ["Some College", "SC"], ["Associates Degree", "AA"], ["Bachelors Degree", "BA"], ["Masters Degree", "MA"], ["Doctorate", "PHD"]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_members_with_disabilities[i], "Disabled" %>
+          <%= f.select(:household_members_with_disabilities[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+        </div>
       </div>
-      
-      <div class="border_div">
-          <h2>Delcaration of Household Income</h2>
-          <p>PLEASE FILL OUT THIS SECTION FOR ALL HOUSEHOLD MEMBERS OVER THE AGE OF 18 WHO EITHER HAVE:<p>
-          <p>1. No income OR</p>
-          <p>2. Informal income (paid cash for work or have other non-wage sources of income</p>
-          <label>Applicant Name:</label>
-          <%= f.text_field :dhi_applicant_name %><br></br>
-          <label>Previous Month*:</label>
-          <%= select_month(1) %><br></br>
-          <p>*For example, if you are filling this out in October, please select September and enter the information below for September.</p>
-          <label>Possible Informal Income Sources</label>
-          <ul>
-              <li>Informal child support</li>
-              <li>Selling scrap metal</li>
-              <li>Can deposits</li>
-              <li>Support from non-wage sources</li>
-              <li>Help from relative, church, etc (for 3 or more months)</li>
-              <li>Occasional work for cash</li>
-              <li>Informal spousal support</li>
-              <li>Income from a rental property</li>
-          </ul>
-          <table>
-              <tr>
-                  <th>Name of all household members over 18 who recieved no income or informal income</th>
-                  <th>Total amount of informal income received in the previous month</th>
-                  <th>Source of informal income</th>
-                  <th>Currently in high school?</th>
-              </tr>
-              <% for i in 1..7 %>
-                  <tr>
-                      <td><%= f.text_field :dhi_informal_income_name, multiple: true %></td>
-                      <td><label>$</label><%= f.number_field :dhi_informal_income_amt, multiple: true %></td>
-                      <td><%= f.text_field :dhi_informal_income_source, multiple: true %></td>
-                      <td><%= f.check_box :dhi_informal_income_high_schooler, multiple: true %></td>
-                  </tr>
-              <% end %>
-          </table>
-          <label>How do you currently pay for your necessities such as rent, food, and phone?</label><br></br>
-          <%= f.text_area :dhi_current_necessities_method %>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_veterans[i], "Veteran" %>
+          <%= f.select(:household_member_veterans[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_members_who_are_homebound[i], "Homebound" %>
+          <%= f.select(:household_members_who_are_homebound[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_snaps[i], "SNAP" %>
+          <%= f.select(:household_member_snaps[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_ohps[i], "OHP" %>
+          <%= f.select(:household_member_ohps[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+        </div>
+
+        <div class="form-group col-md-4">
+          <%= f.label :household_member_other_medical_insurances[i], "Other Medical Insurance" %>
+          <%= f.text_field :household_member_other_medical_insurances[i], class: "form-control" %>
+        </div>
       </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_types_of_income[i], "Type of Income" %>
+          <%= f.text_field :household_member_types_of_income[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_proofs_of_income[i], "Proof of Income" %>
+          <%= f.text_field :household_member_proofs_of_income[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :household_member_income_frequencies[i], "Income Frequency" %>
+          <%= f.text_field :household_member_income_frequencies[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-3">
+          <%= f.label :household_member_income_amounts[i], "Amount of Income" %>
+          <%= f.text_field :household_member_income_amounts[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-3">
+          <%= f.label :household_member_annual_incomes[i], "Annual Income" %>
+          <%= f.text_field :household_member_annual_incomes[i], class: "form-control" %>
+        </div>
+      </div>
+
+      <%= f.label :household_members_over_18_without_income[i], "Over 18 and Receiving No Income or Informal Income" %>
+      <%= f.select(:household_members_over_18_without_income[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+      <p>If you answered yes, the remaining fields for this household member are required. Otherwise, they are optional.</p>
+
+      <%= f.label :household_member_informal_incomes_last_month[i], "Total Informal Income Received Last Month" %>
+      <%= f.text_field :household_member_informal_incomes_last_month[i], class: "form-control" %>
+
+      <div class="form-row">
+        <p>Possible Informal Income Sources:</p>
+        <ul>
+          <li>Informal child support</li>
+          <li>Can deposits</li>
+          <li>Help from relative, church, etc. (for 3 months or more)</li>
+          <li>Informal spousal support</li>
+          <li>Selling scrap metal</li>
+          <li>Support from non-wage sources</li>
+          <li>Occasional work for cash</li>
+          <li>Income from a rental property</li>
+        </ul>
+        <div class="form-group col-md-8">
+          <%= f.label :household_member_informal_income_sources[i], "Informal Income Source (See Examples Listed Above)" %>
+          <%= f.text_field :household_member_informal_income_sources[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-4">
+          <%= f.label :household_members_in_high_school[i], "Currently in High School" %>
+          <%= f.select(:household_members_in_high_school[i], [["No", false], ["Yes", true]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <h2>Dwelling</h2>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :type_of_dwelling, "Type of Dwelling" %>
+      <%= f.select(:type_of_dwelling, [["Single Family House", "H"], ["Multi-Unit (2-4)", "M"], ["Multi-Unit (Over 4)", "U"], ["Manufactured/Mobile Home", "A"], ["Hotel/Motel", "E"], ["Travel Trailer", "T"], ["Other", "R"]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :residence_status, "Residence Status" %>
+      <%= f.select(:residence_status, [["Rent (Heat Not Included)", "R"], ["Rent (Heat Included)", "E"], ["HUD or Section 8 (Heat Not Included)", "S"], ["Own", "O"]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+    </div>
+  </div>
+
+  <%= f.label :types_of_heat, "Types of Heat (Hold Ctrl and Select All That Apply)" %>
+  <%= f.select(:types_of_heat, [["Electric", "E"], ["Natural Gas", "N"], ["Propane", "L"], ["Oil", "O"], ["Solar", "S"], ["Pellets", "P"], ["Wood", "W"]], {}, { :multiple => true, :class => "form-control" }) %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :primary_heat_source, "Primary Heat Source" %>
+      <%= f.select(:primary_heat_source, [["Electric", "E"], ["Natural Gas", "N"], ["Propane", "L"], ["Oil", "O"], ["Solar", "S"], ["Pellets", "P"], ["Wood", "W"]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :secondary_heat_source, "Secondary Heat Source" %>
+      <%= f.select(:secondary_heat_source, [["Electric", "E"], ["Natural Gas", "N"], ["Propane", "L"], ["Oil", "O"], ["Solar", "S"], ["Pellets", "P"], ["Wood", "W"]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+    </div>
+  </div>
+
+  <%= f.label :utility_company, "Name the utility company you would like your benefit to go to." %>
+  <%= f.text_field :utility_company, class: "form-control" %>
+
+  <h2>Utility</h2>
+
+  <%= f.label :utility_account_status, "Account Status" %>
+  <%= f.select(:utility_account_status, ["Current", "Past Due", "Shut Off 1-5 Days", "Shut Off 0-24 Hours", "Disconnected", "Bulk Fuel", "Bulk Fuel Out"], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+
+  <h3>Enter the information of each utility.</h3>
+  <% for i in 0..1 %>
+    <h4 class="accordion">Utility <% i + 1 %></h4>
+    <div class="panel">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <%= f.label :utility_names[i], "Name" %>
+          <%= f.text_field :utility_names[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :utility_account_numbers[i], "Account Number" %>
+          <%= f.text_field :utility_account_numbers[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-4">
+          <%= f.label :utility_account_names[i], "Name on Account" %>
+          <%= f.text_field :utility_account_names[i], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.label :utility_vendor_amounts[i], "Vendor Amount" %>
+          <%= f.text_field :utility_vendor_amounts[i], class: "form-control" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= f.label :utility_direct_amount, "Direct Amount" %>
+      <%= f.text_field :utility_direct_amount, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :utility_total_auth_amount, "Total Auth Amount" %>
+      <%= f.text_field :utility_total_auth_amount, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :utility_matrix_energy_type, "Matrix Energy Type" %>
+      <%= f.text_field :utility_matrix_energy_type, class: "form-control" %>
+    </div>
+  </div>
+
+  <h2>COVID-19 Impact</h2>
+
+  <%= f.label :household_impacted_by_covid, "Has anyone in your household been impacted by COVID-19?" %>
+  <%= f.select(:household_impacted_by_covid, [["No", false], ["Yes", true]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+  <p>If you selected Yes, please complete the COVID-19 Impact section. Otherwise, please skip this section.</p>
+
+  <h3>Which of the following COVID-19 situations have impacted your household?</h3>
+
+  <%= f.label :covid_loss_of_employment, "Loss of Employment (Laid-Off/Furlough/Lost Your Business)" %>
+  <%= f.select(:covid_loss_of_employment, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+
+  <%= f.label :covid_vulnerable_population, "Vulnerable Population (People at risk due to age or health conditions for whom it is necessary to self-quarantine.)" %>
+  <%= f.select(:covid_vulnerable_population, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :covid_reduction_of_hours, "Reduction of Hours/Unpaid Leave" %>
+      <%= f.select(:covid_reduction_of_hours, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :covid_loss_of_childcare, "Loss of Childcare/Children Being Home From School" %>
+      <%= f.select(:covid_loss_of_childcare, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+    </div>
+  </div>
+
+  <%= f.label :covid_other_situation, "Other Situation Related to COVID-19 (Please Briefly Describe)" %>
+  <%= f.text_field :covid_other_situation, class: "form-control" %>
+
+  <%= f.label :covid_expenses, "Please list COVID-19 related expenses. (Could include: increased costs for utilities or household supplies due to quarantine or more people at home; COVID-19 prevention materials such as masks, sanitizers, wipes, and gloves)" %>
+  <%= f.text_field :covid_expenses, class: "form-control" %>
+
+  <br />
 
   <div class="btn-group">
     <%= link_to "Cancel", energy_applications_path, class: "btn btn-outline-secondary" %>
@@ -253,3 +357,21 @@
   </div>
 
 <% end %>
+
+<script type="text/javascript">
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+
+</script>
