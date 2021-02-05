@@ -26,6 +26,7 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
     @energy_application.save
+    Error
     redirect_to energy_applications_path
   end
 

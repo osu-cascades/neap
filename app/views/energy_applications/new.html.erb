@@ -97,7 +97,7 @@
 
   <h3>Enter the information of each household member.</h3>
   <% for i in 0..7 %>
-    <h4 class="accordion">Household Member <% i + 1 %></h4>
+    <h4 class="accordion">Household Member <%= i + 1 %></h4>
     <div class="panel">
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -272,8 +272,8 @@
   <%= f.select(:utility_account_status, ["Current", "Past Due", "Shut Off 1-5 Days", "Shut Off 0-24 Hours", "Disconnected", "Bulk Fuel", "Bulk Fuel Out"], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
 
   <h3>Enter the information of each utility.</h3>
-  <% for i in 0..1 %>
-    <h4 class="accordion">Utility <% i + 1 %></h4>
+  <% for i in 0..2 %>
+    <h4 class="accordion">Utility <%= i + 1 %></h4>
     <div class="panel">
       <div class="form-row">
         <div class="form-group col-md-4">
