@@ -1,0 +1,2 @@
+class HouseholdMemberIncome < ApplicationRecord
+end

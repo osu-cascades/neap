@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_074034) do
+ActiveRecord::Schema.define(version: 2021_01_18_040459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "declaration_of_household_incomes", force: :cascade do |t|
+    t.integer "parent_application_id", null: false
+    t.string "member_name"
+    t.money "informal_income_amount", scale: 2
+    t.string "informal_income_source"
+    t.boolean "is_highschooler"
+  end
 
   create_table "energy_applications", force: :cascade do |t|
     t.bigint "user_id"
@@ -26,6 +34,30 @@ ActiveRecord::Schema.define(version: 2020_12_18_074034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_energy_applications_on_user_id"
+  end
+
+  create_table "household_member_incomes", force: :cascade do |t|
+    t.integer "parent_application_id", null: false
+    t.string "name"
+    t.string "income_type"
+  end
+
+  create_table "household_members", force: :cascade do |t|
+    t.integer "parent_application_id", null: false
+    t.string "name"
+    t.date "dob"
+    t.string "ssn"
+    t.string "gender"
+    t.boolean "hispanic"
+    t.string "race"
+    t.boolean "tribal_member"
+    t.string "education"
+    t.boolean "disabled"
+    t.boolean "veteran"
+    t.boolean "homebound"
+    t.boolean "snap"
+    t.boolean "ohp"
+    t.string "other_insurance"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +79,13 @@ ActiveRecord::Schema.define(version: 2020_12_18_074034) do
     t.boolean "active", default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "utility_records", force: :cascade do |t|
+    t.integer "parent_application_id", null: false
+    t.string "utility_name"
+    t.string "account_number"
+    t.string "accountholder_name"
   end
 
   add_foreign_key "energy_applications", "users"
