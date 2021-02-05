@@ -63,7 +63,7 @@ class EnergyApplicationsController < ApplicationController
       if params[:energy_application][:household_income_name][i] != ""
         @household_income = HouseholdMemberIncome.new(parent_application_id: @energy_application.id)
         @household_income.name = params[:energy_application][:household_income_name][i]
-        @household_income.save
+        @household_income.income_type = params[:energy_application][:household_income_type][i]
       end
     end
     Error
