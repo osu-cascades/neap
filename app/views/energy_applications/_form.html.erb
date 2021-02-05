@@ -1,6 +1,28 @@
 <%= form_with(model: @energy_application, local: true) do |f| %>
-  <%= f.label :phone_number %>
-  <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-9">
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :phone_type %>
+      <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
 
   <%= f.label :address %>
   <%= f.text_field :address, class: "form-control" %>
@@ -26,8 +48,9 @@
   </div>
 
   <div class="btn-group">
-    <%= link_to "Cancel", energy_applications_path, class: "btn btn-secondary" %>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", energy_applications_path, class: "btn btn-outline-secondary" %>
+    <%= f.submit "Save and Exit", class: "btn btn-outline-primary" %>
+    <%= f.submit "Save and Continue", class: "btn btn-outline-primary" %>
   </div>
 
 <% end %>

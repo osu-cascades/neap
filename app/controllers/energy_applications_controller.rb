@@ -38,7 +38,7 @@ class EnergyApplicationsController < ApplicationController
 private
 
   def energy_application_params
-    params.require(:energy_application).permit(:phone_number, :address, :address2, :city, :county, :zip)
+    params.require(:energy_application).permit(:first_name, :last_name, :phone_number, :phone_type, :address, :address2, :city, :county, :zip)
   end
 
 end
