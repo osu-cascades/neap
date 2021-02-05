@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_040459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "declaration_of_household_income_tables", force: :cascade do |t|
+  create_table "declaration_of_household_incomes", force: :cascade do |t|
     t.integer "parent_application_id", null: false
     t.string "member_name"
     t.money "informal_income_amount", scale: 2
