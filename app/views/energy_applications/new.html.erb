@@ -96,118 +96,109 @@
 
 
   <h3>Enter the information of each household member.</h3>
-  <% for i in 0..5 %>
-    <h4 class="accordion">Household Member <% i + 1 %></h4>
+  <% for i in 0..7 %>
+    <h4 class="accordion">Household Member <%= i + 1 %></h4>
     <div class="panel">
       <div class="form-row">
         <div class="form-group col-md-4">
-          <%= f.label :household_member_names[i], "Full Legal Name" %>
-          <%= f.text_field :household_member_names[i], class: "form-control" %>
+          <%= f.label :household_member_name, "Full Legal Name", multiple: true %>
+          <%= f.text_field :household_member_name, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_member_birthdates[i], "Birthdate" %>
-          <%= f.date_field :household_member_birthdates[i], class: "form-control" %>
+          <%= f.label :household_member_birthdate, "Birthdate" %>
+          <%= f.date_field :household_member_birthdate, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_member_ssids[i], "SSN/SSID" %>
-          <%= f.text_field :household_member_ssids[i], class: "form-control" %>
+          <%= f.label :household_member_ssid, "SSN/SSID" %>
+          <%= f.text_field :household_member_ssid, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_member_genders[i], "Gender" %>
-          <%= f.select(:household_member_genders[i], [["Male", "M"], ["Female", "F"], ["Other", "Other"]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_gender_%d" % [i] %>
+          <%= f.label :household_member_gender, "Gender" %>
+          <%= f.select(element_name, [["Male", "M"], ["Female", "F"], ["Other", "Other"]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_members_who_are_hispanic[i], "Hispanic" %>
-          <%= f.select(:household_members_who_are_hispanic[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_hispanic_%d" % [i] %>
+          <%= f.label :household_member_hispanic, "Hispanic" %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-4">
-          <%= f.label :household_member_races[i], "Race" %>
-          <%= f.select(:household_member_races[i], [["African American", "AA"], ["Asian", "AS"], ["Native American", "NA"], ["Alaskan Native", "AN"], ["Native Hawaiian", "NH"], ["Pacific Islander", "PI"], ["White", "WH"]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_race_%d" % [i] %>
+          <%= f.label :household_member_race, "Race" %>
+          <%= f.select(element_name, [["African American", "AA"], ["Asian", "AS"], ["Native American", "NA"], ["Alaskan Native", "AN"], ["Native Hawaiian", "NH"], ["Pacific Islander", "PI"], ["White", "WH"]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_members_in_or_tribe[i], "OR Tribe" %>
-          <%= f.select(:household_members_in_or_tribe[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_tribal_%d" % [i] %>
+          <%= f.label :household_member_tribal, "OR Tribe" %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-4">
-          <%= f.label :household_member_educations[i], "Education" %>
-          <%= f.select(:household_member_educations[i], [["Not School-Aged", "Not Applicable"], ["Kindergarten", "K"], ["1st Grade", "1"], ["2nd Grade", "2"], ["3rd Grade", "3"], ["4th Grade", "4"], ["5th Grade", "5"], ["6th Grade", "6"], ["7th Grade", "7"], ["8th Grade", "8"], ["9th Grade", "9"], ["10th Grade", "10"], ["11th Grade", "11"], ["12th Grade", "12"], ["GED", "GED"], ["High School Diploma", "HSD"], ["Some College", "SC"], ["Associates Degree", "AA"], ["Bachelors Degree", "BA"], ["Masters Degree", "MA"], ["Doctorate", "PHD"]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_education_%d" % [i] %>
+          <%= f.label :household_member_education, "Education" %>
+          <%= f.select(element_name, [["Not School-Aged", "Not Applicable"], ["Kindergarten", "K"], ["1st Grade", "1"], ["2nd Grade", "2"], ["3rd Grade", "3"], ["4th Grade", "4"], ["5th Grade", "5"], ["6th Grade", "6"], ["7th Grade", "7"], ["8th Grade", "8"], ["9th Grade", "9"], ["10th Grade", "10"], ["11th Grade", "11"], ["12th Grade", "12"], ["GED", "GED"], ["High School Diploma", "HSD"], ["Some College", "SC"], ["Associates Degree", "AA"], ["Bachelors Degree", "BA"], ["Masters Degree", "MA"], ["Doctorate", "PHD"]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_members_with_disabilities[i], "Disabled" %>
-          <%= f.select(:household_members_with_disabilities[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_disabled_%d" % [i] %>
+          <%= f.label :household_member_disabled, "Disabled" %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-2">
-          <%= f.label :household_member_veterans[i], "Veteran" %>
-          <%= f.select(:household_member_veterans[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_veteran_%d" % [i] %>
+          <%= f.label :household_member_veteran, "Veteran" %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_members_who_are_homebound[i], "Homebound" %>
-          <%= f.select(:household_members_who_are_homebound[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_homebound_%d" % [i] %>
+          <%= f.label :household_member_homebound, "Homebound" %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_member_snaps[i], "SNAP" %>
-          <%= f.select(:household_member_snaps[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_snap_%d" % [i] %>
+          <%= f.label :household_member_snap, "SNAP" %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :household_member_ohps[i], "OHP" %>
-          <%= f.select(:household_member_ohps[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+          <% element_name = "household_member_ohp_%d" % [i] %>
+          <%= f.label :household_member_ohp, "OHP" %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
         </div>
 
         <div class="form-group col-md-4">
-          <%= f.label :household_member_other_medical_insurances[i], "Other Medical Insurance" %>
-          <%= f.text_field :household_member_other_medical_insurances[i], class: "form-control" %>
+          <%= f.label :household_member_other_insurance, "Other Medical Insurance" %>
+          <%= f.text_field :household_member_other_medical_insurances, multiple: true, class: "form-control" %>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-2">
-          <%= f.label :household_member_types_of_income[i], "Type of Income" %>
-          <%= f.text_field :household_member_types_of_income[i], class: "form-control" %>
-        </div>
-
-        <div class="form-group col-md-2">
-          <%= f.label :household_member_proofs_of_income[i], "Proof of Income" %>
-          <%= f.text_field :household_member_proofs_of_income[i], class: "form-control" %>
-        </div>
-
-        <div class="form-group col-md-2">
-          <%= f.label :household_member_income_frequencies[i], "Income Frequency" %>
-          <%= f.text_field :household_member_income_frequencies[i], class: "form-control" %>
-        </div>
-
-        <div class="form-group col-md-3">
-          <%= f.label :household_member_income_amounts[i], "Amount of Income" %>
-          <%= f.text_field :household_member_income_amounts[i], class: "form-control" %>
-        </div>
-
-        <div class="form-group col-md-3">
-          <%= f.label :household_member_annual_incomes[i], "Annual Income" %>
-          <%= f.text_field :household_member_annual_incomes[i], class: "form-control" %>
+          <%= f.label :household_member_type_of_income, "Type of Income" %>
+          <%= f.text_field :household_member_type_of_income, multiple: true, class: "form-control" %>
         </div>
       </div>
 
-      <%= f.label :household_members_over_18_without_income[i], "Over 18 and Receiving No Income or Informal Income" %>
-      <%= f.select(:household_members_over_18_without_income[i], [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
+      <%= f.label :household_members_over_18_without_income, "Over 18 and Receiving No Income or Informal Income" %>
+      <% element_name = "household_members_over_18_without_income_%d" % [i] %>
+      <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
       <p>If you answered yes, the remaining fields for this household member are required. Otherwise, they are optional.</p>
 
-      <%= f.label :household_member_informal_incomes_last_month[i], "Total Informal Income Received Last Month" %>
-      <%= f.text_field :household_member_informal_incomes_last_month[i], class: "form-control" %>
+      <%= f.label :household_member_informal_incomes_last_month, "Total Informal Income Received Last Month" %>
+      <%= f.text_field :household_member_informal_incomes_last_month, multiple: true, class: "form-control" %>
 
       <div class="form-row">
         <p>Possible Informal Income Sources:</p>
@@ -222,13 +213,13 @@
           <li>Income from a rental property</li>
         </ul>
         <div class="form-group col-md-8">
-          <%= f.label :household_member_informal_income_sources[i], "Informal Income Source (See Examples Listed Above)" %>
-          <%= f.text_field :household_member_informal_income_sources[i], class: "form-control" %>
+          <%= f.label :household_member_informal_income_source, "Informal Income Source (See Examples Listed Above)" %>
+          <%= f.text_field :household_member_informal_income_source, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-4">
-          <%= f.label :household_members_in_high_school[i], "Currently in High School" %>
-          <%= f.select(:household_members_in_high_school[i], [["No", false], ["Yes", true]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+          <%= f.label :household_member_in_high_school, "Currently in High School" %>
+          <%= f.select(:household_member_in_high_school, [["No", false], ["Yes", true]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
         </div>
       </div>
     </div>
@@ -272,49 +263,27 @@
   <%= f.select(:utility_account_status, ["Current", "Past Due", "Shut Off 1-5 Days", "Shut Off 0-24 Hours", "Disconnected", "Bulk Fuel", "Bulk Fuel Out"], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
 
   <h3>Enter the information of each utility.</h3>
-  <% for i in 0..1 %>
-    <h4 class="accordion">Utility <% i + 1 %></h4>
+  <% for i in 0..2 %>
+    <h4 class="accordion">Utility <%= i + 1 %></h4>
     <div class="panel">
       <div class="form-row">
         <div class="form-group col-md-4">
-          <%= f.label :utility_names[i], "Name" %>
-          <%= f.text_field :utility_names[i], class: "form-control" %>
+          <%= f.label :utility_name, "Name" %>
+          <%= f.text_field :utility_name, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-2">
-          <%= f.label :utility_account_numbers[i], "Account Number" %>
-          <%= f.text_field :utility_account_numbers[i], class: "form-control" %>
+          <%= f.label :utility_account_number, "Account Number" %>
+          <%= f.text_field :utility_account_number, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-4">
-          <%= f.label :utility_account_names[i], "Name on Account" %>
-          <%= f.text_field :utility_account_names[i], class: "form-control" %>
-        </div>
-
-        <div class="form-group col-md-2">
-          <%= f.label :utility_vendor_amounts[i], "Vendor Amount" %>
-          <%= f.text_field :utility_vendor_amounts[i], class: "form-control" %>
+          <%= f.label :utility_account_names, "Name on Account" %>
+          <%= f.text_field :utility_account_names, multiple: true, class: "form-control" %>
         </div>
       </div>
     </div>
   <% end %>
-
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <%= f.label :utility_direct_amount, "Direct Amount" %>
-      <%= f.text_field :utility_direct_amount, class: "form-control" %>
-    </div>
-
-    <div class="form-group col-md-4">
-      <%= f.label :utility_total_auth_amount, "Total Auth Amount" %>
-      <%= f.text_field :utility_total_auth_amount, class: "form-control" %>
-    </div>
-
-    <div class="form-group col-md-4">
-      <%= f.label :utility_matrix_energy_type, "Matrix Energy Type" %>
-      <%= f.text_field :utility_matrix_energy_type, class: "form-control" %>
-    </div>
-  </div>
 
   <h2>COVID-19 Impact</h2>
 
