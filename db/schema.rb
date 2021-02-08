@@ -35,20 +35,6 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
     t.datetime "updated_at", null: false
     t.text "first_name"
     t.text "last_name"
-    t.text "household_member_names", default: [], array: true
-    t.date "household_member_birthdates", default: [], array: true
-    t.text "household_member_ssids", default: [], array: true
-    t.text "household_member_genders", default: [], array: true
-    t.boolean "household_members_who_are_hispanic", default: [], array: true
-    t.text "household_member_races", default: [], array: true
-    t.boolean "household_members_in_or_tribe", default: [], array: true
-    t.text "household_member_educations", default: [], array: true
-    t.boolean "household_members_with_disabilities", default: [], array: true
-    t.boolean "household_member_veterans", default: [], array: true
-    t.boolean "household_members_who_are_homebound", default: [], array: true
-    t.boolean "household_member_snaps", default: [], array: true
-    t.boolean "household_member_ohps", default: [], array: true
-    t.text "household_member_other_medical_insurances", default: [], array: true
     t.text "mailing_address_street"
     t.text "mailing_address_city"
     t.text "mailing_address_state"
@@ -65,9 +51,6 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
     t.text "utility_account_numbers", default: [], array: true
     t.text "utility_account_names", default: [], array: true
     t.boolean "household_members_over_18_without_income", default: [], array: true
-    t.text "household_member_informal_incomes_last_month", default: [], array: true
-    t.text "household_member_informal_income_sources", default: [], array: true
-    t.boolean "household_members_in_high_school", default: [], array: true
     t.text "how_necessities_are_paid"
     t.boolean "household_impacted_by_covid"
     t.boolean "covid_loss_of_employment"
@@ -85,7 +68,24 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
   create_table "household_member_incomes", force: :cascade do |t|
     t.integer "parent_application_id", null: false
     t.string "name"
+    t.date "dob"
+    t.string "ssn"
+    t.string "gender"
+    t.boolean "hispanic"
+    t.string "race"
+    t.boolean "or_tribe"
+    t.string "education"
+    t.boolean "disabled"
+    t.boolean "veteran"
+    t.boolean "homebound"
+    t.boolean "snap"
+    t.boolean "ohp"
+    t.string "other_insurance"
     t.string "income_type"
+    t.boolean "over_18_no_formal_income"
+    t.decimal "informal_income_amount"
+    t.string "informal_income_source"
+    t.boolean "in_high_school"
   end
 
   create_table "household_members", force: :cascade do |t|
