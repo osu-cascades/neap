@@ -8,7 +8,7 @@ class CreateHouseholdMemberTable < ActiveRecord::Migration[5.2]
       t.string :gender
       t.boolean :hispanic
       t.string :race
-      t.boolean :tribal_member
+      t.boolean :or_tribe
       t.string :education
       t.boolean :disabled
       t.boolean :veteran
@@ -16,6 +16,11 @@ class CreateHouseholdMemberTable < ActiveRecord::Migration[5.2]
       t.boolean :snap
       t.boolean :ohp
       t.string :other_insurance
+      t.string :income_type
+      t.boolean :over_18_no_formal_income
+      t.decimal :informal_income_amount
+      t.string :informal_income_source
+      t.boolean :in_high_school
     end
   end
 end

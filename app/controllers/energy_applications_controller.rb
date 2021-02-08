@@ -69,6 +69,34 @@ private
     return return_arr
   end
 
+  # add rows to subtable for household members
+  def store_household_member_data(energy_app, parameters)
+    # compile arrays
+    gender_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_gender", 8)
+    hispanic_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_hispanic", 8)
+    race_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_race", 8)
+    tribal_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_tribal", 8)
+    education_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_education", 8)
+    disabled_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_disabled", 8)
+    veteran_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_veteran", 8)
+    homebound_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_homebound", 8)
+    snap_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_snap", 8)
+    ohp_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_ohp", 8)
+    over_18_no_income_arr = retreive_dropdown_info(parameters[:energy_application], "household_members_over_18_without_income", 8)
+    names_arr = parameter_list[:energy_application][:household_member_name]
+    dob_arr = parameter_list[:energy_application][:household_member_birthdate]
+    ssn_arr = parameter_list[:energy_application][:household_member_ssid]
+    other_insurance_arr = parameter_list[:energy_application][:household_member_other_medical_insurances]
+    type_of_income_arr = parameter_list[:energy_application][:household_member_type_of_income]
+    income_last_month_arr = parameter_list[:energy_application][:household_member_informal_income_last_month]
+    income_source_arr = parameter_list[:energy_application][:household_member_informal_income_source]
+    in_high_school_arr = parameter_list[:energy_application][:utility_account_names]
+    for i in 0..7
+      if 
+      end
+    end
+  end
+
   def parse_dropdown_data_to_model_object(energy_app, parameters)
     energy_app.household_member_genders = retreive_dropdown_info(parameters[:energy_application], "household_member_gender", 8)
     energy_app.household_members_who_are_hispanic = retreive_dropdown_info(parameters[:energy_application], "household_member_hispanic", 8)
