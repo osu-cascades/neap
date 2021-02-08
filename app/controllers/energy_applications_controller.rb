@@ -54,14 +54,11 @@ private
       :household_members_in_or_tribe, :household_member_educations, :household_members_with_disabilities, \
       :household_member_veterans, :household_members_who_are_homebound, :household_member_snaps, \
       :household_member_ohps, :household_member_other_medical_insurances, :household_member_types_of_income, \
-      :household_member_proofs_of_income, :household_member_income_frequencies, \
-      :household_member_income_amounts, :household_member_annual_incomes, \
       :household_members_over_18_without_income, :household_member_informal_incomes_last_month, \
       :household_member_informal_income_sources, :household_members_in_high_school, :type_of_dwelling, \
       :residence_status, :types_of_heat, :primary_heat_source, :secondary_heat_source, :utility_name, \
-      :utility_account_status, :utility_names, :utility_account_numbers, :utility_account_names, \
-      :utility_vendor_amounts, :utility_direct_amount, :utility_total_auth_amount, \
-      :utility_matrix_energy_type, :household_impacted_by_covid, :covid_loss_of_employment, \
+      :utility_names, :utility_account_numbers, :utility_account_names, \
+      :household_impacted_by_covid, :covid_loss_of_employment, \
       :covid_vulnerable_population, :covid_reduction_of_hours, :covid_loss_of_childcare, \
       :covid_other_situation, :covid_expenses)
   end
@@ -89,15 +86,22 @@ private
     energy_app.household_members_who_are_homebound = retreive_dropdown_info(parameters[:energy_application], "household_member_homebound", 8)
     energy_app.household_member_snaps = retreive_dropdown_info(parameters[:energy_application], "household_member_snap", 8)
     energy_app.household_member_ohps = retreive_dropdown_info(parameters[:energy_application], "household_member_ohp", 8)
+    energy_app.household_members_over_18_without_income = retreive_dropdown_info(parameters[:energy_application], "household_members_over_18_without_income", 8)
   end
   
   def push_string_arrays_to_model_object(energy_app, parameter_list)
-    energy_app.household_member_names = params[:energy_application][:household_member_name]
-    energy_app.household_member_ssids = params[:energy_application][:household_member_ssids]
-    energy_app.household_member_other_medical_insurances = params[:energy_application][:household_member_other_medical_insurances]
-    energy_app.household_member_types_of_income = params[:energy_application][:household_member_types_of_income]
-    energy_app.utility_names = params[:energy_application][:utility_names]
-    energy_app.utility_account_numbers = params[:energy_application][:utility_account_numbers]
-    energy_app.utility_account_names = params[:energy_application][:utility_account_names]
+    energy_app.household_member_names = parameter_list[:energy_application][:household_member_name]
+    energy_app.household_member_birthdates = parameter_list[:energy_application][:household_member_birthdate]
+    energy_app.household_member_ssids = parameter_list[:energy_application][:household_member_ssid]
+    energy_app.household_member_other_medical_insurances = parameter_list[:energy_application][:household_member_other_medical_insurances]
+    energy_app.types_of_heat = parameter_list[:energy_application][:types_of_heat]
+    energy_app.household_member_types_of_income = parameter_list[:energy_application][:household_member_type_of_income]
+    energy_app.utility_names = parameter_list[:energy_application][:utility_]
+    energy_app.utility_account_numbers = parameter_list[:energy_application][:utility_account_number]
+    energy_app.utility_account_names = parameter_list[:energy_application][:utility_account_names]
+    energy_app.household_member_informal_incomes_last_month = parameter_list[:energy_application][:household_member_informal_income_last_month]
+    energy_app.household_member_informal_income_source = parameter_list[:energy_application][:household_member_informal_income_source]
+    energy_app.household_members_in_high_school = parameter_list[:energy_application][:utility_account_names]
+    
   end
 end

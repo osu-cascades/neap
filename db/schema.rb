@@ -61,18 +61,9 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
     t.text "secondary_heat_source"
     t.text "utility_company"
     t.text "household_member_types_of_income", default: [], array: true
-    t.text "household_member_proofs_of_income", default: [], array: true
-    t.text "household_member_income_frequencies", default: [], array: true
-    t.text "household_member_income_amounts", default: [], array: true
-    t.text "household_member_annual_incomes", default: [], array: true
-    t.text "utility_account_status"
     t.text "utility_names", default: [], array: true
     t.text "utility_account_numbers", default: [], array: true
     t.text "utility_account_names", default: [], array: true
-    t.text "utility_vendor_amounts", default: [], array: true
-    t.text "utility_direct_amount", default: [], array: true
-    t.text "utility_total_auth_amount", default: [], array: true
-    t.text "utility_matrix_energy_type", default: [], array: true
     t.boolean "household_members_over_18_without_income", default: [], array: true
     t.text "household_member_informal_incomes_last_month", default: [], array: true
     t.text "household_member_informal_income_sources", default: [], array: true
