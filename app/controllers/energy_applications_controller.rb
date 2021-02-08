@@ -26,22 +26,13 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
     parse_dropdown_data_to_model_object(@energy_application, params)
-    @energy_application.household_member_other_medical_insurances = params[:energy_application][:household_member_other_medical_insurances]
+    parse_dropdown_data_to_model_object(@energy_application, params)
     # verifying output
     @energy_application.save
-    puts @energy_application.household_member_genders
-    puts @energy_application.household_members_who_are_hispanic
-    puts @energy_application.household_member_races
-    puts @energy_application.household_members_in_or_tribe
-    puts @energy_application.household_member_educations
-    puts @energy_application.household_members_with_disabilities
-    puts @energy_application.household_member_veterans
-    puts @energy_application.household_members_who_are_homebound
-    puts @energy_application.household_member_snaps
-    puts @energy_application.household_member_ohps
     puts "Array test:"
     puts @energy_application.household_member_ohps
     puts @energy_application.household_member_other_medical_insurances
+    puts @energy_application
     Error
     redirect_to energy_applications_path
   end
@@ -100,13 +91,13 @@ private
     energy_app.household_member_ohps = retreive_dropdown_info(parameters[:energy_application], "household_member_ohp", 8)
   end
   
-  def push_string_arrays_to_model_object(parameter_list, element_name)
-    final_index = number_of_elements - 1
-    return_arr = []
-    for i in 0..final_index
-      name_string = "%s_%d" % [element_name, i]
-      return_arr.push(parameter_list[name_string])
-    end
-    return return_arr
+  def push_string_arrays_to_model_object(energy_app, parameter_list)
+    energy_app.household_member_names = params[:energy_application][:household_member_name]
+    energy_app.household_member_ssids = params[:energy_application][:household_member_ssids]
+    energy_app.household_member_other_medical_insurances = params[:energy_application][:household_member_other_medical_insurances]
+    energy_app.household_member_types_of_income = params[:energy_application][:household_member_types_of_income]
+    energy_app.utility_names = params[:energy_application][:utility_names]
+    energy_app.utility_account_numbers = params[:energy_application][:utility_account_numbers]
+    energy_app.utility_account_names = params[:energy_application][:utility_account_names]
   end
 end
