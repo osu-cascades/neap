@@ -49,13 +49,7 @@ private
     params.require(:energy_application).permit(:first_name, :last_name, :phone_number, :phone_type, \
       :address, :address2, :city, :county, :zip, :mailing_address_street, :mailing_address_city, \
       :mailing_address_county, :mailing_address_state, :mailing_address_zip, :how_necessities_are_paid, \
-      :household_type, :household_member_names, :household_member_birthdates, :household_member_ssids, \
-      :household_member_genders, :household_members_who_are_hispanic, :household_member_races, \
-      :household_members_in_or_tribe, :household_member_educations, :household_members_with_disabilities, \
-      :household_member_veterans, :household_members_who_are_homebound, :household_member_snaps, \
-      :household_member_ohps, :household_member_other_medical_insurances, :household_member_types_of_income, \
-      :household_members_over_18_without_income, :household_member_informal_incomes_last_month, \
-      :household_member_informal_income_sources, :household_members_in_high_school, :type_of_dwelling, \
+      :household_type, :type_of_dwelling, \
       :residence_status, :types_of_heat, :primary_heat_source, :secondary_heat_source, :utility_name, \
       :utility_names, :utility_account_numbers, :utility_account_names, \
       :household_impacted_by_covid, :covid_loss_of_employment, \
