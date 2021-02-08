@@ -17,6 +17,10 @@ class HouseholdMemberIncome < ActiveRecord::Migration[5.2]
       t.boolean :ohp
       t.string :other_insurance
       t.string :income_type
+      t.boolean :over_18_no_formal_income
+      t.decimal :informal_income_amount
+      t.string :informal_income_source
+      t.boolean :in_high_school
     end
   end
 end
