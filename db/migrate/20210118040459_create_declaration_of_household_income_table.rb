@@ -6,6 +6,6 @@ class CreateDeclarationOfHouseholdIncomeTable < ActiveRecord::Migration[5.2]
     #  t.money :informal_income_amount
     #  t.string :informal_income_source
     #  t.boolean :is_highschooler
-    end
+    #end
   end
 end
