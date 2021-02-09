@@ -92,7 +92,8 @@ private
     income_source_arr = parameter_list[:energy_application][:household_member_informal_income_source]
     in_high_school_arr = parameter_list[:energy_application][:utility_account_names]
     for i in 0..7
-      if 
+      if names_arr[i] != ""
+        
       end
     end
   end
