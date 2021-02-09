@@ -26,9 +26,8 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
     parse_dropdown_data_to_model_object(@energy_application, params)
-    store_household_member_data(@energy_application, params)
     @energy_application.save
-    store_household_member_data(energy_app, parameters)
+    store_household_member_data(@energy_application, params)
     Error
     redirect_to energy_applications_path
   end
@@ -89,7 +88,8 @@ private
     in_high_school_arr = parameters[:energy_application][:utility_account_names]
     for i in 0..7
       if names_arr[i] != ""
-        household_member = HouseholdMember.new(energy_app)
+        household_member = HouseholdMember.new(parent_application_id: energy_app.id)
+        household_member.parent_application_id = energy_app.id
         household_member.save
       end
     end
