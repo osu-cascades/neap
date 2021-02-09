@@ -88,11 +88,7 @@ private
     in_high_school_arr = parameters[:energy_application][:utility_account_names]
 
     # remove old records before inserting new ones
-    search_string = "parent_application_id = '%d'" % [energy_app.id] 
-    old_records = HouseholdMember.where(search_string)
-    for element in old_records
-      element.delete
-    end
+    remove_old_household_members(energy_app)
 
     # create new records
     for i in 0..7
@@ -111,6 +107,14 @@ private
         household_member.type_of_income = type_of_income_arr[i]
         household_member.save
       end
+    end
+  end
+
+  def remove_old_household_members(energy_app)
+    search_string = "parent_application_id = '%d'" % [energy_app.id] 
+    old_records = HouseholdMember.where(search_string)
+    for element in old_records
+      element.delete
     end
   end
 
