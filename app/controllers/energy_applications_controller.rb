@@ -27,12 +27,7 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     parse_dropdown_data_to_model_object(@energy_application, params)
     parse_dropdown_data_to_model_object(@energy_application, params)
-    # verifying output
     @energy_application.save
-    puts "Array test:"
-    puts @energy_application.household_member_ohps
-    puts @energy_application.household_member_other_medical_insurances
-    puts @energy_application
     Error
     redirect_to energy_applications_path
   end
