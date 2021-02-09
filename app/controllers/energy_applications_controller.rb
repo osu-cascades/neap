@@ -86,6 +86,15 @@ private
     income_last_month_arr = parameters[:energy_application][:household_member_informal_incomes_last_month]
     income_source_arr = parameters[:energy_application][:household_member_informal_income_source]
     in_high_school_arr = parameters[:energy_application][:utility_account_names]
+
+    # remove old records before inserting new ones
+    search_string = "parent_application_id = '%d'" % [energy_app.id] 
+    old_records = HouseholdMember.where(search_string)
+    for element in old_records
+      element.delete
+    end
+
+    # create new records
     for i in 0..7
       if names_arr[i] != ""
         household_member = HouseholdMember.new(parent_application_id: energy_app.id, 
