@@ -93,7 +93,8 @@ private
     in_high_school_arr = parameter_list[:energy_application][:utility_account_names]
     for i in 0..7
       if names_arr[i] != ""
-        
+        household_member = HouseholdMember.new(energy_app)
+        household_member.save
       end
     end
   end
