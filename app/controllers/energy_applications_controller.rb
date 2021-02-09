@@ -26,8 +26,9 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
     parse_dropdown_data_to_model_object(@energy_application, params)
-    parse_dropdown_data_to_model_object(@energy_application, params)
+    store_household_member_data(@energy_application, params)
     @energy_application.save
+    store_household_member_data(energy_app, parameters)
     Error
     redirect_to energy_applications_path
   end
@@ -78,14 +79,14 @@ private
     snap_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_snap", 8)
     ohp_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_ohp", 8)
     over_18_no_income_arr = retreive_dropdown_info(parameters[:energy_application], "household_members_over_18_without_income", 8)
-    names_arr = parameter_list[:energy_application][:household_member_name]
-    dob_arr = parameter_list[:energy_application][:household_member_birthdate]
-    ssn_arr = parameter_list[:energy_application][:household_member_ssid]
-    other_insurance_arr = parameter_list[:energy_application][:household_member_other_medical_insurances]
-    type_of_income_arr = parameter_list[:energy_application][:household_member_type_of_income]
-    income_last_month_arr = parameter_list[:energy_application][:household_member_informal_income_last_month]
-    income_source_arr = parameter_list[:energy_application][:household_member_informal_income_source]
-    in_high_school_arr = parameter_list[:energy_application][:utility_account_names]
+    names_arr = parameters[:energy_application][:household_member_name]
+    dob_arr = parameters[:energy_application][:household_member_birthdate]
+    ssn_arr = parameters[:energy_application][:household_member_ssid]
+    other_insurance_arr = parameters[:energy_application][:household_member_other_medical_insurances]
+    type_of_income_arr = parameters[:energy_application][:household_member_type_of_income]
+    income_last_month_arr = parameters[:energy_application][:household_member_informal_income_last_month]
+    income_source_arr = parameters[:energy_application][:household_member_informal_income_source]
+    in_high_school_arr = parameters[:energy_application][:utility_account_names]
     for i in 0..7
       if names_arr[i] != ""
         household_member = HouseholdMember.new(energy_app)
