@@ -79,7 +79,7 @@ private
     ohp_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_ohp", 8)
     over_18_no_income_arr = retreive_dropdown_info(parameters[:energy_application], "household_members_over_18_without_income", 8)
     names_arr = parameters[:energy_application][:household_member_name]
-    dob_arr = parameters[:energy_application][:household_member_birthdate]
+    dob_arr = parameters[:energy_application][:household_member_birthdates]
     ssn_arr = parameters[:energy_application][:household_member_ssid]
     other_insurance_arr = parameters[:energy_application][:household_member_other_medical_insurances]
     type_of_income_arr = parameters[:energy_application][:household_member_type_of_income]
@@ -88,8 +88,15 @@ private
     in_high_school_arr = parameters[:energy_application][:utility_account_names]
     for i in 0..7
       if names_arr[i] != ""
-        household_member = HouseholdMember.new(parent_application_id: energy_app.id)
-        household_member.parent_application_id = energy_app.id
+        household_member = HouseholdMember.new(parent_application_id: energy_app.id, 
+        name: names_arr[i], 
+        dob: dob_arr[i], 
+        ssn: ssn_arr[i], 
+        gender: gender_arr[i],
+        hispanic: hispanic_arr[i], race: race_arr[i], tribal_member: tribal_arr[i],
+        education: education_arr[i], disabled: disabled_arr[i], veteran: veteran_arr[i],
+        homebound: homebound_arr[i], snap: snap_arr[i], ohp: ohp_arr[i], 
+        other_insurance: other_insurance_arr[i])
         household_member.save
       end
     end
