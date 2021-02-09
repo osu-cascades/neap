@@ -89,11 +89,17 @@ private
     for i in 0..7
       if names_arr[i] != ""
         household_member = HouseholdMember.new(parent_application_id: energy_app.id, 
-        name: names_arr[i], dob: dob_arr[i], ssn: ssn_arr[i], gender: gender_arr[i],
-        hispanic: hispanic_arr[i], race: race_arr[i], tribal_member: tribal_arr[i],
-        education: education_arr[i], disabled: disabled_arr[i], veteran: veteran_arr[i],
-        homebound: homebound_arr[i], snap: snap_arr[i], ohp: ohp_arr[i], 
-        other_insurance: other_insurance_arr[i])
+          name: names_arr[i], dob: dob_arr[i], ssn: ssn_arr[i], gender: gender_arr[i],
+          hispanic: hispanic_arr[i], race: race_arr[i], tribal_member: tribal_arr[i],
+          education: education_arr[i], disabled: disabled_arr[i], veteran: veteran_arr[i],
+          homebound: homebound_arr[i], snap: snap_arr[i], ohp: ohp_arr[i], 
+          other_insurance: other_insurance_arr[i])
+        household_member.income_type = type_of_income_arr[i]
+        household_member.over_18_no_formal_income = over_18_no_income_arr[i]
+        household_member.informal_income_amount = income_last_month_arr[i]
+        household_member.informal_income_source = income_source_arr[i]
+        household_member.in_high_school = in_high_school_arr[i]
+        household_member.type_of_income = type_of_income_arr[i]
         household_member.save
       end
     end
