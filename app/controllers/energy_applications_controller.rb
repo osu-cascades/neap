@@ -89,10 +89,7 @@ private
     for i in 0..7
       if names_arr[i] != ""
         household_member = HouseholdMember.new(parent_application_id: energy_app.id, 
-        name: names_arr[i], 
-        dob: dob_arr[i], 
-        ssn: ssn_arr[i], 
-        gender: gender_arr[i],
+        name: names_arr[i], dob: dob_arr[i], ssn: ssn_arr[i], gender: gender_arr[i],
         hispanic: hispanic_arr[i], race: race_arr[i], tribal_member: tribal_arr[i],
         education: education_arr[i], disabled: disabled_arr[i], veteran: veteran_arr[i],
         homebound: homebound_arr[i], snap: snap_arr[i], ohp: ohp_arr[i], 
