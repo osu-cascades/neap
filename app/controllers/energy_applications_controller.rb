@@ -83,14 +83,14 @@ private
     ssn_arr = parameters[:energy_application][:household_member_ssid]
     other_insurance_arr = parameters[:energy_application][:household_member_other_medical_insurances]
     type_of_income_arr = parameters[:energy_application][:household_member_type_of_income]
-    income_last_month_arr = parameters[:energy_application][:household_member_informal_income_last_month]
+    income_last_month_arr = parameters[:energy_application][:household_member_informal_incomes_last_month]
     income_source_arr = parameters[:energy_application][:household_member_informal_income_source]
     in_high_school_arr = parameters[:energy_application][:utility_account_names]
     for i in 0..7
       if names_arr[i] != ""
         household_member = HouseholdMember.new(parent_application_id: energy_app.id, 
           name: names_arr[i], dob: dob_arr[i], ssn: ssn_arr[i], gender: gender_arr[i],
-          hispanic: hispanic_arr[i], race: race_arr[i], tribal_member: tribal_arr[i],
+          hispanic: hispanic_arr[i], race: race_arr[i], or_tribe: tribal_arr[i],
           education: education_arr[i], disabled: disabled_arr[i], veteran: veteran_arr[i],
           homebound: homebound_arr[i], snap: snap_arr[i], ohp: ohp_arr[i], 
           other_insurance: other_insurance_arr[i])

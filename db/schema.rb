@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "declaration_of_household_incomes", force: :cascade do |t|
-    t.integer "parent_application_id", null: false
-    t.string "member_name"
-    t.money "informal_income_amount", scale: 2
-    t.string "informal_income_source"
-    t.boolean "is_highschooler"
-  end
-
   create_table "energy_applications", force: :cascade do |t|
     t.bigint "user_id"
     t.string "phone_number"
@@ -73,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
     t.string "gender"
     t.boolean "hispanic"
     t.string "race"
-    t.boolean "tribal_member"
+    t.boolean "or_tribe"
     t.string "education"
     t.boolean "disabled"
     t.boolean "veteran"
@@ -81,6 +73,12 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
     t.boolean "snap"
     t.boolean "ohp"
     t.string "other_insurance"
+    t.string "income_type"
+    t.boolean "over_18_no_formal_income"
+    t.decimal "informal_income_amount"
+    t.string "informal_income_source"
+    t.boolean "in_high_school"
+    t.decimal "type_of_income"
   end
 
   create_table "users", force: :cascade do |t|
