@@ -21,7 +21,7 @@ class CreateHouseholdMemberTable < ActiveRecord::Migration[5.2]
       t.decimal :informal_income_amount
       t.string :informal_income_source
       t.boolean :in_high_school
-      t.decimal :type_of_income
+      t.string :type_of_income
     end
   end
 end

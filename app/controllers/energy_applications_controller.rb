@@ -85,7 +85,7 @@ private
     type_of_income_arr = parameters[:energy_application][:household_member_type_of_income]
     income_last_month_arr = parameters[:energy_application][:household_member_informal_incomes_last_month]
     income_source_arr = parameters[:energy_application][:household_member_informal_income_source]
-    in_high_school_arr = parameters[:energy_application][:utility_account_names]
+    in_high_school_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_in_high_school", 8)
 
     # remove old records before inserting new ones
     remove_old_household_members(energy_app)

@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_095822) do
     t.decimal "informal_income_amount"
     t.string "informal_income_source"
     t.boolean "in_high_school"
-    t.decimal "type_of_income"
+    t.string "type_of_income"
   end
 
   create_table "users", force: :cascade do |t|

@@ -218,8 +218,9 @@
         </div>
 
         <div class="form-group col-md-4">
+          <% element_name = "household_member_in_high_school_%d" % [i] %>
           <%= f.label :household_member_in_high_school, "Currently in High School" %>
-          <%= f.select(:household_member_in_high_school, [["No", false], ["Yes", true]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
+          <%= f.select(element_name, [["No", false], ["Yes", true]], { :class => "form-control form-select" }) %>
         </div>
       </div>
     </div>
