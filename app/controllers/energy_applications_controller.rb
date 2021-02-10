@@ -101,7 +101,7 @@ private
           other_insurance: other_insurance_arr[i])
         household_member.income_type = type_of_income_arr[i]
         household_member.over_18_no_formal_income = over_18_no_income_arr[i]
-        household_member.informal_income_amount = income_last_month_arr[i]
+        household_member.informal_income_amount = income_last_month_arr[i].to_d
         household_member.informal_income_source = income_source_arr[i]
         household_member.in_high_school = in_high_school_arr[i]
         household_member.type_of_income = type_of_income_arr[i]
@@ -111,11 +111,15 @@ private
   end
 
   def remove_old_household_members(energy_app)
-    search_string = "parent_application_id = '%d'" % [energy_app.id] 
-    old_records = HouseholdMember.where(search_string)
+    old_records = get_subtables(energy_app)
     for element in old_records
       element.delete
     end
+  end
+
+  def get_subtables(energy_app)
+    search_string = "parent_application_id = '%d'" % [energy_app.id] 
+    return HouseholdMember.where(search_string)
   end
 
   def parse_dropdown_data_to_model_object(energy_app, parameters)
