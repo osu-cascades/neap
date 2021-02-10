@@ -28,7 +28,6 @@ class EnergyApplicationsController < ApplicationController
     parse_dropdown_data_to_model_object(@energy_application, params)
     @energy_application.save
     store_household_member_data(@energy_application, params)
-    Error
     redirect_to energy_applications_path
   end
 
