@@ -121,6 +121,18 @@ private
     return HouseholdMember.where(search_string)
   end
 
+  def remove_old_utilites(energy_app)
+    old_records = get_utilities(energy_app)
+    for element in old_records
+      element.delete
+    end
+  end
+
+  def get_utilities(energy_app)
+    search_string = "parent_application_id = '%d'" % [energy_app.id] 
+    return UtilityRecord.where(search_string)
+  end
+
   def parse_dropdown_data_to_model_object(energy_app, parameters)
     #energy_app.household_member_genders = retreive_dropdown_info(parameters[:energy_application], "household_member_gender", 8)
     #energy_app.household_members_who_are_hispanic = retreive_dropdown_info(parameters[:energy_application], "household_member_hispanic", 8)
