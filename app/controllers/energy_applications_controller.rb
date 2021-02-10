@@ -25,7 +25,6 @@ class EnergyApplicationsController < ApplicationController
   def create
     @energy_application = EnergyApplication.new(energy_application_params)
     @energy_application.user_id = current_user[:id]
-    parse_dropdown_data_to_model_object(@energy_application, params)
     @energy_application.save
     store_subtable_data(@energy_application, params)
     redirect_to energy_applications_path
@@ -144,20 +143,6 @@ private
   def get_utilities(energy_app)
     search_string = "parent_application_id = '%d'" % [energy_app.id] 
     return UtilityRecord.where(search_string)
-  end
-
-  def parse_dropdown_data_to_model_object(energy_app, parameters)
-    #energy_app.household_member_genders = retreive_dropdown_info(parameters[:energy_application], "household_member_gender", 8)
-    #energy_app.household_members_who_are_hispanic = retreive_dropdown_info(parameters[:energy_application], "household_member_hispanic", 8)
-    #energy_app.household_member_races = retreive_dropdown_info(parameters[:energy_application], "household_member_race", 8)
-    #energy_app.household_members_in_or_tribe = retreive_dropdown_info(parameters[:energy_application], "household_member_tribal", 8)
-    #energy_app.household_member_educations = retreive_dropdown_info(parameters[:energy_application], "household_member_education", 8)
-    #energy_app.household_members_with_disabilities = retreive_dropdown_info(parameters[:energy_application], "household_member_disabled", 8)
-    #energy_app.household_member_veterans = retreive_dropdown_info(parameters[:energy_application], "household_member_veteran", 8)
-    #energy_app.household_members_who_are_homebound = retreive_dropdown_info(parameters[:energy_application], "household_member_homebound", 8)
-    #energy_app.household_member_snaps = retreive_dropdown_info(parameters[:energy_application], "household_member_snap", 8)
-    #energy_app.household_member_ohps = retreive_dropdown_info(parameters[:energy_application], "household_member_ohp", 8)
-    #energy_app.household_members_over_18_without_income = retreive_dropdown_info(parameters[:energy_application], "household_members_over_18_without_income", 8)
   end
   
   def push_string_arrays_to_model_object(energy_app, parameter_list)
