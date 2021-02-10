@@ -28,6 +28,7 @@ class EnergyApplicationsController < ApplicationController
     parse_dropdown_data_to_model_object(@energy_application, params)
     @energy_application.save
     store_household_member_data(@energy_application, params)
+    Error
     redirect_to energy_applications_path
   end
 
@@ -85,9 +86,13 @@ private
     income_last_month_arr = parameters[:energy_application][:household_member_informal_incomes_last_month]
     income_source_arr = parameters[:energy_application][:household_member_informal_income_source]
     in_high_school_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_in_high_school", 8)
+    utility_name_arr = parameters[:energy_application][:utility_name]
+    utility_account_number_arr = parameters[:energy_application][:utility_account_number]
+    utility_account_holder_name_arr = parameters[:energy_application][:utility_account_names]
 
     # remove old records before inserting new ones
     remove_old_household_members(energy_app)
+    remove_old_utilites(energy_app)
 
     # create new records
     for i in 0..7
@@ -105,6 +110,15 @@ private
         household_member.in_high_school = in_high_school_arr[i]
         household_member.type_of_income = type_of_income_arr[i]
         household_member.save
+      end
+    end
+    for i in 0..2
+      if utility_name_arr[i] != ""
+        utility_item = UtilityRecord.new(parent_application_id: energy_app.id,
+          utility_name: utility_name_arr[i],
+          account_number: utility_account_number_arr[i],
+          accountholder_name: utility_account_holder_name_arr[i])
+        utility_item.save
       end
     end
   end
