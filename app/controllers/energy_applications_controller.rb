@@ -110,13 +110,13 @@ private
   end
 
   def remove_old_household_members(energy_app)
-    old_records = get_subtables(energy_app)
+    old_records = get_household_members(energy_app)
     for element in old_records
       element.delete
     end
   end
 
-  def get_subtables(energy_app)
+  def get_household_members(energy_app)
     search_string = "parent_application_id = '%d'" % [energy_app.id] 
     return HouseholdMember.where(search_string)
   end
