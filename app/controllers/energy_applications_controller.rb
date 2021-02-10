@@ -27,8 +27,7 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     parse_dropdown_data_to_model_object(@energy_application, params)
     @energy_application.save
-    store_household_member_data(@energy_application, params)
-    Error
+    store_subtable_data(@energy_application, params)
     redirect_to energy_applications_path
   end
 
@@ -65,7 +64,7 @@ private
   end
 
   # add rows to subtable for household members
-  def store_household_member_data(energy_app, parameters)
+  def store_subtable_data(energy_app, parameters)
     # compile arrays
     gender_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_gender", 8)
     hispanic_arr = retreive_dropdown_info(parameters[:energy_application], "household_member_hispanic", 8)
