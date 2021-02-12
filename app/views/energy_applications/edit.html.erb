@@ -50,7 +50,7 @@
 
     <div class="form-group col-md-4">
       <%= f.label :county %>
-      <%= f.text_field :county, class: "form-control" %>
+      <%= f.select(:county, [["Crook County", "Crook"], ["Deschutes County", "Deschutes"], ["Jefferson County", "Jefferson"], ["Native American reservations in Wasco County", "Native American reservations in Wasco"]], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
     </div>
 
     <div class="form-group col-md-2">
