@@ -1,0 +1,2 @@
+class UtilityRecord < ApplicationRecord
+end
