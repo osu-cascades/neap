@@ -27,4 +27,12 @@
       document.getElementById("<%= "energy_application_household_member_in_high_school_%d" % [i] %>").value = "<%= @household_members[i].in_high_school %>"
     <% end %>
   <% end %>
+  <% if @utilities != nil %>
+    <% member_length = @utilities.length() - 1 %>
+    <% for i in 0..member_length %>
+      document.getElementById("<%= "utility_name_%d" % [i] %>").value = "<%= @utilities[i].utility_name %>"
+      document.getElementById("<%= "utility_account_number_%d" % [i] %>").value = "<%= @utilities[i].account_number %>"
+      document.getElementById("<%= "utility_account_name_%d" % [i] %>").value = "<%= @utilities[i].accountholder_name %>"
+    <% end %>
+  <% end %>
 </script>
