@@ -10,8 +10,9 @@
     household_member_insurance_arr = getElementsByName('household_member_other_medical_insurance')
     household_member_income_type_arr = getElementsByName('household_member_type_of_income')
     household_member_income_source_arr = getElementsByName('household_member_informal_income_source')
-    <%  for element in @household_members %>
-
+    <% member_length = @household_members.length() - 1 %>
+    <%  for i in 0..member_length %>
+      <% #(:household_member_name_arr)[i] = @household_members[i].name %>
     <%  end %>
   <% end %>
 </script>

@@ -97,18 +97,21 @@
     <div class="panel">
       <div class="form-row">
         <div class="form-group col-md-4">
+          <% element_id = "household_member_name_%d" % [i] %>
           <%= f.label :household_member_name, "Full Legal Name", multiple: true %>
-          <%= f.text_field :household_member_name, multiple: true, class: "form-control" %>
+          <%= f.text_field :household_member_name, id: element_id, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-2">
+          <% element_id = "household_member_dob_%d" % [i] %>
           <%= f.label :household_member_birthdate, "Birthdate" %>
-          <%= f.date_field :household_member_birthdates, multiple: true, class: "form-control" %>
+          <%= f.date_field :household_member_birthdates, id: element_id, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-2">
+          <% element_id = "household_member_ssn_%d" % [i] %>
           <%= f.label :household_member_ssid, "SSN/SSID" %>
-          <%= f.text_field :household_member_ssid, multiple: true, class: "form-control" %>
+          <%= f.text_field :household_member_ssid, id: element_id, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-2">
@@ -176,15 +179,17 @@
         </div>
 
         <div class="form-group col-md-4">
+          <% element_id = "household_member_other_insurance_%d" % [i] %>
           <%= f.label :household_member_other_insurance, "Other Medical Insurance" %>
-          <%= f.text_field :household_member_other_medical_insurances, multiple: true, class: "form-control" %>
+          <%= f.text_field :household_member_other_medical_insurances, id = element_id, multiple: true, class: "form-control" %>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-2">
+          <% element_id = "household_member_other_income_%d" % [i] %>
           <%= f.label :household_member_type_of_income, "Type of Income" %>
-          <%= f.text_field :household_member_type_of_income, multiple: true, class: "form-control" %>
+          <%= f.text_field :household_member_type_of_income, id: element_id, multiple: true, class: "form-control" %>
         </div>
       </div>
 
@@ -193,8 +198,9 @@
       <%= f.select(element_name, [["No", false], ["Yes", true]], {}, { :class => "form-control form-select" }) %>
       <p>If you answered yes, the remaining fields for this household member are required. Otherwise, they are optional.</p>
 
+      <% element_id = "household_member_total_informal_%d" % [i] %>
       <%= f.label :household_member_informal_incomes_last_month, "Total Informal Income Received Last Month" %>
-      <%= f.text_field :household_member_informal_incomes_last_month, multiple: true, class: "form-control" %>
+      <%= f.text_field :household_member_informal_incomes_last_month, id: element_id, multiple: true, class: "form-control" %>
 
       <div class="form-row">
         <p>Possible Informal Income Sources:</p>
@@ -209,8 +215,9 @@
           <li>Income from a rental property</li>
         </ul>
         <div class="form-group col-md-8">
+          <% element_id = "household_member_informal_source_%d" % [i] %>
           <%= f.label :household_member_informal_income_source, "Informal Income Source (See Examples Listed Above)" %>
-          <%= f.text_field :household_member_informal_income_source, multiple: true, class: "form-control" %>
+          <%= f.text_field :household_member_informal_income_source, id: element_id, multiple: true, class: "form-control" %>
         </div>
 
         <div class="form-group col-md-4">
