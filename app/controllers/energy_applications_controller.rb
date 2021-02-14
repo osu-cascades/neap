@@ -42,7 +42,7 @@ private
     params.require(:energy_application).permit(:first_name, :last_name, :phone_number, :phone_type, \
       :address, :address2, :city, :county, :zip, :mailing_address_street, :mailing_address_city, \
       :mailing_address_county, :mailing_address_state, :mailing_address_zip, :how_necessities_are_paid, \
-      :household_type, :type_of_dwelling, :email_address, \
+      :household_type, :type_of_dwelling, :email_address, :utility_company, \
       :residence_status, :types_of_heat, :primary_heat_source, :secondary_heat_source, :utility_name, \
       :utility_names, :utility_account_numbers, :utility_account_names, \
       :household_impacted_by_covid, :covid_loss_of_employment, \
