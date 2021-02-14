@@ -260,9 +260,6 @@
 
   <h2>Utility</h2>
 
-  <%= f.label :utility_account_status, "Account Status" %>
-  <%= f.select(:utility_account_status, ["Current", "Past Due", "Shut Off 1-5 Days", "Shut Off 0-24 Hours", "Disconnected", "Bulk Fuel", "Bulk Fuel Out"], { :prompt => "Select Answer" }, { :class => "form-control form-select" }) %>
-
   <h3>Enter the information of each utility.</h3>
   <% for i in 0..2 %>
     <h4 class="accordion">Utility <%= i + 1 %></h4>
