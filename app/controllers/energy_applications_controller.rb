@@ -32,6 +32,8 @@ class EnergyApplicationsController < ApplicationController
 
   def destroy
     @energy_application = EnergyApplication.find(params[:id])
+    remove_old_household_members(@energy_application)
+    remove_old_utilites(@energy_application)
     @energy_application.destroy
     redirect_to energy_applications_url
   end
