@@ -4,15 +4,11 @@
 
 <script>
   <% if @household_members != nil %>
-    <%  # get collections of text fields, excluding SSN %>
-    household_member_name_arr = getElementsByName('household_member_name')
-    household_member_dob_arr = getElementsByName('household_member_birthdates')
-    household_member_insurance_arr = getElementsByName('household_member_other_medical_insurance')
-    household_member_income_type_arr = getElementsByName('household_member_type_of_income')
-    household_member_income_source_arr = getElementsByName('household_member_informal_income_source')
     <% member_length = @household_members.length() - 1 %>
     <%  for i in 0..member_length %>
-      <% #(:household_member_name_arr)[i] = @household_members[i].name %>
+      <% element_id = "household_member_name_%d" % [i] %>
+      document.getElementById("<%= element_id %>").value = "<%= @household_members[i].name %>"
+      <% puts "Name = %s" % [@household_members[i].name] %>
     <%  end %>
   <% end %>
 </script>
