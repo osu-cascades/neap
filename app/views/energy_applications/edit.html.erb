@@ -7,6 +7,12 @@
     <% member_length = @household_members.length() - 1 %>
     <% for i in 0..member_length %>
       document.getElementById("<%= "household_member_name_%d" % [i] %>").value = "<%= @household_members[i].name %>"
+      document.getElementById("<%= "household_member_dob_%d" % [i] %>").value = "<%= @household_members[i].dob %>"
+      document.getElementById("<%= "household_member_ssn_%d" % [i] %>").value = "<%= @household_members[i].ssn %>"
+      document.getElementById("<%= "household_member_other_insurance_%d" % [i] %>").value = "<%= @household_members[i].other_insurance %>"
+      document.getElementById("<%= "household_member_other_income_%d" % [i] %>").value = "<%= @household_members[i].type_of_income %>"
+      document.getElementById("<%= "household_member_total_informal_%d" % [i] %>").value = "<%= @household_members[i].informal_income_amount %>"
+      document.getElementById("<%= "household_member_informal_source_%d" % [i] %>").value = "<%= @household_members[i].informal_income_source %>"
     <% end %>
   <% end %>
 </script>
