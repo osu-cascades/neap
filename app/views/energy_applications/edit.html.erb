@@ -5,10 +5,8 @@
 <script>
   <% if @household_members != nil %>
     <% member_length = @household_members.length() - 1 %>
-    <%  for i in 0..member_length %>
-      <% element_id = "household_member_name_%d" % [i] %>
-      document.getElementById("<%= element_id %>").value = "<%= @household_members[i].name %>"
-      <% puts "Name = %s" % [@household_members[i].name] %>
-    <%  end %>
+    <% for i in 0..member_length %>
+      document.getElementById("<%= "household_member_name_%d" % [i] %>").value = "<%= @household_members[i].name %>"
+    <% end %>
   <% end %>
 </script>
