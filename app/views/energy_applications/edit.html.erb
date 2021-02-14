@@ -2,8 +2,16 @@
 
 <%= render "form", energy_application: @energy_application %>
 
-<% if @household_members ! = nil %>
-<%  for element in @household_members %>
+<script>
+  <% if @household_members != nil %>
+    <%  # get collections of text fields, excluding SSN %>
+    household_member_name_arr = getElementsByName('household_member_name')
+    household_member_dob_arr = getElementsByName('household_member_birthdates')
+    household_member_insurance_arr = getElementsByName('household_member_other_medical_insurance')
+    household_member_income_type_arr = getElementsByName('household_member_type_of_income')
+    household_member_income_source_arr = getElementsByName('household_member_informal_income_source')
+    <%  for element in @household_members %>
 
-<%  end %>
-<% end %>
+    <%  end %>
+  <% end %>
+</script>
