@@ -10,6 +10,8 @@ class EnergyApplicationsController < ApplicationController
 
   def edit
     @energy_application = EnergyApplication.find(params[:id])
+    @household_members = get_household_members(@energy_application)
+    @utilities = get_get_utilities(@energy_application)
   end
 
   def update
