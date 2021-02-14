@@ -13,6 +13,18 @@
       document.getElementById("<%= "household_member_other_income_%d" % [i] %>").value = "<%= @household_members[i].type_of_income %>"
       document.getElementById("<%= "household_member_total_informal_%d" % [i] %>").value = "<%= @household_members[i].informal_income_amount %>"
       document.getElementById("<%= "household_member_informal_source_%d" % [i] %>").value = "<%= @household_members[i].informal_income_source %>"
+      document.getElementById("<%= "energy_application_household_member_gender_%d" % [i] %>").value = "<%= @household_members[i].gender %>"
+      document.getElementById("<%= "energy_application_household_member_hispanic_%d" % [i] %>").value = "<%= @household_members[i].hispanic %>"
+      document.getElementById("<%= "energy_application_household_member_race_%d" % [i] %>").value = "<%= @household_members[i].race %>"
+      document.getElementById("<%= "energy_application_household_member_tribal_%d" % [i] %>").value = "<%= @household_members[i].or_tribe %>"
+      document.getElementById("<%= "energy_application_household_member_education_%d" % [i] %>").value = "<%= @household_members[i].education %>"
+      document.getElementById("<%= "energy_application_household_member_disabled_%d" % [i] %>").value = "<%= @household_members[i].disabled %>"
+      document.getElementById("<%= "energy_application_household_member_veteran_%d" % [i] %>").value = "<%= @household_members[i].veteran %>"
+      document.getElementById("<%= "energy_application_household_member_homebound_%d" % [i] %>").value = "<%= @household_members[i].homebound %>"
+      document.getElementById("<%= "energy_application_household_member_snap_%d" % [i] %>").value = "<%= @household_members[i].snap %>"
+      document.getElementById("<%= "energy_application_household_member_ohp_%d" % [i] %>").value = "<%= @household_members[i].ohp %>"
+      document.getElementById("<%= "energy_application_household_members_over_18_without_income_%d" % [i] %>").value = "<%= @household_members[i].over_18_no_formal_income %>"
+      document.getElementById("<%= "energy_application_household_member_in_high_school_%d" % [i] %>").value = "<%= @household_members[i].in_high_school %>"
     <% end %>
   <% end %>
 </script>
