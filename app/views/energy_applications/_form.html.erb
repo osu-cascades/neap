@@ -251,7 +251,6 @@
   <br><%= f.check_box(:heat_type_solar, checked_value: "S") %> <%= f.label("Solar") %> </br>
   <br><%= f.check_box(:heat_type_pellets, checked_value: "P") %> <%= f.label("Pellets") %> </br>
   <br><%= f.check_box(:heat_type_wood, checked_value: "W") %> <%= f.label("Wood") %> </br>
-  <%= f.select(:types_of_heat, [["Electric", "E"], ["Natural Gas", "N"], ["Propane", "L"], ["Oil", "O"], ["Solar", "S"], ["Pellets", "P"], ["Wood", "W"]], {}, { :multiple => true, :class => "form-control" }) %>
 
   <div class="form-row">
     <div class="form-group col-md-6">
