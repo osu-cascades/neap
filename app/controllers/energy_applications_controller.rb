@@ -124,6 +124,7 @@ private
         utility_item.save
       end
     end
+    add_heat_types_to_energy_application(energy_app, parameters)
   end
 
   def remove_old_household_members(energy_app)
@@ -163,6 +164,12 @@ private
     energy_app.household_member_informal_incomes_last_month = parameter_list[:energy_application][:household_member_informal_income_last_month]
     energy_app.household_member_informal_income_source = parameter_list[:energy_application][:household_member_informal_income_source]
     energy_app.household_members_in_high_school = parameter_list[:energy_application][:utility_account_names]
-    
   end
+
+  def add_heat_types_to_energy_application(energy_app, parameter_list)
+    if parameter_list[:energy_application][:heat_type_electric] == "1"
+      puts "Trigger"
+    end
+  end
+
 end
