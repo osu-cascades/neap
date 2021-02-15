@@ -29,7 +29,6 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     @energy_application.save
     store_subtable_data(@energy_application, params)
-    Error
     redirect_to energy_applications_path
   end
 

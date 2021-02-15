@@ -36,7 +36,7 @@
     <% end %>
   <% end %>
   <% # heat source checkboxes %>
-  <% if @energy_application.types_of_heat.include?("E")
-    <%= document.getElementById("energy_application_heat_type_electric").selected = true %>
+  <% if @energy_application.types_of_heat.include?("E") %>
+    document.getElementById("energy_application_heat_type_electric").checked = true
   <% end %>
 </script>
