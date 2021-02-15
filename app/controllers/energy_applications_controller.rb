@@ -124,7 +124,7 @@ private
         utility_item.save
       end
     end
-    add_heat_types_to_energy_application(energy_app, parameters)
+    update_heat_types_to_energy_application(energy_app, parameters)
   end
 
   def remove_old_household_members(energy_app)
@@ -166,10 +166,30 @@ private
     energy_app.household_members_in_high_school = parameter_list[:energy_application][:utility_account_names]
   end
 
-  def add_heat_types_to_energy_application(energy_app, parameter_list)
+  def update_heat_types_to_energy_application(energy_app, parameter_list)
+    energy_app.types_of_heat = []
     if parameter_list[:energy_application][:heat_type_electric] == "1"
-      puts "Trigger"
+      energy_app.types_of_heat.push("E")
     end
+    if parameter_list[:energy_application][:heat_type_natural_gas] == "1"
+      energy_app.types_of_heat.push("N")
+    end
+    if parameter_list[:energy_application][:heat_type_propane] == "1"
+      energy_app.types_of_heat.push("L")
+    end
+    if parameter_list[:energy_application][:heat_type_oil] == "1"
+      energy_app.types_of_heat.push("O")
+    end
+    if parameter_list[:energy_application][:heat_type_solar] == "1"
+      energy_app.types_of_heat.push("S")
+    end
+    if parameter_list[:energy_application][:heat_type_pellets] == "1"
+      energy_app.types_of_heat.push("P")
+    end
+    if parameter_list[:energy_application][:heat_type_wood] == "1"
+      energy_app.types_of_heat.push("W")
+    end
+    energy_app.save
   end
 
 end
