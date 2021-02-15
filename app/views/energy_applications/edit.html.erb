@@ -39,4 +39,22 @@
   <% if @energy_application.types_of_heat.include?("E") %>
     document.getElementById("energy_application_heat_type_electric").checked = true
   <% end %>
+  <% if @energy_application.types_of_heat.include?("N") %>
+    document.getElementById("energy_application_heat_type_natural_gas").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("L") %>
+    document.getElementById("energy_application_heat_type_propane").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("O") %>
+    document.getElementById("energy_application_heat_type_oil").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("S") %>
+    document.getElementById("energy_application_heat_type_solar").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("P") %>
+    document.getElementById("energy_application_heat_type_pellets").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("W") %>
+    document.getElementById("energy_application_heat_type_wood").checked = true
+  <% end %>
 </script>
