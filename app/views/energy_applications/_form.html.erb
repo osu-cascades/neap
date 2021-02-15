@@ -244,6 +244,7 @@
   </div>
 
   <%= f.label :types_of_heat, "Types of Heat (Hold Ctrl and Select All That Apply)" %>
+  <br><%= f.check_box(:heat_type_electric, checked_value: "E") %> <%= f.label("Electric") %> </br>
   <%= f.select(:types_of_heat, [["Electric", "E"], ["Natural Gas", "N"], ["Propane", "L"], ["Oil", "O"], ["Solar", "S"], ["Pellets", "P"], ["Wood", "W"]], {}, { :multiple => true, :class => "form-control" }) %>
 
   <div class="form-row">
