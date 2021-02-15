@@ -35,4 +35,8 @@
       document.getElementById("<%= "utility_account_name_%d" % [i] %>").value = "<%= @utilities[i].accountholder_name %>"
     <% end %>
   <% end %>
+  <% # heat source checkboxes %>
+  <% if @energy_application.types_of_heat.include?("E")
+    <%= document.getElementById("energy_application_heat_type_electric").selected = true %>
+  <% end %>
 </script>
