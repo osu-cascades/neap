@@ -17,6 +17,7 @@ class EnergyApplicationsController < ApplicationController
   def update
     @energy_application = EnergyApplication.find(params[:id])
     @energy_application.update(energy_application_params)
+    store_subtable_data(@energy_application, params)
     redirect_to energy_application_path
   end
 
