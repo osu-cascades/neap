@@ -329,10 +329,14 @@
 
   <br />
 
+  <div class="form-group">
+    <%= f.label :submission_date, "Application is Ready to Submit" %>
+    <%= f.select(:submission_date, [["No", nil], ["Yes", Time.current.to_datetime]], {}, { :class => "form-control form-select" }) %>
+  </div>
+
   <div class="btn-group">
     <%= link_to "Cancel", energy_applications_path, class: "btn btn-outline-secondary" %>
     <%= f.submit "Save and Exit", class: "btn btn-outline-primary" %>
-    <%= f.submit "Save and Continue", class: "btn btn-outline-primary" %>
   </div>
 
 <% end %>
@@ -352,5 +356,4 @@
       }
     });
   }
-
 </script>

@@ -1,7 +1,19 @@
 <h1>Energy Applications</h1>
 
+<h2>Submitted Applications</h2>
+
 <% @energy_applications.each do |energy_application| %>
-  <p><%= link_to energy_application, energy_application_path(energy_application), class: "btn btn-outline-primary" %></p>
+  <% if energy_application.submission_date != nil %>
+    <p><%= link_to energy_application, energy_application_path(energy_application), class: "btn btn-outline-primary" %></p>
+  <% end %>
+<% end %>
+
+<h2>Drafts</h2>
+
+<% @energy_applications.each do |energy_application| %>
+  <% if energy_application.submission_date == nil %>
+    <p><%= link_to energy_application, energy_application_path(energy_application), class: "btn btn-outline-primary" %></p>
+  <% end %>
 <% end %>
 
 <div class="btn-group">

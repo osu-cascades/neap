@@ -52,7 +52,7 @@ private
       :utility_names, :utility_account_numbers, :utility_account_names, \
       :household_impacted_by_covid, :covid_loss_of_employment, \
       :covid_vulnerable_population, :covid_reduction_of_hours, :covid_loss_of_childcare, \
-      :covid_other_situation, :covid_expenses)
+      :covid_other_situation, :covid_expenses, :submission_date)
   end
 
   # as we cannot use the multiple flag on dropdowns, we have to process their data individually,
@@ -100,11 +100,11 @@ private
     # create new records
     for i in 0..7
       if names_arr[i] != ""
-        household_member = HouseholdMember.new(parent_application_id: energy_app.id, 
+        household_member = HouseholdMember.new(parent_application_id: energy_app.id,
           name: names_arr[i], dob: dob_arr[i], ssn: ssn_arr[i], gender: gender_arr[i],
           hispanic: hispanic_arr[i], race: race_arr[i], or_tribe: tribal_arr[i],
           education: education_arr[i], disabled: disabled_arr[i], veteran: veteran_arr[i],
-          homebound: homebound_arr[i], snap: snap_arr[i], ohp: ohp_arr[i], 
+          homebound: homebound_arr[i], snap: snap_arr[i], ohp: ohp_arr[i],
           other_insurance: other_insurance_arr[i])
         household_member.income_type = type_of_income_arr[i]
         household_member.over_18_no_formal_income = over_18_no_income_arr[i]
@@ -135,7 +135,7 @@ private
   end
 
   def get_household_members(energy_app)
-    search_string = "parent_application_id = '%d'" % [energy_app.id] 
+    search_string = "parent_application_id = '%d'" % [energy_app.id]
     return HouseholdMember.where(search_string)
   end
 
@@ -147,10 +147,10 @@ private
   end
 
   def get_utilities(energy_app)
-    search_string = "parent_application_id = '%d'" % [energy_app.id] 
+    search_string = "parent_application_id = '%d'" % [energy_app.id]
     return UtilityRecord.where(search_string)
   end
-  
+
   def push_string_arrays_to_model_object(energy_app, parameter_list)
     energy_app.household_member_names = parameter_list[:energy_application][:household_member_name]
     energy_app.household_member_birthdates = parameter_list[:energy_application][:household_member_birthdate]
