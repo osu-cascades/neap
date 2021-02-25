@@ -22,7 +22,13 @@ class EnergyApplicationsController < ApplicationController
   end
 
   def new
-    get_previous_energy_app()
+    @previous_energy_application = get_previous_energy_app()
+    @previous_household_members = nil
+    @previous_utilities = nil
+    if @previous_energy_application != nil
+      @previous_household_memebrs = get_household_members(@previous_energy_application)
+      @previous_utilities = get_utilities(@previous_energy_application)
+    end
     @energy_application = EnergyApplication.new
   end
 
