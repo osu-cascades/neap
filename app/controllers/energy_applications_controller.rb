@@ -153,12 +153,8 @@ private
   end
 
   def get_previous_energy_app()
-    search_string = "user_id = '%d'" % [current_user[:id]]
-    energy_app_array = EnergyApplication.where(search_string)
-    num_found = 0
-    if energy_app_array != nil
-      num_found = energy_app_array.length()
-    end
+    search_string = "user_id = '%d' AND submission_date IS NOT NONE ORDER BY submission_date DESC LIMIT 1" % [current_user[:id]]
+    return EnergyApplication.where(search_string)
   end
 
   def push_string_arrays_to_model_object(energy_app, parameter_list)
