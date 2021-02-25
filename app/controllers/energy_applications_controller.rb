@@ -22,6 +22,7 @@ class EnergyApplicationsController < ApplicationController
   end
 
   def new
+    get_previous_energy_app()
     @energy_application = EnergyApplication.new
   end
 
@@ -149,6 +150,15 @@ private
   def get_utilities(energy_app)
     search_string = "parent_application_id = '%d'" % [energy_app.id]
     return UtilityRecord.where(search_string)
+  end
+
+  def get_previous_energy_app()
+    search_string = "user_id = '%d'" % [current_user[:id]]
+    energy_app_array = EnergyApplication.where(search_string)
+    num_found = 0
+    if energy_app_array != nil
+      num_found = energy_app_array.length()
+    end
   end
 
   def push_string_arrays_to_model_object(energy_app, parameter_list)
