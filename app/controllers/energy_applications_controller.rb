@@ -26,7 +26,7 @@ class EnergyApplicationsController < ApplicationController
     @household_members = nil
     @utilities = nil
     if @previous_energy_application != nil
-      @household_memebers = get_household_members(@previous_energy_application)
+      @household_members = get_household_members(@previous_energy_application)
       @utilities = get_utilities(@previous_energy_application)
     end
     @energy_application = EnergyApplication.new
