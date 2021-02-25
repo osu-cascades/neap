@@ -356,4 +356,60 @@
       }
     });
   }
+
+  <% #load previous values, if they exist %>
+  <% if @household_members != nil %>
+    <% member_length = @household_members.length() - 1 %>
+    <% for i in 0..member_length %>
+      document.getElementById("<%= "household_member_name_%d" % [i] %>").value = "<%= @household_members[i].name %>"
+      document.getElementById("<%= "household_member_dob_%d" % [i] %>").value = "<%= @household_members[i].dob %>"
+      document.getElementById("<%= "household_member_ssn_%d" % [i] %>").value = "<%= @household_members[i].ssn %>"
+      document.getElementById("<%= "household_member_other_insurance_%d" % [i] %>").value = "<%= @household_members[i].other_insurance %>"
+      document.getElementById("<%= "household_member_other_income_%d" % [i] %>").value = "<%= @household_members[i].type_of_income %>"
+      document.getElementById("<%= "household_member_total_informal_%d" % [i] %>").value = "<%= @household_members[i].informal_income_amount %>"
+      document.getElementById("<%= "household_member_informal_source_%d" % [i] %>").value = "<%= @household_members[i].informal_income_source %>"
+      document.getElementById("<%= "energy_application_household_member_gender_%d" % [i] %>").value = "<%= @household_members[i].gender %>"
+      document.getElementById("<%= "energy_application_household_member_hispanic_%d" % [i] %>").value = "<%= @household_members[i].hispanic %>"
+      document.getElementById("<%= "energy_application_household_member_race_%d" % [i] %>").value = "<%= @household_members[i].race %>"
+      document.getElementById("<%= "energy_application_household_member_tribal_%d" % [i] %>").value = "<%= @household_members[i].or_tribe %>"
+      document.getElementById("<%= "energy_application_household_member_education_%d" % [i] %>").value = "<%= @household_members[i].education %>"
+      document.getElementById("<%= "energy_application_household_member_disabled_%d" % [i] %>").value = "<%= @household_members[i].disabled %>"
+      document.getElementById("<%= "energy_application_household_member_veteran_%d" % [i] %>").value = "<%= @household_members[i].veteran %>"
+      document.getElementById("<%= "energy_application_household_member_homebound_%d" % [i] %>").value = "<%= @household_members[i].homebound %>"
+      document.getElementById("<%= "energy_application_household_member_snap_%d" % [i] %>").value = "<%= @household_members[i].snap %>"
+      document.getElementById("<%= "energy_application_household_member_ohp_%d" % [i] %>").value = "<%= @household_members[i].ohp %>"
+      document.getElementById("<%= "energy_application_household_members_over_18_without_income_%d" % [i] %>").value = "<%= @household_members[i].over_18_no_formal_income %>"
+      document.getElementById("<%= "energy_application_household_member_in_high_school_%d" % [i] %>").value = "<%= @household_members[i].in_high_school %>"
+    <% end %>
+  <% end %>
+  <% if @utilities != nil %>
+    <% member_length = @utilities.length() - 1 %>
+    <% for i in 0..member_length %>
+      document.getElementById("<%= "utility_name_%d" % [i] %>").value = "<%= @utilities[i].utility_name %>"
+      document.getElementById("<%= "utility_account_number_%d" % [i] %>").value = "<%= @utilities[i].account_number %>"
+      document.getElementById("<%= "utility_account_name_%d" % [i] %>").value = "<%= @utilities[i].accountholder_name %>"
+    <% end %>
+  <% end %>
+  <% # heat source checkboxes %>
+  <% if @energy_application.types_of_heat.include?("E") %>
+    document.getElementById("energy_application_heat_type_electric").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("N") %>
+    document.getElementById("energy_application_heat_type_natural_gas").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("L") %>
+    document.getElementById("energy_application_heat_type_propane").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("O") %>
+    document.getElementById("energy_application_heat_type_oil").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("S") %>
+    document.getElementById("energy_application_heat_type_solar").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("P") %>
+    document.getElementById("energy_application_heat_type_pellets").checked = true
+  <% end %>
+  <% if @energy_application.types_of_heat.include?("W") %>
+    document.getElementById("energy_application_heat_type_wood").checked = true
+  <% end %>
 </script>

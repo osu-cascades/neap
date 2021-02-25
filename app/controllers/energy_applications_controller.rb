@@ -23,11 +23,11 @@ class EnergyApplicationsController < ApplicationController
 
   def new
     @previous_energy_application = get_previous_energy_app()
-    @previous_household_members = nil
-    @previous_utilities = nil
+    @household_members = nil
+    @utilities = nil
     if @previous_energy_application != nil
-      @previous_household_memebrs = get_household_members(@previous_energy_application)
-      @previous_utilities = get_utilities(@previous_energy_application)
+      @household_memebers = get_household_members(@previous_energy_application)
+      @utilities = get_utilities(@previous_energy_application)
     end
     @energy_application = EnergyApplication.new
   end
@@ -159,8 +159,12 @@ private
   end
 
   def get_previous_energy_app()
-    search_string = "user_id = '%d' AND submission_date IS NOT NONE ORDER BY submission_date DESC LIMIT 1" % [current_user[:id]]
-    return EnergyApplication.where(search_string)
+    search_string = "user_id = '%d' AND submission_date IS NOT NULL" % [current_user[:id]]
+    return_val = EnergyApplication.where(search_string).order(submission_date: :desc)
+    if return_val != nil
+      return return_val.first
+    end
+    return nil
   end
 
   def push_string_arrays_to_model_object(energy_app, parameter_list)
