@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_165453) do
     t.text "phone_type"
     t.text "household_type"
     t.text "email_address"
-    t.date "submission_date"
+    t.datetime "submission_date"
     t.index ["user_id"], name: "index_energy_applications_on_user_id"
   end
 
