@@ -1,7 +1,14 @@
 class EnergyApplicationsController < ApplicationController
 
   def index
-    @energy_applications = current_user.energy_applications
+    #normal users should never see the index page; either they have an open energy application
+    # to finish, or they need to make a new one
+    # admins should see all unprinted energy applications
+    if current_user.admin?
+      @energy_applications = current_user.energy_applications
+    else
+      @energy_applications = nil
+    end
   end
 
   def show
