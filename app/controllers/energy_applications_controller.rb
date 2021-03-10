@@ -9,7 +9,12 @@ class EnergyApplicationsController < ApplicationController
       @energy_applications = EnergyApplication.where(search_string)
     else
       @energy_applications = []
-      puts "user is admin? %s" % current_user.admin?
+      draft_application = get_incomplete_energy_app()
+      if draft_application != nil
+        redirect_to edit_energy_application_path(id: draft_application[:id])
+        return
+      end
+      redirect_to new_energy_application_path
     end
   end
 
@@ -168,7 +173,18 @@ private
   end
 
   def get_previous_energy_app()
+    # returns the most recent submitted energy application
     search_string = "user_id = '%d' AND submission_date IS NOT NULL" % [current_user[:id]]
+    return_val = EnergyApplication.where(search_string).order(submission_date: :desc)
+    if return_val != nil
+      return return_val.first
+    end
+    return nil
+  end
+
+  def get_incomplete_energy_app()
+    # returns the most recent incomplete energy application
+    search_string = "user_id = '%d' AND submission_date IS NULL" % [current_user[:id]]
     return_val = EnergyApplication.where(search_string).order(submission_date: :desc)
     if return_val != nil
       return return_val.first
