@@ -4,10 +4,12 @@ class EnergyApplicationsController < ApplicationController
     #normal users should never see the index page; either they have an open energy application
     # to finish, or they need to make a new one
     # admins should see all unprinted energy applications
-    if current_user.admin?
-      @energy_applications = EnergyApplication.where("submission_date IS NOT NULL AND confirmation_date IS NULL")
+    if current_user[:admin]
+      search_string = "submission_date IS NOT NULL"
+      @energy_applications = EnergyApplication.where(search_string)
     else
-      @energy_applications = nil
+      @energy_applications = []
+      puts "user is admin? %s" % current_user.admin?
     end
   end
 
