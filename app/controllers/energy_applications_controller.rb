@@ -5,7 +5,7 @@ class EnergyApplicationsController < ApplicationController
     # to finish, or they need to make a new one
     # admins should see all unprinted energy applications
     if current_user.admin?
-      @energy_applications = current_user.energy_applications
+      @energy_applications = EnergyApplication.where("submission_date IS NOT NULL AND confirmation_date IS NULL")
     else
       @energy_applications = nil
     end
