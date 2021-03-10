@@ -3,15 +3,15 @@
 <h2>Submitted Applications</h2>
 
 <% @energy_applications.each do |energy_application| %>
-  <% if energy_application.submission_date != nil %>
+  <% if energy_application.submission_date != nil && energy_application.confirmation_date == nil %>
     <p><%= link_to energy_application, energy_application_path(energy_application), class: "btn btn-outline-primary" %></p>
   <% end %>
 <% end %>
 
-<h2>Drafts</h2>
+<h2>Processed Applications</h2>
 
 <% @energy_applications.each do |energy_application| %>
-  <% if energy_application.submission_date == nil %>
+  <% if energy_application.submission_date != nil && energy_application.confirmation_date != nil %>
     <p><%= link_to energy_application, energy_application_path(energy_application), class: "btn btn-outline-primary" %></p>
   <% end %>
 <% end %>
