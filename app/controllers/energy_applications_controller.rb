@@ -35,7 +35,7 @@ class EnergyApplicationsController < ApplicationController
     if current_user[:admin]
       redirect_to energy_application_path
     else
-      redirect_to exit_page
+      redirect_to exit_page_url
     end
   end
 
@@ -58,7 +58,7 @@ class EnergyApplicationsController < ApplicationController
     if current_user[:admin]
       redirect_to energy_application_path
     else
-      redirect_to exit_page
+      redirect_to exit_page_url
     end
   end
 
