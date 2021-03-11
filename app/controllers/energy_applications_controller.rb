@@ -32,7 +32,11 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.find(params[:id])
     @energy_application.update(energy_application_params)
     store_subtable_data(@energy_application, params)
-    redirect_to energy_application_path
+    if current_user[:admin]
+      redirect_to energy_application_path
+    else
+      redirect_to exit_page
+    end
   end
 
   def new
@@ -51,7 +55,11 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     @energy_application.save
     store_subtable_data(@energy_application, params)
-    redirect_to energy_applications_path
+    if current_user[:admin]
+      redirect_to energy_application_path
+    else
+      redirect_to exit_page
+    end
   end
 
   def destroy
