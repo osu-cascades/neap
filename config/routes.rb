@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/screening_questions" => "static_pages#screening_questions"
   get "/household_questions" => "static_pages#application_household_info"
   get "/covid_questions" => "static_pages#application_covid_questions"
+  get "/exit_page" => "static_pages#exit_page"
 
   resources :energy_applications
 
