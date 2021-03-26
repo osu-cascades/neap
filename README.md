@@ -65,4 +65,4 @@ Configure env vars in staging and production:
 Note: See _.env.example_ for a complete list of expected environment
 variables that need set in both staging & production environments.
 
-&copy; 2020 Taylor Slye and Yong Joseph Bakos. All rights reserved.
+&copy; 2020 Michael Widler, Amber Kolar and Yong Joseph Bakos. All rights reserved.
