@@ -70,5 +70,4 @@ class UserTest < ActiveSupport::TestCase
     assert_equal original_full_name, u.name_was
   end
 
-
 end
