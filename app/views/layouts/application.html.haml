@@ -20,6 +20,8 @@
             %li.nav-item= link_to 'Users', users_path, class: 'nav-link'
           - if user_signed_in?
             %li.nav-item= link_to current_user, current_user, class: 'nav-link'
+          - else
+            %li.nav-item.mr-3= link_to 'Get Started', new_user_registration_path, class: 'nav-link btn btn-warning text-dark'
           %li.nav-item= sign_in_or_out_link
     %main.container{role: 'main'}
       - flash.each do |message_type, message|
