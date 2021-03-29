@@ -24,6 +24,14 @@ main {
   margin-right: 0.5rem;
 }
 
+body.energy_applications a.nav-link-applications {
+  color: $warning !important;
+}
+
+body.users a.nav-link-users {
+  color: $warning !important;
+}
+
 footer {
   position: absolute;
   bottom: 0;

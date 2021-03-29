@@ -17,8 +17,8 @@
       #navbar.collapse.navbar-collapse
         %ul.navbar-nav.ml-auto
           - if current_user&.admin?
-            %li.nav-item= link_to 'Applications', admin_energy_applications_path, class: 'nav-link'
-            %li.nav-item= link_to 'Users', users_path, class: 'nav-link'
+            %li.nav-item= link_to 'Applications', admin_energy_applications_path, class: 'nav-link nav-link-applications'
+            %li.nav-item= link_to 'Users', users_path, class: 'nav-link nav-link-users'
           - if user_signed_in?
             %li.nav-item= link_to current_user, current_user, class: 'nav-link'
           - else
