@@ -1,2 +1,0 @@
-class HouseholdMemberIncome < ApplicationRecord
-end
