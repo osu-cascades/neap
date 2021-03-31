@@ -21,8 +21,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :destroy]
   end
 
-  get "audit" => "audits#index"
-
   namespace :admin do
     resources :energy_applications, except: [:new, :create, :edit]
   end
