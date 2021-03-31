@@ -4,7 +4,7 @@ class EnergyApplicationsController < ApplicationController
     #normal users should never see the index page; either they have an open energy application
     # to finish, or they need to make a new one
     # admins should see all unprinted energy applications
-    if current_user[:admin]
+    if current_user.admin?
       search_string = "submission_date IS NOT NULL"
       @energy_applications = EnergyApplication.where(search_string)
     else
@@ -32,7 +32,7 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.find(params[:id])
     @energy_application.update(energy_application_params)
     store_subtable_data(@energy_application, params)
-    if current_user[:admin]
+    if current_user.admin?
       redirect_to energy_application_path
     else
       redirect_to exit_page_url
@@ -55,7 +55,7 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     @energy_application.save
     store_subtable_data(@energy_application, params)
-    if current_user[:admin]
+    if current_user.admin?
       redirect_to energy_application_path
     else
       redirect_to exit_page_url
