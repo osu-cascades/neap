@@ -131,3 +131,27 @@ body.sessions.new, body.registrations.new, body.registrations.create {
 .form-signin {
   max-width: 330px;
 }
+
+/* Energy Applications */
+
+.accordion {
+  color: white;
+  background-color: #343a40;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+}
+
+.active, .accordion:hover {
+  background-color: #2d2d2d;
+}
+
+.panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.2s;
+}
