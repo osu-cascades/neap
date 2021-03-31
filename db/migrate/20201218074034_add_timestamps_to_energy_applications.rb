@@ -1,5 +1,5 @@
 class AddTimestampsToEnergyApplications < ActiveRecord::Migration[5.2]
- def up
+  def up
     add_timestamps :energy_applications
   end
   def down
