@@ -77,7 +77,6 @@ class EnergyApplicationsController < ApplicationController
     pdf = Prawn::Document.new
     pdf.text "PDF for %s" % [name_string]
     send_data pdf.render, :filename => "%s.pdf" % [name_string], :type => "application/pdf"
-    end
   end
 
 private
