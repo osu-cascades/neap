@@ -71,6 +71,7 @@ class EnergyApplicationsController < ApplicationController
   end
 
   def show_as_pdf
+    require "prawn"
     @energy_application = EnergyApplication.find(params[:id])
     name_string = "%s_%s_%s" % [@energy_application.last_name, @energy_application.first_name, @energy_application.submission_date]
     Prawn::Document.generate("%s.pdf" % [name_string]) do
