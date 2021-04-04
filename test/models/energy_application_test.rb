@@ -49,6 +49,10 @@ class EnergyApplicationTest < ActiveSupport::TestCase
     assert_respond_to(EnergyApplication.new, :user)
   end
 
+  test 'has many household members' do
+    assert_respond_to(EnergyApplication.new, :household_members)
+  end
+
   test '#to_s' do
     assert_match(EnergyApplication.new.to_s, "Application ")
   end

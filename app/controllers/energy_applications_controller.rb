@@ -129,7 +129,7 @@ private
     # create new records
     for i in 0..7
       if names_arr[i] != ""
-        household_member = HouseholdMember.new(parent_application_id: energy_app.id,
+        household_member = HouseholdMember.new(energy_application: energy_app,
           name: names_arr[i], dob: dob_arr[i], ssn: ssn_arr[i], gender: gender_arr[i],
           hispanic: hispanic_arr[i], race: race_arr[i], or_tribe: tribal_arr[i],
           education: education_arr[i], disabled: disabled_arr[i], veteran: veteran_arr[i],
@@ -164,8 +164,7 @@ private
   end
 
   def get_household_members(energy_app)
-    search_string = "parent_application_id = '%d'" % [energy_app.id]
-    return HouseholdMember.where(search_string)
+    energy_app.household_members
   end
 
   def remove_old_utilites(energy_app)
