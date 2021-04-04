@@ -75,7 +75,9 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.find(params[:id])
     name_string = "%s_%s_%s" % [@energy_application.last_name, @energy_application.first_name, @energy_application.submission_date]
     pdf = Prawn::Document.new
-    pdf.text "PDF for %s" % [name_string]
+    pdf.text "PDF for %s %s\n" % [@energy_application.last_name, @energy_application.first_name]
+    pdf.text "Submitted on %s\n" % [@energy_application.submission_date]
+    pdf.text "Application ID# %s" % [params[:id]]
     send_data pdf.render, :filename => "%s.pdf" % [name_string], :type => "application/pdf"
   end
 
