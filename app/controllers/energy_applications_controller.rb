@@ -73,13 +73,8 @@ class EnergyApplicationsController < ApplicationController
   def show_as_pdf
     @energy_application = EnergyApplication.find(params[:id])
     name_string = "%s_%s_%s" % [@energy_application.last_name, @energy_application.first_name, @energy_application.submission_date]
-    format.pdf do
-      pdf = Prawn::Document.new
-      pdf.text "PDF View"
-      send_data pdf.render,
-        filename: "%s.pdf" % [name_string],
-        type: 'application/pdf',
-        disposition: 'inline'
+    Prawn::Document.generate("%s.pdf" % [name_string]) do
+      text "PDF for %s" % [name_string]
     end
   end
 
