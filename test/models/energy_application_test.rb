@@ -45,12 +45,10 @@ class EnergyApplicationTest < ActiveSupport::TestCase
     assert_respond_to(application, :contact_info)
   end
 
-  test 'belongs to a user' do
+  test 'associations' do
     assert_respond_to(EnergyApplication.new, :user)
-  end
-
-  test 'has many household members' do
     assert_respond_to(EnergyApplication.new, :household_members)
+    assert_respond_to(EnergyApplication.new, :utility_records)
   end
 
   test '#to_s' do

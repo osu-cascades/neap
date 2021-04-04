@@ -146,7 +146,7 @@ private
     end
     for i in 0..2
       if utility_name_arr[i] != ""
-        utility_item = UtilityRecord.new(parent_application_id: energy_app.id,
+        utility_item = UtilityRecord.new(energy_application: energy_app,
           utility_name: utility_name_arr[i],
           account_number: utility_account_number_arr[i],
           accountholder_name: utility_account_holder_name_arr[i])
@@ -175,8 +175,7 @@ private
   end
 
   def get_utilities(energy_app)
-    search_string = "parent_application_id = '%d'" % [energy_app.id]
-    return UtilityRecord.where(search_string)
+    energy_app.utility_records
   end
 
   def get_previous_energy_app()

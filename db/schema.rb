@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_04_050244) do
+ActiveRecord::Schema.define(version: 2021_04_04_052406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2021_04_04_050244) do
   end
 
   create_table "utility_records", force: :cascade do |t|
-    t.integer "parent_application_id", null: false
+    t.bigint "energy_application_id", null: false
     t.string "utility_name"
     t.string "account_number"
     t.string "accountholder_name"
@@ -119,4 +119,5 @@ ActiveRecord::Schema.define(version: 2021_04_04_050244) do
 
   add_foreign_key "energy_applications", "users"
   add_foreign_key "household_members", "energy_applications"
+  add_foreign_key "utility_records", "energy_applications"
 end
