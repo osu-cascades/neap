@@ -18,6 +18,9 @@ class AdminEnergyApplicationsControllerTest < ActionDispatch::IntegrationTest
     # show
     get admin_energy_application_path(id: 'fake')
     assert_redirected_to new_user_session_path
+    # print
+    get print_admin_energy_application_path(id: 'fake')
+    assert_redirected_to new_user_session_path
     # update
     patch admin_energy_application_path(id: 'fake')
     assert_redirected_to new_user_session_path
@@ -35,6 +38,9 @@ class AdminEnergyApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
     # show
     get admin_energy_application_path(id: 'fake')
+    assert_redirected_to root_url
+    # print
+    get print_admin_energy_application_path(id: 'fake')
     assert_redirected_to root_url
     # update
     patch admin_energy_application_path(id: 'fake')

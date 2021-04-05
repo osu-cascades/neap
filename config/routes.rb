@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :energy_applications, except: [:new, :create, :edit]
+    resources :energy_applications, except: [:new, :create, :edit] do
+      get 'print', on: :member
+    end
   end
 
 end
