@@ -13,13 +13,13 @@ gem 'haml-rails'
 gem 'jbuilder', '~> 2.10.1'
 gem 'jquery-rails'
 gem 'pg'
+gem 'prawn'
 gem 'puma', '~> 5.0.2'
 gem 'rails', '~> 5.2.5'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'turbolinks', '~> 5.2.1'
 gem 'uglifier', '>= 4.2.0'
-gem 'prawn'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
