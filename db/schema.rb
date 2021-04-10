@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_04_052406) do
+ActiveRecord::Schema.define(version: 2021_04_10_090801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,39 +25,39 @@ ActiveRecord::Schema.define(version: 2021_04_04_052406) do
     t.string "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "first_name"
-    t.text "last_name"
-    t.text "mailing_address_street"
-    t.text "mailing_address_city"
-    t.text "mailing_address_state"
-    t.text "mailing_address_zip"
-    t.text "mailing_address_county"
-    t.text "type_of_dwelling"
-    t.text "residence_status"
-    t.text "types_of_heat", default: [], array: true
-    t.text "primary_heat_source"
-    t.text "secondary_heat_source"
-    t.text "utility_company"
-    t.text "household_member_types_of_income", default: [], array: true
-    t.text "utility_names", default: [], array: true
-    t.text "utility_account_numbers", default: [], array: true
-    t.text "utility_account_names", default: [], array: true
+    t.string "first_name"
+    t.string "last_name"
+    t.string "mailing_address_street"
+    t.string "mailing_address_city"
+    t.string "mailing_address_state"
+    t.string "mailing_address_zip"
+    t.string "mailing_address_county"
+    t.string "type_of_dwelling"
+    t.string "residence_status"
+    t.string "types_of_heat", default: [], array: true
+    t.string "primary_heat_source"
+    t.string "secondary_heat_source"
+    t.string "utility_company"
+    t.string "household_member_types_of_income", default: [], array: true
+    t.string "utility_names", default: [], array: true
+    t.string "utility_account_numbers", default: [], array: true
+    t.string "utility_account_names", default: [], array: true
     t.boolean "household_members_over_18_without_income", default: [], array: true
-    t.text "how_necessities_are_paid"
+    t.string "how_necessities_are_paid"
     t.boolean "household_impacted_by_covid"
     t.boolean "covid_loss_of_employment"
     t.boolean "covid_reduction_of_hours"
     t.boolean "covid_vulnerable_population"
     t.boolean "covid_loss_of_childcare"
-    t.text "covid_other_situation"
-    t.text "covid_expenses"
-    t.text "phone_type"
-    t.text "household_type"
-    t.text "email_address"
+    t.string "covid_other_situation"
+    t.string "covid_expenses"
+    t.string "phone_type"
+    t.string "household_type"
+    t.string "email_address"
     t.datetime "submission_date"
     t.datetime "confirmation_date"
-    t.text "contact_type"
-    t.text "contact_info"
+    t.string "contact_type"
+    t.string "contact_info"
     t.index ["user_id"], name: "index_energy_applications_on_user_id"
   end
 
