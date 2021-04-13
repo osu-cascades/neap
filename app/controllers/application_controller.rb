@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
       if user.admin?
         admin_energy_applications_url
       else
-        if user_controller.has_incomplete_energy_app?
-          energy_application_index_url
+        if helpers.has_incomplete_energy_app(user)
+          energy_applications_url
         else
           before_you_begin_url
         end
