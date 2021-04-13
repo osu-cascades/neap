@@ -53,6 +53,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def has_incomplete_energy_app()
+    search_string = "user_id = '%d' AND submission_date IS NULL" % [@User[:id]]
+    return EnergyApplication.where(search_string).order(submission_date: :desc) != nil
+  end
+
   private
     def prevent_normal_users_from_editing_and_viewing_other_users
       redirect_to(root_url) unless current_user.id == params[:id].to_i || current_user.admin?
