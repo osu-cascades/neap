@@ -1,3 +1,3 @@
 module EnergyApplicationsHelper
-    counties = ["Crook", "Deschutes", "Jefferson", "Wascoe", "Other"]
+    EnergyApplication::COUNTIES = ["Crook", "Deschutes", "Jefferson", "Wascoe", "Other"]
 end
