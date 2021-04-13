@@ -16,7 +16,15 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(user)
-      user.admin? ? admin_energy_applications_url : before_you_begin_url
+      if user.admin?
+        admin_energy_applications_url
+      else
+        if user.has_incomplete_energy_app?
+          energy_application_index_url
+        else
+          before_you_begin_url
+        end
+      end
     end
 
     def after_sign_out_path_for(user)
