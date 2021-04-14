@@ -70,4 +70,9 @@ class UserTest < ActiveSupport::TestCase
     assert_equal original_full_name, u.name_was
   end
 
+  test '#has_incomplete_energy_app?' do
+    u = users(:returning_guest)
+    assert u.has_incomplete_energy_app?
+  end
+
 end

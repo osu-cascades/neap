@@ -35,4 +35,8 @@ class User < ApplicationRecord
     "#{first_name_was} #{last_name_was}"
   end
 
+  def has_incomplete_energy_app?
+    energy_applications.where(submission_date: nil).exists?
+  end
+
 end
