@@ -1,5 +1,9 @@
 %h1 Administration
-%h2 Energy Assistance Applications
+.row
+  .col-9
+    %h2 Energy Assistance Applications
+  .col-3.text-right
+    = link_to 'Export CSV', export_admin_energy_applications_path, class: 'btn btn-primary'
 %table.table.table-hover
   %thead
     %tr

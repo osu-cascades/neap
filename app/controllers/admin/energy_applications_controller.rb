@@ -8,6 +8,10 @@ class Admin::EnergyApplicationsController < Admin::AdminController
     @energy_application = EnergyApplication.find(params[:id])
   end
 
+  def export
+
+  end
+
   def print
     require 'prawn' # <- I don't believe this explicit require is necessary. (?)
     @energy_application = EnergyApplication.find(params[:id])
