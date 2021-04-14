@@ -1,4 +1,9 @@
 %h1 Administration
-%h2= @energy_application
+
+.row
+  .col-9
+    %h2= @energy_application
+  .col-3
+    = link_to 'Print', print_admin_energy_application_path(@energy_application), class: 'btn btn-primary'
 
 TODO
