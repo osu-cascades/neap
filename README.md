@@ -1,6 +1,7 @@
 # NeighborImpact Energy Assistance Program
 
-TODO: brief description
+"NEAP" is NeighborImpact's online application for the federal Low Income Home
+Energy Assistance Program (LIHEAP).
 
 ## Expectations
 
