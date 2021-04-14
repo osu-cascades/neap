@@ -1,21 +1,13 @@
 class EnergyApplicationsController < ApplicationController
 
   def index
-    #normal users should never see the index page; either they have an open energy application
-    # to finish, or they need to make a new one
-    # admins should see all unprinted energy applications
-    if current_user.admin?
-      search_string = "submission_date IS NOT NULL"
-      @energy_applications = EnergyApplication.where(search_string)
-    else
-      @energy_applications = []
-      draft_application = get_incomplete_energy_app()
-      if draft_application != nil
-        redirect_to edit_energy_application_path(id: draft_application[:id])
-        return
-      end
-      redirect_to new_energy_application_path
+    @energy_applications = []
+    draft_application = get_incomplete_energy_app()
+    if draft_application != nil
+      redirect_to edit_energy_application_path(id: draft_application[:id])
+      return
     end
+    redirect_to new_energy_application_path
   end
 
   def show
@@ -32,11 +24,7 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.find(params[:id])
     @energy_application.update(energy_application_params)
     store_subtable_data(@energy_application, params)
-    if current_user.admin?
-      redirect_to energy_application_path
-    else
-      redirect_to exit_page_url
-    end
+    redirect_to exit_page_url
   end
 
   def new
@@ -55,11 +43,7 @@ class EnergyApplicationsController < ApplicationController
     @energy_application.user_id = current_user[:id]
     @energy_application.save
     store_subtable_data(@energy_application, params)
-    if current_user.admin?
-      redirect_to energy_application_path
-    else
-      redirect_to exit_page_url
-    end
+    redirect_to exit_page_url
   end
 
   def destroy
