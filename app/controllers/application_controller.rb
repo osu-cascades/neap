@@ -18,12 +18,10 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(user)
       if user.admin?
         admin_energy_applications_url
+      elsif helpers.has_incomplete_energy_app(user)
+        energy_applications_url
       else
-        if helpers.has_incomplete_energy_app(user)
-          energy_applications_url
-        else
-          before_you_begin_url
-        end
+        before_you_begin_url
       end
     end
 
