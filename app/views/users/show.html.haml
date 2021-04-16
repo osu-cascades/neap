@@ -9,17 +9,20 @@
   %p= "Last signed in at #{@user.current_sign_in_at.localtime.to_s(:short)} from #{@user.current_sign_in_ip}."
 
 %h2 Applications
-%table.table.table-hover
-  %thead
-    %tr
-      %th{scope: 'col'} id
-      %th{scope: 'col'} Applicant
-      %th{scope: 'col'} Phone Number
-      %th Last Updated
-  %tbody
-    - @user.energy_applications.each do |application|
+- if @user.energy_applications.empty?
+  %p No applications
+- else
+  %table.table.table-hover
+    %thead
       %tr
-        %th{scope: 'row'}= application.id
-        %td= link_to application.user, admin_energy_application_path(application)
-        %td= link_to application.phone_number, admin_energy_application_path(application)
-        %td= application.updated_at.to_s(:long)
+        %th{scope: 'col'} id
+        %th{scope: 'col'} Applicant
+        %th{scope: 'col'} Phone Number
+        %th Last Updated
+    %tbody
+      - @user.energy_applications.each do |application|
+        %tr
+          %th{scope: 'row'}= application.id
+          %td= link_to application.user, admin_energy_application_path(application)
+          %td= link_to application.phone_number, admin_energy_application_path(application)
+          %td= application.updated_at.to_s(:long)
