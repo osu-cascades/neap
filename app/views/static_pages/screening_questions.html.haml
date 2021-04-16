@@ -1,0 +1,47 @@
+%h1 Location and Income Limits
+%p NeighborImpact is proud to serve the needs of Central Oregon. The following areas are inside our service area:
+%ul
+  %li Crook County
+  %li Deschutes County
+  %li Jefferson County
+  %li Native American reservations in Wasco County
+%p
+  Don't live in one of these areas?
+  %a{:href => "#"} Click here for help.
+%p Please use the following table to see if your household qualifies for assistance through this program:
+
+%table.table.table-striped.table-sm
+  %caption
+    %p.small.mb-0 Add $133.65 for each household member beyond 8.
+    %p.small *Gross income means all household income before taxes.
+  %tr
+    %th Household Size
+    %th Max Monthly Gross Income*
+  %tr
+    %td 1
+    %td $2,317.15
+  %tr
+    %td 2
+    %td $3,030.10
+  %tr
+    %td 3
+    %td $3,743.05
+  %tr
+    %td 4
+    %td $4,456.00
+  %tr
+    %td 5
+    %td $5,169.00
+  %tr
+    %td 6
+    %td $5,882.00
+  %tr
+    %td 7
+    %td $6,015.67
+  %tr
+    %td 8
+    %td $6,149.30
+
+.btn-group
+  = link_to 'Back', application_checklist_path, class: 'btn btn-outline-secondary'
+  = link_to 'View Energy Applications', energy_applications_path, class: 'btn btn-primary'
