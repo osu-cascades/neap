@@ -18,6 +18,14 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :destroy]
   end
 
+  #allow uploading files to energy applications
+  resources :energy_applications do
+    member do
+      get 'supportingDocs'
+    end
+  end
+  
+
   namespace :admin do
     resources :energy_applications, except: [:new, :create, :edit] do
       get 'print', on: :member
