@@ -21,7 +21,8 @@
     <li> Copies of Social Security cards for all household members.
     </ul>
 
-    <%= f.file_field :documents, multiple: true, direct_upload: true %>
-
+    <% for i in 0..30 %>
+        <%= f.file_field :documents, multiple: false, direct_upload: true %>
+    <% end %>
 
 <% end %>
