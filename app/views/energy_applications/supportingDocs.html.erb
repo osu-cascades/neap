@@ -44,14 +44,16 @@
                     document.getElementById("<%= this_element_id %>").style.display = "none"
             }
             else
+            {
                 document.getElementById("<%= this_element_id %>").style.display = "inline"
+            }
         <% end %> 
     }
 
     // add listeners to buttons
     <% for i in 0..30 %>
-        var el = document.getElementById("<%= last_element_id %>")
-        el.addEventListener("click", hideAndShowButtons);
+        var el = document.getElementById("<%= "doc_upload_%d" % [i] %>")
+        el.addEventListener("input", hideAndShowButtons);
     <% end %>
 
     // run on page loading
