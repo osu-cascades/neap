@@ -5,7 +5,7 @@ class EnergyApplication < ApplicationRecord
   belongs_to :user
   has_many :household_members
   has_many :utility_records
-  has_many :documents
+  has_many_attached :documents
 
   def to_s
     "Application #{id}"
