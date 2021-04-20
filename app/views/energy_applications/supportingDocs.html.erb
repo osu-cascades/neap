@@ -32,8 +32,22 @@
 <% end %>
 
 <script type="text/javascript">
-    <% for i in 1..30 %>
-        <% element_id = "doc_upload_%d" % [i] %>
-        document.getElementById("<%= element_id %>").style.display = "none"
-    <% end %> 
+
+    function hideExtraButtons()
+    {
+        <% for i in 1..30 %>
+            <% last_element_id = "doc_upload_%d" % [i - 1] %>
+            <% this_element_id = "doc_upload_%d" % [i] %>
+            if(document.getElementById("<%= last_element_id %>").value == "")
+            {
+                if(document.getElementById("<%= this_element_id %>").value == "")
+                    document.getElementById("<%= this_element_id %>").style.display = "none"
+            }
+            else
+                document.getElementById("<%= this_element_id %>").style.display = "inline"
+        <% end %> 
+    }
+
+    // run on page loading
+    hideExtraButtons();
 </script>
