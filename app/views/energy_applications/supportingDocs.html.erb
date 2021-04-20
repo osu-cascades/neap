@@ -21,8 +21,19 @@
     <li> Copies of Social Security cards for all household members.
     </ul>
 
+    <% display_style = "hidden = false" %>
     <% for i in 0..30 %>
-        <%= f.file_field :documents, multiple: false, direct_upload: true %>
+        <% element_id = "doc_upload_%d" % [i] %>
+        <%= f.file_field :documents, multiple: false, direct_upload: true, id: element_id %>
+        <% display_style = "hidden = true" %>
+        <br>
     <% end %>
 
 <% end %>
+
+<script type="text/javascript">
+    <% for i in 1..30 %>
+        <% element_id = "doc_upload_%d" % [i] %>
+        document.getElementById("<%= element_id %>").style.display = "none"
+    <% end %> 
+</script>
