@@ -8,19 +8,6 @@ class EnergyApplicationsController < ApplicationController
     @energy_application = EnergyApplication.find(params[:id])
   end
 
-  def edit
-    @energy_application = EnergyApplication.find(params[:id])
-    @household_members = get_household_members(@energy_application)
-    @utilities = get_utilities(@energy_application)
-  end
-
-  def update
-    @energy_application = EnergyApplication.find(params[:id])
-    @energy_application.update(energy_application_params)
-    store_subtable_data(@energy_application, params)
-    redirect_to exit_page_url
-  end
-
   def new
     @energy_application = EnergyApplication.new
   end
@@ -33,12 +20,17 @@ class EnergyApplicationsController < ApplicationController
     redirect_to exit_page_url
   end
 
-  def destroy
+  def edit
     @energy_application = EnergyApplication.find(params[:id])
-    remove_old_household_members(@energy_application)
-    remove_old_utilites(@energy_application)
-    @energy_application.destroy
-    redirect_to energy_applications_url
+    @household_members = get_household_members(@energy_application)
+    @utilities = get_utilities(@energy_application)
+  end
+
+  def update
+    @energy_application = EnergyApplication.find(params[:id])
+    @energy_application.update(energy_application_params)
+    store_subtable_data(@energy_application, params)
+    redirect_to exit_page_url
   end
 
 private
