@@ -1,13 +1,7 @@
 class EnergyApplicationsController < ApplicationController
 
   def index
-    @energy_applications = []
-    draft_application = get_incomplete_energy_app()
-    if draft_application != nil
-      redirect_to edit_energy_application_path(id: draft_application[:id])
-      return
-    end
-    redirect_to new_energy_application_path
+    @energy_applications = current_user.energy_applications
   end
 
   def show
