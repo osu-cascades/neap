@@ -35,9 +35,14 @@ class EnergyApplicationsController < ApplicationController
 
   def update
     @energy_application = current_user.energy_applications.find(params[:id])
-    @energy_application.update(energy_application_params)
-    store_subtable_data(@energy_application, params)
-    redirect_to exit_page_url
+    if @energy_application.update(energy_application_params)
+      store_subtable_data(@energy_application, params)
+      redirect_to @energy_application, notice: 'Your application has been saved.'
+    else
+      @household_members = get_household_members(@energy_application)
+      @utilities = get_utilities(@energy_application)
+      render :edit
+    end
   rescue ActiveRecord::RecordNotFound
     redirect_to energy_applications_url, alert: 'Could not access that application.'
   end

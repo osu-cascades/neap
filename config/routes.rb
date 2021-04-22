@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/before_you_begin' => 'static_pages#before_you_begin'
   get '/application_checklist' => 'static_pages#application_checklist'
   get '/screening_questions' => 'static_pages#screening_questions'
-  get '/exit_page' => 'static_pages#exit_page'
 
   resources :energy_applications
 
