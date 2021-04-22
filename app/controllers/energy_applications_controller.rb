@@ -14,10 +14,13 @@ class EnergyApplicationsController < ApplicationController
 
   def create
     @energy_application = EnergyApplication.new(energy_application_params)
-    @energy_application.user_id = current_user[:id]
-    @energy_application.save
-    store_subtable_data(@energy_application, params)
-    redirect_to exit_page_url
+    @energy_application.user = current_user
+    if @energy_application.save
+      store_subtable_data(@energy_application, params)
+      redirect_to energy_applications_url, notice: 'Your application has been saved.'
+    else
+      render :new
+    end
   end
 
   def edit
