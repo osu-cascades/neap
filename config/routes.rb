@@ -21,10 +21,10 @@ Rails.application.routes.draw do
   #allow uploading files to energy applications
   resources :energy_applications do
     member do
-      get 'supportingDocs'
+      get 'supporting_docs'
     end
   end
-  
+
 
   namespace :admin do
     resources :energy_applications, except: [:new, :create, :edit] do
