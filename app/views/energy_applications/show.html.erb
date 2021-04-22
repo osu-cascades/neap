@@ -50,13 +50,13 @@
 
 <div class="btn-group">
   <%= link_to "Back", energy_applications_path, class: "btn btn-secondary" %>
-  <% if @energy_application.submission_date == nil %>
+  <% if @energy_application.unsubmitted? %>
     <%= link_to "Edit", edit_energy_application_path(@energy_application), class: "btn btn-primary" %>
     <%= link_to "Delete", @energy_application, class: "btn btn-danger", method: :delete,
       data: { confirm: "Are you sure you want to delete this enitre application?" } %>
   <% end %>
 </div>
 
-<% if @energy_application.submission_date != nil %>
+<% if @energy_application.submitted? %>
   <p><div class="alert alert-warning">Submitted applications can not be modified.</div></p>
 <% end %>

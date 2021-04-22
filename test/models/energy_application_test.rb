@@ -60,6 +60,11 @@ class EnergyApplicationTest < ActiveSupport::TestCase
     assert EnergyApplication.new(submission_date: Date.current).submitted?
   end
 
+  test '#unsubmitted?' do
+    assert EnergyApplication.new.unsubmitted?
+    refute EnergyApplication.new(submission_date: Date.current).unsubmitted?
+  end
+
   test '#status' do
     unsubmitted_application = EnergyApplication.new
     refute unsubmitted_application.submitted?

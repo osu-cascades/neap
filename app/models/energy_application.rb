@@ -15,6 +15,10 @@ class EnergyApplication < ApplicationRecord
     submission_date.present?
   end
 
+  def unsubmitted?
+    !submitted?
+  end
+
   def status
     if submitted?
       'Sent for review'
