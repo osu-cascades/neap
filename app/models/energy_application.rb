@@ -11,4 +11,8 @@ class EnergyApplication < ApplicationRecord
     "Application #{id}"
   end
 
+  def submitted?
+    submission_date.present?
+  end
+
 end

@@ -55,4 +55,9 @@ class EnergyApplicationTest < ActiveSupport::TestCase
     assert_match(EnergyApplication.new.to_s, "Application ")
   end
 
+  test '#submitted?' do
+    refute EnergyApplication.new.submitted?
+    assert EnergyApplication.new(submission_date: Date.current).submitted?
+  end
+
 end
