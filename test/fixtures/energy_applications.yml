@@ -1,3 +1,7 @@
 incomplete:
   user: returning_guest
   submission_date:
+
+submitted:
+  user: guest
+  submission_date: <%= Date.current %>

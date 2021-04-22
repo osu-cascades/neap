@@ -5,7 +5,9 @@ class EnergyApplicationsController < ApplicationController
   end
 
   def show
-    @energy_application = EnergyApplication.find(params[:id])
+    @energy_application = current_user.energy_applications.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to energy_applications_url, alert: 'Could not access that application.'
   end
 
   def new
@@ -24,16 +26,20 @@ class EnergyApplicationsController < ApplicationController
   end
 
   def edit
-    @energy_application = EnergyApplication.find(params[:id])
+    @energy_application = current_user.energy_applications.find(params[:id])
     @household_members = get_household_members(@energy_application)
     @utilities = get_utilities(@energy_application)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to energy_applications_url, alert: 'Could not access that application.'
   end
 
   def update
-    @energy_application = EnergyApplication.find(params[:id])
+    @energy_application = current_user.energy_applications.find(params[:id])
     @energy_application.update(energy_application_params)
     store_subtable_data(@energy_application, params)
     redirect_to exit_page_url
+  rescue ActiveRecord::RecordNotFound
+    redirect_to energy_applications_url, alert: 'Could not access that application.'
   end
 
 private
