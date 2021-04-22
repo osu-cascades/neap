@@ -5,12 +5,12 @@
   %table.table.table-hover
     %thead
       %tr
-        %th{scope: 'col'} id
         %th Last Updated
         %th Status
+        %th
     %tbody
       - @energy_applications.each do |application|
         %tr
-          %th{scope: 'row'}= application.id
-          %td= application.updated_at.to_s(:long)
-          %td TODO
+          %td= link_to application.updated_at.to_s(:long), application
+          %td= link_to application.status, application
+          %td= link_to 'View Details', application, class: 'btn btn-light btn-sm mr-4'

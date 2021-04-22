@@ -1,7 +1,7 @@
 class EnergyApplicationsController < ApplicationController
 
   def index
-    @energy_applications = current_user.energy_applications
+    @energy_applications = current_user.energy_applications.order('updated_at DESC')
   end
 
   def show
