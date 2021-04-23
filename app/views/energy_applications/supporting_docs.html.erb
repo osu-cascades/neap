@@ -21,6 +21,10 @@
     <li> Copies of Social Security cards for all household members.
     </ul>
 
+    <div class="col-9">
+        <%= f.submit 'Save Documents', class: 'btn btn-success' %>
+    </div>
+
     <% display_style = "hidden = false" %>
     <% for i in 0..30 %>
         <% element_id = "doc_upload_%d" % [i] %>
@@ -28,10 +32,6 @@
         <% display_style = "hidden = true" %>
         <br>
     <% end %>
-
-    <div class="col-9">
-        <%= f.submit 'Save Documents', class: 'btn btn-success' %>
-    </div>
 
 <% end %>
 
