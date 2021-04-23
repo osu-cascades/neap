@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/before_you_begin' => 'static_pages#before_you_begin'
   get '/application_checklist' => 'static_pages#application_checklist'
   get '/screening_questions' => 'static_pages#screening_questions'
-  post '/energy_applications/:is/supporting_docs' => 'energy_applications#show'
+  post '/energy_applications/:id/supporting_docs' => 'energy_applications#show'
 
   resources :energy_applications
 

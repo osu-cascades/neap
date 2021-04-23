@@ -14,3 +14,4 @@
           %td= link_to application.updated_at.to_s(:long), application
           %td= link_to application.status, application
           %td= link_to 'View Details', application, class: 'btn btn-light btn-sm mr-4'
+          %td= link_to 'Upload Supporting Documents', supporting_docs_energy_application_path(application), class: 'btn btn-light btn-sm mr-4'
