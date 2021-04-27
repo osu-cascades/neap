@@ -6,4 +6,61 @@
   .col-3
     = link_to 'Print', print_admin_energy_application_path(@energy_application), class: 'btn btn-primary'
 
-TODO
+%p Id: #{@energy_application.id}
+%p Created: #{@energy_application.created_at}
+%p Last Updated: #{@energy_application.updated_at}
+%p Submission Date: #{@energy_application.submission_date}
+
+
+%h2 Basic Information
+%p First Name: #{@energy_application.first_name}
+%p Last Name: #{@energy_application.last_name}
+%p Phone Number: #{@energy_application.phone_number}
+%p Phone Type: #{@energy_application.phone_type}
+%p Email Address: #{@energy_application.email_address}
+%p How Necessities Are Paid #{@energy_application.how_necessities_are_paid}
+
+
+%h2 Basic Information
+%p First Name: #{@energy_application.first_name}
+%p Last Name: #{@energy_application.last_name}
+%p Phone Number: #{@energy_application.phone_number}
+%p Phone Type: #{@energy_application.phone_type}
+%p Email Address: #{@energy_application.email_address}
+%p How Necessities Are Paid #{@energy_application.how_necessities_are_paid}
+
+%h2 Physical Address
+%p Street: #{@energy_application.address}
+%p Street Line 2: #{@energy_application.address2}
+%p City: #{@energy_application.city}
+%p County: #{@energy_application.county}
+%p Zip: #{@energy_application.zip}
+
+%h2 Mailing Address
+%p Street: #{@energy_application.mailing_address_street}
+%p City: #{@energy_application.mailing_address_city}
+%p County: #{@energy_application.mailing_address_county}
+%p State: #{@energy_application.mailing_address_state}
+%p Zip: #{@energy_application.mailing_address_zip}
+
+%h2 Household Information
+%p Household Type: #{@energy_application.household_type}
+
+%h2 Dwelling
+%p Type of Dwelling: #{@energy_application.type_of_dwelling}
+%p Residence Status: #{@energy_application.residence_status}
+%p Types of Heat: #{@energy_application.types_of_heat}
+%p Primary Heat Source: #{@energy_application.primary_heat_source}
+%p Secondary Heat Source: #{@energy_application.secondary_heat_source}
+%p Utility Company Benefit Goes To: #{@energy_application.utility_company}
+
+%h2 Utility
+
+%h2 COVID-19 Impact
+%p Household Impacted By COVID-19: #{@energy_application.household_impacted_by_covid}
+%p Loss of Employment: #{@energy_application.covid_loss_of_employment}
+%p Vulnerable Population: #{@energy_application.covid_vulnerable_population}
+%p Reduction of Hours/Unpaid Leave: #{@energy_application.covid_reduction_of_hours}
+%p Loss of Childcare/Children Home From School: #{@energy_application.covid_loss_of_childcare}
+%p Other Situation: #{@energy_application.covid_other_situation}
+%p COVID-19 Related Expenses: #{@energy_application.covid_expenses}
