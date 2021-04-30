@@ -487,4 +487,8 @@
 
     // run on page loading
     hideAndShowButtons();
+
+    // clicking main submit button saves uploaded documents
+    document.getElementById("main_submit_button").addEventListener("click", 
+      function(){document.getElementById("save_documents_button").click();});
 </script>
