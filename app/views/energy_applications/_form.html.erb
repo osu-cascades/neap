@@ -364,7 +364,7 @@
 
     <br>
     <div class="col-9">
-        <%= f.submit 'Save Documents', class: 'btn btn-success' %>
+        <%= f.submit 'Save Documents', id: "save_documents_button", class: 'btn btn-success' %>
     </div>
     <br>
   <% end %>
@@ -379,7 +379,7 @@
       <%= link_to 'Cancel my changes', energy_applications_path, class: 'btn btn-outline-secondary' %>
     </div>
     <div class="col-9">
-      <%= f.submit 'Save My Application', class: 'btn btn-success' %>
+      <%= f.submit 'Save My Application', id: "main_submit_button", class: 'btn btn-success' %>
       <small class="form-text text-muted">You may save and make changes as often as you wish.</small>
     </div>
   </div>
