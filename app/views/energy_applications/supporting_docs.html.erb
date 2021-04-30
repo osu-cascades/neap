@@ -38,32 +38,5 @@
 
 <script type="text/javascript">
 
-    function hideAndShowButtons()
-    {
-        <% for i in 1..30 %>
-            <% last_element_id = "doc_upload_%d" % [i - 1] %>
-            <% this_element_id = "doc_upload_%d" % [i] %>
-            <% this_break_id = "doc_upload_br_%d" % [i] %>
-            if(document.getElementById("<%= last_element_id %>").value == "")
-            {
-                if(document.getElementById("<%= this_element_id %>").value == "")
-                    document.getElementById("<%= this_element_id %>").style.display = "none"
-                    document.getElementById("<%= this_break_id %>").style.display = "none"
-            }
-            else
-            {
-                document.getElementById("<%= this_element_id %>").style.display = "inline"
-                document.getElementById("<%= this_break_id %>").style.display = "inline"
-            }
-        <% end %> 
-    }
-
-    // add listeners to buttons
-    <% for i in 0..30 %>
-        var el = document.getElementById("<%= "doc_upload_%d" % [i] %>")
-        el.addEventListener("input", hideAndShowButtons);
-    <% end %>
-
-    // run on page loading
-    hideAndShowButtons();
+    
 </script>
