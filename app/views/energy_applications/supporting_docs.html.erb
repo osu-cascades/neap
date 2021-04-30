@@ -28,9 +28,10 @@
     <% display_style = "hidden = false" %>
     <% for i in 0..30 %>
         <% element_id = "doc_upload_%d" % [i] %>
+        <% break_id = "doc_upload_br_%d" % [i] %>
         <%= f.file_field :documents, multiple: false, direct_upload: true, id: element_id %>
         <% display_style = "hidden = true" %>
-        <br>
+        <br id="<%= break_id %>">
     <% end %>
 
 <% end %>
