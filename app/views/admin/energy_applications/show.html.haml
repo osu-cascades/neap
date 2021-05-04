@@ -55,6 +55,7 @@
 %p Other Situation: #{@energy_application.covid_other_situation}
 %p COVID-19 Related Expenses: #{@energy_application.covid_expenses}
 
+%h2 Supporting Documentation
 - if @energy_application.documents.first != nil
   = send_file image_path(@energy_application.documents.first), :type => 'image/jpeg', :disposition => 'inline'
 - else
