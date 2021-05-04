@@ -55,3 +55,7 @@
 %p Other Situation: #{@energy_application.covid_other_situation}
 %p COVID-19 Related Expenses: #{@energy_application.covid_expenses}
 
+- if @energy_application.documents.first != nil
+  = send_file image_path(@energy_application.documents.first), :type => 'image/jpeg', :disposition => 'inline'
+- else
+  No files uploaded </p>
